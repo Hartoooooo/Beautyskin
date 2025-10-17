@@ -62,12 +62,12 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ec4899;
+  background: #64748b;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #db2777;
+  background: #475569;
 }
 
 /* Smooth scrolling */
@@ -83,7 +83,7 @@ html {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #ec4899, #db2777);
+  background: linear-gradient(135deg, #475569, #334155);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

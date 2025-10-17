@@ -135,8 +135,13 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
-              © {currentYear} BeautySkin. Alle Rechte vorbehalten.
+            <div className="text-center md:text-left">
+              <div className="text-gray-400 text-sm">
+                © {currentYear} BeautySkin. Alle Rechte vorbehalten.
+              </div>
+              <div className="text-gray-500 text-xs mt-1">
+                Umsetzung von Neoklar<sup className="text-[0.6em]">TM</sup>
+              </div>
             </div>
             <div className="text-gray-400 text-sm">
               Professionelle Kosmetik in Berlin

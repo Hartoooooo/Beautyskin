@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -6,7 +6,11 @@ export const metadata: Metadata = {
   description: 'Professionelle Kosmetikbehandlungen in Berlin. Hydrafacial, Microneedling, Gesichtsbehandlungen und mehr. Jetzt Termin buchen unter +49 170 4482725!',
   keywords: 'Kosmetik, Berlin, Hydrafacial, Microneedling, Gesichtsbehandlung, Beauty, Skincare',
   authors: [{ name: 'BeautySkin' }],
-  viewport: 'width=device-width, initial-scale=1',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -18,7 +22,7 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#ec4899" />
+        <meta name="theme-color" content="#475569" />
       </head>
       <body className="antialiased">
         {children}

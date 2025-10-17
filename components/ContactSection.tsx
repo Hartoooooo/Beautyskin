@@ -1,9 +1,57 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Phone, MapPin, Mail, Clock, Gift, Star } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Phone, MapPin, Mail, Clock, Star } from 'lucide-react'
+import { useState, useEffect } from 'react'
+
+const reviews = [
+  {
+    text: 'Ein sehr schönes Studio, Behandlung hat mir gut gefallen, für langfristige Ergebnisse müssen sicher mehrere Anwendungen durchgeführt werden :)',
+    author: 'Migle',
+    treatment: 'Radiofrequenzbehandlung fürs Gesicht',
+    treatedBy: 'Raquel',
+    timeAgo: 'vor etwa 22 Stunden'
+  },
+  {
+    text: 'Wie immer alles tipi topi! Freue mich aufs nächste Mal',
+    author: 'Lili',
+    treatment: 'Hydrating Facial',
+    treatedBy: 'Raquel',
+    timeAgo: 'vor 9 Tagen'
+  },
+  {
+    text: 'Super entspannende Behandlung! Ich habe mich sehr wohl gefühlt und Ysabel hat abschließend noch hilfreiche Tipps zur Nachversorgung gegeben. Ich komme auf jeden Fall wieder!',
+    author: 'Lea',
+    treatment: 'Microdermabrasion',
+    treatedBy: 'Ysabel',
+    timeAgo: 'vor 15 Tagen'
+  },
+  {
+    text: 'Wirklich immer super! Sie nimmt sich wirklich viel Zeit und geht auf individuelle Bedürfnisse ein. Pure Wohltuung!',
+    author: 'Lea',
+    treatment: 'Radiofrequenzbehandlung fürs Gesicht',
+    treatedBy: 'Raquel',
+    timeAgo: 'vor 16 Tagen'
+  },
+  {
+    text: 'Eine sehr angenehme und professionelle Behandlung. Ich komme gern wieder.',
+    author: 'Linda',
+    treatment: 'Gesichtsbehandlungen',
+    treatedBy: 'Ysabel',
+    timeAgo: 'vor 18 Tagen'
+  }
+]
 
 export default function ContactSection() {
+  const [currentReview, setCurrentReview] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReview((prev) => (prev + 1) % reviews.length)
+    }, 5000) // Wechselt alle 5 Sekunden
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="kontakt" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,44 +132,95 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Gutscheine */}
-            <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-3xl p-8">
-              <div className="flex items-center space-x-3 mb-4">
-                <Gift className="h-8 w-8 text-secondary-600" />
-                <h3 className="text-2xl font-bold text-gray-900">Gutscheine</h3>
-              </div>
-              <p className="text-gray-600 mb-6">
-                Verschenken Sie Wohlfühlmomente! Unsere Gutscheine sind das perfekte Geschenk 
-                für Ihre Liebsten.
-              </p>
-              <button className="btn-primary w-full">
-                Gutschein bestellen
-              </button>
-            </div>
-
             {/* Bewertungen */}
             <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-3xl p-8">
-              <div className="flex items-center space-x-3 mb-4">
-                <Star className="h-8 w-8 text-yellow-500 fill-current" />
-                <h3 className="text-2xl font-bold text-gray-900">Bewertungen</h3>
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                  <span className="text-lg font-semibold text-gray-900">5.0</span>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <Star className="h-8 w-8 text-yellow-500 fill-current" />
+                  <h3 className="text-2xl font-bold text-gray-900">Bewertungen</h3>
                 </div>
-                <p className="text-gray-600">
-                  "Wundervolle Behandlungen und sehr freundliches Personal. 
-                  Kann ich nur weiterempfehlen!"
-                </p>
-                <p className="text-sm text-gray-500">- Maria K.</p>
+                <div className="text-right">
+                  <div className="flex items-center space-x-2">
+                    <svg width="0" height="0">
+                      <defs>
+                        <linearGradient id="star-gradient">
+                          <stop offset="95%" stopColor="#fbbf24" />
+                          <stop offset="95%" stopColor="transparent" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className="h-5 w-5"
+                        style={{
+                          fill: i < 4 ? '#fbbf24' : 'url(#star-gradient)',
+                          color: '#fbbf24'
+                        }}
+                      />
+                    ))}
+                    <span className="text-xl font-bold text-gray-900">4.9</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">
+                    aus <a 
+                      href="https://www.treatwell.de/ort/beauty-skin-r-y-kosmetikstudio/bewertungen/seite-3/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-gray-900 font-semibold underline transition-colors duration-200"
+                    >
+                      340+ Bewertungen
+                    </a>
+                  </p>
+                </div>
+              </div>
+              
+              {/* Review Carousel */}
+              <div className="relative h-48 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentReview}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0"
+                  >
+                    <div className="space-y-3">
+                      <p className="text-gray-700 italic leading-relaxed">
+                        "{reviews[currentReview].text}"
+                      </p>
+                      <div className="space-y-1">
+                        <p className="text-sm font-semibold text-gray-900">
+                          {reviews[currentReview].author}
+                        </p>
+                        <p className="text-xs text-gray-600">
+                          Behandelt von {reviews[currentReview].treatedBy} • {reviews[currentReview].treatment}
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {reviews[currentReview].timeAgo}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              
+              {/* Dots Navigation */}
+              <div className="flex justify-center space-x-2 mt-4">
+                {reviews.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentReview(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentReview ? 'bg-yellow-500 w-6' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Map Placeholder */}
+          {/* Google Maps */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -129,25 +228,17 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="h-full min-h-[600px] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl flex items-center justify-center shadow-lg">
-              <div className="text-center space-y-4">
-                <MapPin className="h-16 w-16 text-primary-600 mx-auto" />
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Unser Standort
-                  </h3>
-                  <p className="text-gray-600">
-                    R&Y Slivio-Meier-Straße 6<br />
-                    10247 Berlin
-                  </p>
-                  <p className="text-sm text-gray-500 mt-4">
-                    Gut erreichbar mit öffentlichen Verkehrsmitteln
-                  </p>
-                </div>
-                <button className="btn-secondary">
-                  Route planen
-                </button>
-              </div>
+            <div className="h-full min-h-[600px] rounded-3xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=BeautySkin+R%26Y+Slivio-Meier-Straße+6+10247+Berlin&zoom=15"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '600px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="BeautySkin Standort - R&Y Slivio-Meier-Straße 6, 10247 Berlin"
+              ></iframe>
             </div>
           </motion.div>
         </div>

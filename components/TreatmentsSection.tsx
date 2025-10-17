@@ -7,63 +7,76 @@ import Link from 'next/link'
 const treatments = [
   {
     id: 1,
-    title: 'Hydrafacial',
-    subtitle: 'Hautgesundheit verbessern',
-    description: 'Unsere HydraFacial Behandlung wird individuell an Ihren Hauttyp angepasst. Für fettige, trockene oder empfindliche Haut, feine Linien oder Fältchen gibt es unterschiedliche Anwendungen.',
-    icon: Sparkles,
-    features: ['Tiefenreinigung', 'Hydratation', 'Anti-Aging', 'Lichttherapie'],
-    color: 'from-blue-500 to-blue-600',
-    bgColor: 'from-blue-50 to-blue-100'
+    title: 'Gesichtsbehandlung',
+    subtitle: 'Professionelle Gesichtspflege',
+    description: 'Unsere professionellen Gesichtsbehandlungen für gesunde und strahlende Haut. Mit hochwertigen Produkten und modernen Techniken.',
+    icon: Heart,
+    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Fruchtsäurepeeling'],
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    duration: '60-90 Min',
+    price: 'ab 65€',
+    treatments: [
+      'BeautySkin Klassik',
+      'BeautySkin Relax', 
+      'BeautySkin Hautklar',
+      'BeautySkin unreine Haut',
+      'BeautySkin reine Männersache',
+      'Fruchtsäurepeeling'
+    ]
   },
   {
     id: 2,
-    title: 'Maria Galland',
-    subtitle: 'Gesichtspflege',
-    description: 'Unsere Verwöhnbehandlungen der Maria Galland Gesichtspflege beinhalten Reinigung, Hautanalyse, Peeling, Tiefenreinigung und eine belebende Augen-, und Gesichtspflege.',
-    icon: Heart,
-    features: ['Hautanalyse', 'Peeling', 'Massage', 'Powermaske'],
-    color: 'from-pink-500 to-pink-600',
-    bgColor: 'from-pink-50 to-pink-100'
+    title: 'Apparative Behandlungen',
+    subtitle: 'Moderne Technologie für optimale Ergebnisse',
+    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Mit neuesten Geräten für beste Resultate.',
+    icon: Sparkles,
+    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Radiofrequenz'],
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    duration: '45-90 Min',
+    price: 'ab 75€',
+    treatments: [
+      'Aqua Facial Behandlung',
+      'Skin Oximizer',
+      'Micro Needling',
+      'Diamant Mikrodermabrasion',
+      'Radiofrequenzbehandlung'
+    ]
   },
   {
     id: 3,
-    title: 'Team Dr. Joseph',
-    subtitle: 'High-Tech Naturkosmetik',
-    description: 'Alle unsere Verwöhnbehandlungen der Dr Joseph Gesichtspflege beinhalten Reinigung, Hautanalyse, Peeling, Tiefenreinigung und hautspezifische Pflege.',
-    icon: Zap,
-    features: ['High-Tech', 'Naturkosmetik', 'Wirkstoffe', 'Massage'],
-    color: 'from-green-500 to-green-600',
-    bgColor: 'from-green-50 to-green-100'
+    title: 'Massagen',
+    subtitle: 'Entspannung und Wohlbefinden',
+    description: 'Entspannende Massagen für Körper und Seele. Zur Verbesserung der Durchblutung und Entspannung der Muskulatur.',
+    icon: Heart,
+    features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage', 'Lymphdrainage'],
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    duration: '30-90 Min',
+    price: 'ab 35€',
+    treatments: [
+      'Nacken-Massage',
+      'Entspannungsmassage mit Hot Stone',
+      'Kopf-Nacken-Rückenmassage',
+      'Lymphdrainage-Massage'
+    ]
   },
   {
     id: 4,
-    title: 'Micro-Needling',
-    subtitle: 'Intensive Anti-Aging-Behandlung',
-    description: 'Unser kosmetisches Micro-Needling ist eine intensive Anti-Aging-Behandlung, die hocheffektive Wirkstoffe in die Haut einschleusen.',
-    icon: Star,
-    features: ['Anti-Aging', 'Wirkstoffe', 'Hauterneuerung', 'Professionell'],
-    color: 'from-purple-500 to-purple-600',
-    bgColor: 'from-purple-50 to-purple-100'
-  },
-  {
-    id: 5,
-    title: 'IPL Haarentfernung',
-    subtitle: 'Dauerhafte Haarentfernung',
-    description: 'Unsere Körperpflege schützt und unterstützt Ihre Haut von den Fingerspitzen bis zu den Zehen mit modernster IPL-Technologie.',
+    title: 'Dauerhafte Haarentfernung',
+    subtitle: 'Ice Diodenlaser für dauerhafte Ergebnisse',
+    description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm und effektiv.',
     icon: Eye,
-    features: ['Dauerhaft', 'Schmerzarm', 'Effektiv', 'Moderne Technik'],
-    color: 'from-orange-500 to-orange-600',
-    bgColor: 'from-orange-50 to-orange-100'
-  },
-  {
-    id: 6,
-    title: 'Permanent Makeup',
-    subtitle: 'Profi-Behandlung',
-    description: 'Unsere Profi-Behandlung Permanent Make-up in Berlin für natürliche und langanhaltende Ergebnisse.',
-    icon: Sparkles,
-    features: ['Natürlich', 'Langanhaltend', 'Professionell', 'Beratung'],
-    color: 'from-rose-500 to-rose-600',
-    bgColor: 'from-rose-50 to-rose-100'
+    features: ['Ice Diodenlaser', 'Dauerhaft', 'Schmerzarm', 'Effektiv'],
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    duration: '15-60 Min',
+    price: 'ab 15€',
+    treatments: [
+      'Für Frauen: Gesicht komplett 40€, Kinn 15€, Wangen 25€, Hals 25€, Nacken 35€, Schultern 40€, Achseln 35€, Brust 30€, Arme komplett 60€, Unterarm 35€, Hände 20€, Rücken 50€, Bikinizone 45€, Beine komplett 99€, Füße 20€',
+      'Für Männer: Wangen 25€, Brust 60€, Schultern 45€, Achseln 40€, Arme komplett 75€, Rücken 80€, Bauch 65€, Beine komplett 110€'
+    ]
   }
 ]
 
@@ -89,7 +102,7 @@ export default function TreatmentsSection() {
         </motion.div>
 
         {/* Treatments Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {treatments.map((treatment, index) => (
             <motion.div
               key={treatment.id}
@@ -120,6 +133,18 @@ export default function TreatmentsSection() {
                     {treatment.description}
                   </p>
 
+                  {/* Treatment Info */}
+                  <div className="grid grid-cols-2 gap-4 py-4">
+                    <div className="bg-white/70 rounded-xl p-3">
+                      <p className="text-sm font-medium text-gray-600 mb-1">Dauer</p>
+                      <p className="text-gray-900 font-semibold">{treatment.duration}</p>
+                    </div>
+                    <div className="bg-white/70 rounded-xl p-3">
+                      <p className="text-sm font-medium text-gray-600 mb-1">Preis</p>
+                      <p className="text-gray-900 font-semibold">{treatment.price}</p>
+                    </div>
+                  </div>
+
                   {/* Features */}
                   <div className="flex flex-wrap gap-2">
                     {treatment.features.map((feature, featureIndex) => (
@@ -135,7 +160,12 @@ export default function TreatmentsSection() {
                   {/* CTA Button */}
                   <div className="pt-4">
                     <Link
-                      href="/behandlungen"
+                      href={
+                        treatment.id === 1 ? '/gesichtsbehandlung' :
+                        treatment.id === 2 ? '/apparative-behandlungen' :
+                        treatment.id === 3 ? '/massagen' :
+                        '/dauerhafte-haarentfernung'
+                      }
                       className={`inline-flex items-center space-x-2 text-white bg-gradient-to-r ${treatment.color} hover:shadow-lg px-6 py-3 rounded-xl font-semibold transition-all duration-300 group-hover:scale-105`}
                     >
                       <span>Mehr erfahren</span>

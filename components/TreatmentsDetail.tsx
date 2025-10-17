@@ -1,32 +1,199 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Clock, Star, CheckCircle, Sparkles, Zap, Heart, Eye, Shield } from 'lucide-react'
+import { ArrowRight, Clock, Star, CheckCircle, Sparkles, Heart, Eye } from 'lucide-react'
 
-const detailedTreatments = [
+// Function to get specific benefits for each treatment
+const getTreatmentBenefits = (treatmentName: string) => {
+  const benefitsMap: { [key: string]: string[] } = {
+    // Gesichtsbehandlungen
+    'BeautySkin Klassik': [
+      'Professionelle Hautanalyse',
+      'Tiefenreinigung',
+      'Sanftes Peeling',
+      'Intensive Pflege',
+      'Entspannende Massage',
+      'Abschlusspflege'
+    ],
+    'BeautySkin Relax': [
+      'Entspannende Massage',
+      'Beruhigende Pflege',
+      'Stressabbau',
+      'Wohlbefinden',
+      'Tiefenreinigung',
+      'Regeneration'
+    ],
+    'BeautySkin Hautklar': [
+      'Intensive Reinigung',
+      'Klärende Wirkstoffe',
+      'Porenreinigung',
+      'Hautklarung',
+      'Anti-Bakteriell',
+      'Strahlende Haut'
+    ],
+    'BeautySkin unreine Haut': [
+      'Intensive Reinigung',
+      'Entzündungshemmend',
+      'Bakterienreduktion',
+      'Hautberuhigung',
+      'Narbenminderung',
+      'Hautregeneration'
+    ],
+    'BeautySkin reine Männersache': [
+      'Männergerechte Pflege',
+      'Intensive Reinigung',
+      'Bartpflege',
+      'Hautstraffung',
+      'Anti-Aging',
+      'Maskuline Duftstoffe'
+    ],
+    'Fruchtsäurepeeling': [
+      'Natürliche Fruchtsäuren',
+      'Hauterneuerung',
+      'Glatte Haut',
+      'Strahlender Teint',
+      'Anti-Aging',
+      'Professionell'
+    ],
+    // Apparative Behandlungen
+    'Aqua Facial Behandlung': [
+      'Tiefe Reinigung',
+      'Intensive Hydratation',
+      'Porenreinigung',
+      'Hautstraffung',
+      'Glow-Effekt',
+      'Schmerzarm'
+    ],
+    'Skin Oximizer': [
+      'Sauerstoffversorgung',
+      'Verbesserte Durchblutung',
+      'Strahlender Teint',
+      'Hautregeneration',
+      'Anti-Aging',
+      'Energizing'
+    ],
+    'Micro Needling': [
+      'Hauterneuerung',
+      'Kollagenbildung',
+      'Faltenreduktion',
+      'Narbenminderung',
+      'Porenverkleinerung',
+      'Professionell'
+    ],
+    'Diamant Mikrodermabrasion': [
+      'Glatte Haut',
+      'Strahlender Teint',
+      'Peeling-Effekt',
+      'Hauterneuerung',
+      'Professionell',
+      'Schmerzarm'
+    ],
+    'Radiofrequenzbehandlung': [
+      'Hautstraffung',
+      'Kollagenbildung',
+      'Faltenreduktion',
+      'Konturierung',
+      'Anti-Aging',
+      'Langzeitwirkung'
+    ],
+    // Massagen
+    'Nacken-Massage': [
+      'Verspannungslösung',
+      'Schmerzlinderung',
+      'Durchblutungsförderung',
+      'Entspannung',
+      'Stressabbau',
+      'Wohlbefinden'
+    ],
+    'Entspannungsmassage mit Hot Stone': [
+      'Tiefe Entspannung',
+      'Wärmeeffekt',
+      'Durchblutungsförderung',
+      'Stressabbau',
+      'Muskelentspannung',
+      'Wohlbefinden'
+    ],
+    'Kopf-Nacken-Rückenmassage': [
+      'Ganzheitliche Entspannung',
+      'Verspannungslösung',
+      'Durchblutungsförderung',
+      'Stressabbau',
+      'Kopfschmerzlinderung',
+      'Wohlbefinden'
+    ],
+    'Lymphdrainage-Massage': [
+      'Entstauung',
+      'Entgiftung',
+      'Durchblutungsförderung',
+      'Schwellungsreduktion',
+      'Immunsystemstärkung',
+      'Wohlbefinden'
+    ]
+  }
+  
+  return benefitsMap[treatmentName] || ['Professionelle Behandlung', 'Individuelle Beratung', 'Hochwertige Produkte', 'Entspannung']
+}
+
+// Function to get duration for each specific treatment
+const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
+  if (categoryId === 1) {
+    // Gesichtsbehandlung
+    const durationMap: { [key: string]: string } = {
+      'BeautySkin Klassik': '60 Min',
+      'BeautySkin Relax': '75 Min',
+      'BeautySkin Hautklar': '70 Min',
+      'BeautySkin unreine Haut': '80 Min',
+      'BeautySkin reine Männersache': '65 Min',
+      'Fruchtsäurepeeling': '90 Min'
+    }
+    return durationMap[treatmentName] || '60 Min'
+  } else if (categoryId === 2) {
+    // Apparative Behandlungen
+    const durationMap: { [key: string]: string } = {
+      'Aqua Facial Behandlung': '75 Min',
+      'Skin Oximizer': '60 Min',
+      'Micro Needling': '90 Min',
+      'Diamant Mikrodermabrasion': '70 Min',
+      'Radiofrequenzbehandlung': '80 Min'
+    }
+    return durationMap[treatmentName] || '60 Min'
+  } else if (categoryId === 3) {
+    // Massagen
+    const durationMap: { [key: string]: string } = {
+      'Nacken-Massage': '30 Min',
+      'Entspannungsmassage mit Hot Stone': '90 Min',
+      'Kopf-Nacken-Rückenmassage': '60 Min',
+      'Lymphdrainage-Massage': '45 Min'
+    }
+    return durationMap[treatmentName] || '60 Min'
+  }
+  return '60 Min'
+}
+
+const treatments = [
   {
     id: 1,
-    title: 'Hydrafacial',
-    subtitle: 'Revolutionäre Hautbehandlung',
-    description: 'Hydrafacial kombiniert die Hautabtragung, Tiefenausreinigung und Dermalinfusion von Antioxidantien, Vitaminen und Hyaluron. Mit Kaltlicht und Lymphdrainage auf einer Plattform.',
-    fullDescription: 'Unsere HydraFacial Behandlung in Berlin wird individuell an Ihren Hauttyp angepasst. Für fettige, trockene oder empfindliche Haut, feine Linien oder Fältchen gibt es unterschiedliche Anwendungen durch die Aufsätze, Seren und die Kombinationsmöglichkeit der Lymphdrainage und der Lichttherapie.',
-    icon: Sparkles,
-    duration: '60 Min',
-    price: 'ab 89€',
+    title: 'Gesichtsbehandlung',
+    subtitle: 'Professionelle Gesichtspflege',
+    description: 'Unsere professionellen Gesichtsbehandlungen für gesunde und strahlende Haut.',
+    fullDescription: 'Unsere Gesichtsbehandlungen umfassen eine umfassende Hautanalyse, professionelle Reinigung, sanftes Peeling und intensive Pflege. Wir verwenden hochwertige Produkte und moderne Techniken, um Ihre Haut optimal zu versorgen und zu verwöhnen.',
+    icon: Heart,
+    duration: '60-90 Min',
+    price: 'ab 65€',
     benefits: [
-      'Tiefenreinigung der Poren',
-      'Hydratation der Haut',
-      'Anti-Aging Wirkung',
-      'Reduzierung von Unreinheiten',
-      'Straffere Haut',
-      'Lichttherapie inklusive'
+      'Professionelle Hautanalyse',
+      'Tiefenreinigung',
+      'Sanftes Peeling',
+      'Intensive Pflege',
+      'Entspannende Massage',
+      'Individuelle Beratung'
     ],
     process: [
-      'Hautanalyse und Beratung',
-      'Tiefenreinigung mit HydraFacial',
-      'Peeling und Extraktion',
-      'Serum-Infusion',
-      'Lymphdrainage',
+      'Beratung und Hautanalyse',
+      'Reinigung und Peeling',
+      'Tiefenreinigung',
+      'Gesichtsmassage',
+      'Intensive Pflege',
       'Abschlusspflege'
     ],
     suitableFor: [
@@ -35,139 +202,179 @@ const detailedTreatments = [
       'Fettige Haut',
       'Mischhaut',
       'Empfindliche Haut',
-      'Anti-Aging Bedürfnisse'
+      'Anti-Aging'
     ],
-    color: 'from-blue-500 to-blue-600',
-    bgColor: 'from-blue-50 to-blue-100',
-    features: ['Tiefenreinigung', 'Hydratation', 'Anti-Aging', 'Lichttherapie']
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Fruchtsäurepeeling'],
+    treatments: [
+      {
+        name: 'BeautySkin Klassik',
+        description: 'Klassische Gesichtsbehandlung mit Reinigung, Peeling und Pflege',
+        price: '65€'
+      },
+      {
+        name: 'BeautySkin Relax',
+        description: 'Entspannende Gesichtsbehandlung mit Massage und beruhigender Pflege',
+        price: '75€'
+      },
+      {
+        name: 'BeautySkin Hautklar',
+        description: 'Spezielle Behandlung für klare und reine Haut',
+        price: '80€'
+      },
+      {
+        name: 'BeautySkin unreine Haut',
+        description: 'Intensive Behandlung für unreine und problematische Haut',
+        price: '85€'
+      },
+      {
+        name: 'BeautySkin reine Männersache',
+        description: 'Speziell für Männer entwickelte Gesichtsbehandlung',
+        price: '70€'
+      },
+      {
+        name: 'Fruchtsäurepeeling',
+        description: 'Professionelles Fruchtsäurepeeling für glatte und strahlende Haut',
+        price: '90€'
+      }
+    ]
   },
   {
     id: 2,
-    title: 'Maria Galland',
-    subtitle: 'Luxuriöse Gesichtspflege',
-    description: 'Unsere Verwöhnbehandlungen der Maria Galland Gesichtspflege beinhalten Reinigung, Hautanalyse, Peeling, Tiefenreinigung und eine belebende Augen-, und Gesichtspflege.',
-    fullDescription: 'Maria Galland Verwöhnbehandlungen mit Hautanalyse, Peeling, Tiefenreinigung, ätherischen Ölen, Wirkstoffkonzentrat und vielem mehr. Eine ganzheitliche Behandlung für Ihre Haut.',
-    icon: Heart,
-    duration: '90 Min',
-    price: 'ab 120€',
+    title: 'Apparative Behandlungen',
+    subtitle: 'Moderne Technologie für optimale Ergebnisse',
+    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung.',
+    fullDescription: 'Unsere apparativen Behandlungen nutzen modernste Technologie für intensive Hautverbesserung. Mit professionellen Geräten erzielen wir optimale Ergebnisse für Ihre Haut.',
+    icon: Sparkles,
+    duration: '45-90 Min',
+    price: 'ab 75€',
     benefits: [
-      'Professionelle Hautanalyse',
-      'Sanftes Peeling',
-      'Tiefenreinigung',
-      'Augenbrauenkorrektur',
-      'Wirkstoffkonzentrat',
-      'Entspannende Massage'
+      'Moderne Geräte',
+      'Intensive Behandlung',
+      'Schnelle Ergebnisse',
+      'Schmerzarm',
+      'Alle Hauttypen geeignet',
+      'Professionelle Ausführung'
     ],
     process: [
-      'Beratung und Hautanalyse',
-      'Reinigung und Peeling',
-      'Tiefenreinigung',
-      'Augenbrauenkorrektur',
-      'Wirkstoffkonzentrat',
-      'Gesichts-, Hals- und Decolletémassage',
-      'Powermaske',
-      'Abschlusspflege'
+      'Hautanalyse',
+      'Vorbereitung',
+      'Apparative Behandlung',
+      'Beruhigende Pflege',
+      'Nachsorge',
+      'Pflegeanleitung'
     ],
     suitableFor: [
-      'Reife Haut',
-      'Trockene Haut',
-      'Stressgeplagte Haut',
       'Anti-Aging',
-      'Entspannungssuchende',
-      'Luxus-Behandlung'
+      'Hauterneuerung',
+      'Faltenbehandlung',
+      'Narbenbehandlung',
+      'Große Poren',
+      'Alle Hauttypen'
     ],
-    color: 'from-pink-500 to-pink-600',
-    bgColor: 'from-pink-50 to-pink-100',
-    features: ['Hautanalyse', 'Peeling', 'Massage', 'Powermaske']
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Radiofrequenz'],
+    treatments: [
+      {
+        name: 'Aqua Facial Behandlung',
+        description: 'Revolutionäre Wasserbehandlung für tiefe Reinigung und Hydratation',
+        price: '95€'
+      },
+      {
+        name: 'Skin Oximizer',
+        description: 'Sauerstoffbehandlung für strahlende und gesunde Haut',
+        price: '85€'
+      },
+      {
+        name: 'Micro Needling',
+        description: 'Minimale Nadelbehandlung für Hauterneuerung und Kollagenbildung',
+        price: '120€'
+      },
+      {
+        name: 'Diamant Mikrodermabrasion',
+        description: 'Professionelle Diamantbehandlung für glatte Haut',
+        price: '90€'
+      },
+      {
+        name: 'Radiofrequenzbehandlung',
+        description: 'Wärmeenergie für Straffung und Hautverbesserung',
+        price: '110€'
+      }
+    ]
   },
   {
     id: 3,
-    title: 'Team Dr. Joseph',
-    subtitle: 'High-Tech Naturkosmetik',
-    description: 'Alle unsere Verwöhnbehandlungen der Dr Joseph Gesichtspflege beinhalten Reinigung, Hautanalyse, Peeling, Tiefenreinigung und hautspezifische Pflege.',
-    fullDescription: 'Unsere Körperpflege schützt und unterstützt Ihre Haut von den Fingerspitzen bis zu den Zehen mit modernster High-Tech Naturkosmetik von Team Dr. Joseph.',
-    icon: Zap,
-    duration: '75 Min',
-    price: 'ab 110€',
+    title: 'Massagen',
+    subtitle: 'Entspannung und Wohlbefinden',
+    description: 'Entspannende Massagen für Körper und Seele.',
+    fullDescription: 'Unsere Massagen dienen der Entspannung und dem Wohlbefinden. Sie verbessern die Durchblutung, entspannen die Muskulatur und fördern das allgemeine Wohlbefinden.',
+    icon: Heart,
+    duration: '30-90 Min',
+    price: 'ab 35€',
     benefits: [
-      'High-Tech Naturkosmetik',
-      'Hautanalyse',
-      'Peeling',
-      'Tiefenreinigung',
-      'Ätherische Öle',
-      'Wirkstoffkonzentrat'
+      'Entspannung der Muskulatur',
+      'Verbesserte Durchblutung',
+      'Stressabbau',
+      'Wohlbefinden',
+      'Verspannungslösung',
+      'Regeneration'
     ],
     process: [
-      'Hautanalyse',
-      'Reinigung und Peeling',
-      'Tiefenreinigung',
-      'Ätherische Öle',
-      'Wirkstoffkonzentrat',
-      'Gesichts-, Hals- und Decolletémassage',
-      'Hautspezifische Powermaske',
-      'Abschlusspflege'
+      'Beratung',
+      'Vorbereitung',
+      'Massagebehandlung',
+      'Entspannungsphase',
+      'Nachpflege',
+      'Entspannungstipps'
     ],
     suitableFor: [
-      'Naturkosmetik-Liebhaber',
-      'Alle Hauttypen',
-      'Sensible Haut',
-      'Anti-Aging',
-      'Nachhaltigkeitsbewusste',
-      'High-Tech Fans'
+      'Verspannte Muskulatur',
+      'Stressabbau',
+      'Entspannungssuchende',
+      'Durchblutungsförderung',
+      'Wohlbefinden',
+      'Regeneration'
     ],
-    color: 'from-green-500 to-green-600',
-    bgColor: 'from-green-50 to-green-100',
-    features: ['High-Tech', 'Naturkosmetik', 'Wirkstoffe', 'Massage']
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage', 'Lymphdrainage'],
+    treatments: [
+      {
+        name: 'Nacken-Massage',
+        description: 'Entspannende Massage für Nacken und Schultern',
+        price: '35€'
+      },
+      {
+        name: 'Entspannungsmassage mit Hot Stone',
+        description: 'Wohltuende Massage mit warmen Steinen für tiefe Entspannung',
+        price: '65€'
+      },
+      {
+        name: 'Kopf-Nacken-Rückenmassage',
+        description: 'Umfassende Massage für Kopf, Nacken und Rücken',
+        price: '75€'
+      },
+      {
+        name: 'Lymphdrainage-Massage',
+        description: 'Spezielle Massage zur Entstauung und Entgiftung',
+        price: '55€'
+      }
+    ]
   },
   {
     id: 4,
-    title: 'Micro-Needling',
-    subtitle: 'Intensive Anti-Aging-Behandlung',
-    description: 'Unser kosmetisches Micro-Needling ist eine intensive Anti-Aging-Behandlung, die hocheffektive Wirkstoffe in die Haut einschleusen.',
-    fullDescription: 'Micro-Needling stimuliert die natürliche Kollagenproduktion der Haut und ermöglicht eine bessere Aufnahme von Wirkstoffen. Ideal für Anti-Aging und Hauterneuerung.',
-    icon: Shield,
-    duration: '60 Min',
-    price: 'ab 95€',
-    benefits: [
-      'Stimuliert Kollagenproduktion',
-      'Verbesserte Wirkstoffaufnahme',
-      'Reduziert Falten',
-      'Glättet Narben',
-      'Strafft die Haut',
-      'Minimiert Poren'
-    ],
-    process: [
-      'Hautanalyse',
-      'Reinigung und Desinfektion',
-      'Micro-Needling Behandlung',
-      'Serum-Infusion',
-      'Beruhigende Maske',
-      'Sonnenschutz'
-    ],
-    suitableFor: [
-      'Reife Haut',
-      'Faltenbehandlung',
-      'Narbenbehandlung',
-      'Anti-Aging',
-      'Hauterneuerung',
-      'Große Poren'
-    ],
-    color: 'from-purple-500 to-purple-600',
-    bgColor: 'from-purple-50 to-purple-100',
-    features: ['Anti-Aging', 'Wirkstoffe', 'Hauterneuerung', 'Professionell']
-  },
-  {
-    id: 5,
-    title: 'IPL Haarentfernung',
-    subtitle: 'Dauerhafte Haarentfernung',
-    description: 'Unsere Körperpflege schützt und unterstützt Ihre Haut von den Fingerspitzen bis zu den Zehen mit modernster IPL-Technologie.',
-    fullDescription: 'IPL (Intense Pulsed Light) Technologie für dauerhafte Haarentfernung. Schmerzarm, effektiv und für alle Hauttypen geeignet.',
+    title: 'Dauerhafte Haarentfernung',
+    subtitle: 'Ice Diodenlaser für dauerhafte Ergebnisse',
+    description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser.',
+    fullDescription: 'Unsere dauerhafte Haarentfernung nutzt modernste Ice Diodenlaser-Technologie für langfristige Ergebnisse. Schmerzarm, effektiv und für alle Hauttypen geeignet.',
     icon: Eye,
-    duration: '30-90 Min',
-    price: 'ab 45€',
+    duration: '15-60 Min',
+    price: 'ab 15€',
     benefits: [
-      'Dauerhafte Haarentfernung',
-      'Schmerzarm',
+      'Dauerhafte Ergebnisse',
+      'Schmerzarm durch Kühlung',
       'Alle Hauttypen',
       'Schnelle Behandlung',
       'Keine Ausfallzeiten',
@@ -176,9 +383,10 @@ const detailedTreatments = [
     process: [
       'Beratung und Hautanalyse',
       'Vorbereitung der Haut',
-      'IPL-Behandlung',
+      'Ice Diodenlaser-Behandlung',
       'Beruhigende Pflege',
-      'Nachsorge-Empfehlungen'
+      'Nachsorge-Empfehlungen',
+      'Terminplanung'
     ],
     suitableFor: [
       'Alle Hauttypen',
@@ -188,54 +396,35 @@ const detailedTreatments = [
       'Dauerhafte Lösung',
       'Schmerzempfindliche'
     ],
-    color: 'from-orange-500 to-orange-600',
-    bgColor: 'from-orange-50 to-orange-100',
-    features: ['Dauerhaft', 'Schmerzarm', 'Effektiv', 'Moderne Technik']
-  },
-  {
-    id: 6,
-    title: 'Permanent Makeup',
-    subtitle: 'Professionelle Permanent-Makeup',
-    description: 'Unsere Profi-Behandlung Permanent Make-up in Berlin für natürliche und langanhaltende Ergebnisse.',
-    fullDescription: 'Professionelle Permanent-Makeup Behandlungen für Augenbrauen, Lippen und Eyeliner. Natürliche Ergebnisse, die bis zu 2 Jahre halten.',
-    icon: Sparkles,
-    duration: '120 Min',
-    price: 'ab 280€',
-    benefits: [
-      'Bis zu 2 Jahre haltbar',
-      'Natürliche Ergebnisse',
-      'Zeitersparend',
-      'Professionelle Ausführung',
-      'Individuelle Beratung',
-      'Nachbehandlung inklusive'
-    ],
-    process: [
-      'Beratung und Design',
-      'Anästhesie',
-      'Permanent-Makeup Behandlung',
-      'Nachbehandlung',
-      'Pflegeanleitung',
-      'Kontrolle nach 4-6 Wochen'
-    ],
-    suitableFor: [
-      'Augenbrauen',
-      'Lippen',
-      'Eyeliner',
-      'Zeitersparend',
-      'Sportlerinnen',
-      'Allergikerinnen'
-    ],
-    color: 'from-rose-500 to-rose-600',
-    bgColor: 'from-rose-50 to-rose-100',
-    features: ['Natürlich', 'Langanhaltend', 'Professionell', 'Beratung']
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    features: ['Ice Diodenlaser', 'Dauerhaft', 'Schmerzarm', 'Effektiv'],
+    treatments: [
+      {
+        name: 'Für Frauen',
+        description: 'Spezielle Preise für weibliche Kunden',
+        price: 'Gesicht komplett 40€, Kinn 15€, Wangen 25€, Hals 25€, Nacken 35€, Schultern 40€, Achseln 35€, Brust 30€, Arme komplett 60€, Unterarm 35€, Hände 20€, Rücken 50€, Bikinizone 45€, Bikizone und Intimbereich, Unterschenkel, Oberschenkel, Beine komplett 99€, Po, Pofalte, Füße 20€'
+      },
+      {
+        name: 'Für Männer',
+        description: 'Spezielle Preise für männliche Kunden',
+        price: 'Wangen 25€, Brust 60€, Schultern 45€, Achseln 40€, Arme komplett 75€, Unterer Rücken 55€, Rücken 80€, Bauch 65€, Unterschenkel 75€, Oberschenkel 65€, Beine komplett 110€'
+      }
+    ]
   }
 ]
 
-export function TreatmentsDetail() {
+export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
+  const treatment = treatments.find(t => t.id === treatmentId)
+  
+  if (!treatment) {
+    return <div>Behandlung nicht gefunden</div>
+  }
+
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 via-white to-primary-50 py-20">
+      <section className={`bg-gradient-to-br ${treatment.bgColor} via-white ${treatment.bgColor} pt-20 pb-20`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -244,33 +433,29 @@ export function TreatmentsDetail() {
             className="text-center"
           >
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Unsere <span className="gradient-text">Behandlungen</span>
+              <span className="gradient-text">{treatment.title}</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Entdecken Sie unser umfassendes Angebot an professionellen Kosmetikbehandlungen. 
-              Jede Behandlung wird individuell auf Ihre Bedürfnisse abgestimmt.
+              {treatment.fullDescription}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Treatments Grid */}
+      {/* Treatment Detail */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
-            {detailedTreatments.map((treatment, index) => (
+            {treatment.id !== 1 && treatment.id !== 2 && treatment.id !== 3 && (
               <motion.div
-                key={treatment.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                }`}
+                className="grid lg:grid-cols-2 gap-12 items-start"
               >
                 {/* Content */}
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                <div>
                   <div className="space-y-6">
                     {/* Header */}
                     <div className="flex items-center space-x-4 mb-6">
@@ -334,7 +519,7 @@ export function TreatmentsDetail() {
                 </div>
 
                 {/* Visual */}
-                <div className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
+                <div>
                   <div className={`h-96 bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg relative overflow-hidden`}>
                     <div className="h-full bg-white rounded-2xl shadow-lg flex items-center justify-center">
                       <div className="text-center space-y-4">
@@ -360,13 +545,297 @@ export function TreatmentsDetail() {
                   </div>
                 </div>
               </motion.div>
-            ))}
+            )}
+
+            {/* Specific Treatments */}
+            <div className="mt-16">
+              <h3 className="text-3xl font-bold text-gray-900 text-center mb-8">
+                Verfügbare Behandlungen
+              </h3>
+              
+              {treatment.id === 1 || treatment.id === 2 || treatment.id === 3 ? (
+                // Special layout for Gesichtsbehandlung, Apparative Behandlungen and Massagen - one treatment per row
+                <div className="space-y-8">
+                  {treatment.treatments.map((subTreatment, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300`}
+                    >
+                      <div className="grid lg:grid-cols-3 gap-8 items-center">
+                        {/* Treatment Info */}
+                        <div className="lg:col-span-2">
+                          <div className="space-y-6">
+                            <div>
+                              <h4 className="text-3xl font-bold text-gray-900 mb-3">
+                                {subTreatment.name}
+                              </h4>
+                              <p className="text-lg text-gray-600">
+                                {subTreatment.description}
+                              </p>
+                            </div>
+
+                            {/* Price and Duration */}
+                            <div className="grid grid-cols-2 gap-4">
+                              <div className="bg-white/70 rounded-xl p-4">
+                                <div className="flex items-center space-x-2 mb-2">
+                                  <Clock className="h-5 w-5 text-gray-600" />
+                                  <span className="font-semibold text-gray-900">Behandlungsdauer</span>
+                                </div>
+                                <p className="text-gray-600 text-lg font-semibold">
+                                  {getTreatmentDuration(subTreatment.name, treatment.id)}
+                                </p>
+                              </div>
+                              <div className="bg-white/70 rounded-xl p-4">
+                                <div className="flex items-center space-x-2 mb-2">
+                                  <Star className="h-5 w-5 text-gray-600" />
+                                  <span className="font-semibold text-gray-900">Preis</span>
+                                </div>
+                                <p className="text-gray-600 text-lg font-semibold">
+                                  {subTreatment.price}
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Benefits */}
+                            <div>
+                              <h5 className="text-xl font-bold text-gray-900 mb-4">Vorteile</h5>
+                              <div className="grid sm:grid-cols-2 gap-2">
+                                {getTreatmentBenefits(subTreatment.name).map((benefit, benefitIndex) => (
+                                  <div key={benefitIndex} className="flex items-center space-x-2">
+                                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                                    <span className="text-gray-600 text-sm">{benefit}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Visual and CTA */}
+                        <div className="flex flex-col items-center space-y-6">
+                          <div className={`w-32 h-32 bg-gradient-to-br ${treatment.color} rounded-full flex items-center justify-center`}>
+                            <treatment.icon className="h-16 w-16 text-white" />
+                          </div>
+                          <button className={`w-full bg-gradient-to-r ${treatment.color} text-white hover:shadow-lg px-6 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105`}>
+                            Termin buchen
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : treatment.id === 4 ? (
+                // Special layout for Haarentfernung
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <div className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg`}>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-6 text-center">Für Frauen</h4>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Gesicht komplett</span>
+                          <span className="text-orange-600 font-bold">40€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Kinn</span>
+                          <span className="text-orange-600 font-bold">15€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Wangen</span>
+                          <span className="text-orange-600 font-bold">25€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Hals</span>
+                          <span className="text-orange-600 font-bold">25€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Nacken</span>
+                          <span className="text-orange-600 font-bold">35€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Schultern</span>
+                          <span className="text-orange-600 font-bold">40€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Achseln</span>
+                          <span className="text-orange-600 font-bold">35€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Brust</span>
+                          <span className="text-orange-600 font-bold">30€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Arme komplett</span>
+                          <span className="text-orange-600 font-bold">60€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Unterarm</span>
+                          <span className="text-orange-600 font-bold">35€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Hände</span>
+                          <span className="text-orange-600 font-bold">20€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Rücken</span>
+                          <span className="text-orange-600 font-bold">50€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Bikinizone</span>
+                          <span className="text-orange-600 font-bold">45€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Beine komplett</span>
+                          <span className="text-orange-600 font-bold">99€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Füße</span>
+                          <span className="text-orange-600 font-bold">20€</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg`}>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-6 text-center">Für Männer</h4>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Wangen</span>
+                          <span className="text-orange-600 font-bold">25€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Brust</span>
+                          <span className="text-orange-600 font-bold">60€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Schultern</span>
+                          <span className="text-orange-600 font-bold">45€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Achseln</span>
+                          <span className="text-orange-600 font-bold">40€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Arme komplett</span>
+                          <span className="text-orange-600 font-bold">75€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Rücken</span>
+                          <span className="text-orange-600 font-bold">80€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Bauch</span>
+                          <span className="text-orange-600 font-bold">65€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Unterschenkel</span>
+                          <span className="text-orange-600 font-bold">75€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Oberschenkel</span>
+                          <span className="text-orange-600 font-bold">65€</span>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-medium text-sm">Beine komplett</span>
+                          <span className="text-orange-600 font-bold">110€</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                // Standard layout for other treatments
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {treatment.treatments.map((subTreatment, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300`}
+                    >
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-gray-900 mb-2">
+                            {subTreatment.name}
+                          </h4>
+                          <p className="text-gray-600 text-sm">
+                            {subTreatment.description}
+                          </p>
+                        </div>
+                        
+                        <div className="flex justify-between items-center">
+                          <span className="text-2xl font-bold text-gray-900">
+                            {subTreatment.price}
+                          </span>
+                        </div>
+
+                        <button className={`w-full bg-gradient-to-r ${treatment.color} text-white hover:shadow-lg px-4 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105`}>
+                          Termin buchen
+                        </button>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-500 to-primary-600">
+      <section className={`py-20 bg-gradient-to-r ${treatment.color}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -383,10 +852,10 @@ export function TreatmentsDetail() {
               Behandlung für Ihre individuellen Bedürfnisse.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+              <button className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
                 Kostenlose Beratung
               </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-all duration-300">
+              <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300">
                 Termin buchen
               </button>
             </div>
