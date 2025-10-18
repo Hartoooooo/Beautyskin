@@ -130,22 +130,6 @@ export default function TreatmentsSection() {
                     </p>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed">
-                    {treatment.description}
-                  </p>
-
-                  {/* Treatment Info */}
-                  <div className="grid grid-cols-2 gap-4 py-4">
-                    <div className="bg-white/70 rounded-xl p-3">
-                      <p className="text-sm font-medium text-gray-600 mb-1">Dauer</p>
-                      <p className="text-gray-900 font-semibold">{treatment.duration}</p>
-                    </div>
-                    <div className="bg-white/70 rounded-xl p-3">
-                      <p className="text-sm font-medium text-gray-600 mb-1">Preis</p>
-                      <p className="text-gray-900 font-semibold">{treatment.price}</p>
-                    </div>
-                  </div>
-
                   {/* Features */}
                   <div className="flex flex-wrap gap-2">
                     {treatment.features.map((feature, featureIndex) => (
