@@ -48,7 +48,7 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold gradient-text">
+            <Link href="/" className="text-2xl font-bold gradient-text font-vogue">
               BeautySkin
             </Link>
           </div>
@@ -57,7 +57,7 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200"
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
             >
               Home
             </Link>
@@ -66,7 +66,7 @@ export default function Header() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsBehandlungenOpen(!isBehandlungenOpen)}
-                className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200"
+                className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
               >
                 <span>Behandlungen</span>
                 <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isBehandlungenOpen ? 'rotate-180' : ''}`} />
@@ -85,7 +85,7 @@ export default function Header() {
                     onClick={() => setIsBehandlungenOpen(false)}
                     className="block px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors duration-200 group"
                   >
-                    <span className="text-gray-700 font-medium group-hover:text-primary-600 transition-colors duration-200">
+                    <span className="text-gray-700 font-medium group-hover:text-primary-600 transition-colors duration-200 font-vogue">
                       {behandlung.name}
                     </span>
                   </Link>
@@ -95,7 +95,7 @@ export default function Header() {
             
             <Link
               href="/impressum"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200"
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
             >
               Impressum
             </Link>
@@ -103,13 +103,13 @@ export default function Header() {
 
           {/* Contact Info - Rechts */}
           <div className="hidden lg:flex items-center space-x-4 text-sm text-gray-600">
-            <div className="flex items-center space-x-1">
+            <a href="tel:+491704482725" className="flex items-center space-x-1 hover:text-primary-600 transition-colors duration-200">
               <Phone className="h-4 w-4" />
-              <span>+49 170 4482725</span>
-            </div>
+              <span className="font-sans">+49 170 4482725</span>
+            </a>
             <div className="flex items-center space-x-1">
               <MapPin className="h-4 w-4" />
-              <span>Berlin</span>
+              <span className="text-base">Berlin</span>
             </div>
           </div>
 
@@ -130,7 +130,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200"
+                  className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -139,7 +139,7 @@ export default function Header() {
               
               {/* Behandlungen Section in Mobile */}
               <div className="px-3 py-2">
-                <p className="text-sm font-semibold text-gray-900 mb-2">Behandlungen</p>
+                <p className="text-sm font-semibold text-gray-900 mb-2 font-vogue">Behandlungen</p>
                 <div className="space-y-1 pl-2">
                   {behandlungen.map((behandlung) => (
                     <Link
@@ -148,17 +148,17 @@ export default function Header() {
                       className="block py-2 text-gray-700 hover:text-primary-600 transition-colors duration-200"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <span className="text-sm font-medium">{behandlung.name}</span>
+                      <span className="text-sm font-medium font-vogue">{behandlung.name}</span>
                     </Link>
                   ))}
                 </div>
               </div>
               
               <div className="px-3 py-2 text-sm text-gray-600 border-t border-gray-200 mt-2 pt-2">
-                <div className="flex items-center space-x-2">
+                <a href="tel:+491704482725" className="flex items-center space-x-2 hover:text-primary-600 transition-colors duration-200">
                   <Phone className="h-4 w-4" />
-                  <span>+49 170 4482725</span>
-                </div>
+                  <span className="font-sans">+49 170 4482725</span>
+                </a>
                 <div className="flex items-center space-x-2 mt-1">
                   <MapPin className="h-4 w-4" />
                   <span>R&Y Slivio-Meier-Straße 6, 10247 Berlin</span>

@@ -4,6 +4,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+@font-face {
+  font-family: 'Vogue';
+  src: url('/fonts/Vogue.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Moving';
+  src: url('/fonts/Moving.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
@@ -99,4 +115,17 @@ html {
 
 .card-hover {
   @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl;
+}
+
+.font-vogue {
+  font-family: 'Vogue', serif;
+}
+
+.font-moving {
+  font-family: 'Moving', serif;
+}
+
+.font-apple {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }

@@ -24,7 +24,7 @@ export default function Hero() {
           >
             <div className="space-y-4">
               <motion.h1 
-                className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+                className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-apple"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -34,7 +34,7 @@ export default function Hero() {
               </motion.h1>
               
               <motion.p 
-                className="text-xl text-gray-600 leading-relaxed"
+                className="text-xl text-gray-600 leading-relaxed font-apple"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -101,7 +101,7 @@ export default function Hero() {
             >
               <div className="flex items-center space-x-2">
                 <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                <span className="text-gray-600">5.0 Sterne Bewertung</span>
+                <span className="text-gray-600">4.9 Sterne (350+)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Shield className="h-5 w-5 text-green-500" />
