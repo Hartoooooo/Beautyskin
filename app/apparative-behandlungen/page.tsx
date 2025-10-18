@@ -167,6 +167,38 @@ const treatments = [
       'Straffung',
       'Reife Haut'
     ]
+  },
+  {
+    id: 6,
+    title: 'Fruchtsäurepeeling',
+    subtitle: 'Professionelles Fruchtsäurepeeling',
+    description: 'Professionelles Fruchtsäurepeeling für glatte und strahlende Haut mit natürlichen Fruchtsäuren.',
+    duration: '90 Min',
+    price: '90€',
+    benefits: [
+      'Natürliche Fruchtsäuren',
+      'Hauterneuerung',
+      'Glatte Haut',
+      'Strahlender Teint',
+      'Anti-Aging',
+      'Professionell'
+    ],
+    process: [
+      'Hautanalyse',
+      'Vorbereitung',
+      'Fruchtsäurepeeling',
+      'Neutralisation',
+      'Beruhigende Pflege',
+      'Schutzpflege'
+    ],
+    suitableFor: [
+      'Reife Haut',
+      'Faltenbehandlung',
+      'Hauterneuerung',
+      'Stumpfe Haut',
+      'Anti-Aging',
+      'Glatte Haut'
+    ]
   }
 ]
 

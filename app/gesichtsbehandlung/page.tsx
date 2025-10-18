@@ -12,9 +12,9 @@ const treatments = [
     id: 1,
     title: 'BeautySkin Klassik',
     subtitle: 'Klassische Gesichtsbehandlung',
-    description: 'Unsere klassische Gesichtsbehandlung mit Reinigung, Peeling und intensiver Pflege für gesunde und strahlende Haut.',
+    description: 'Erleben Sie eine tiefenreinigende Klassik-Behandlung, die Hautpflege und Entspannung harmonisch vereint.',
     duration: '60 Min',
-    price: '65€',
+    price: '69€',
     benefits: [
       'Professionelle Hautanalyse',
       'Tiefenreinigung',
@@ -24,12 +24,12 @@ const treatments = [
       'Abschlusspflege'
     ],
     process: [
-      'Beratung und Hautanalyse',
-      'Reinigung und Peeling',
-      'Tiefenreinigung',
-      'Gesichtsmassage',
-      'Intensive Pflege',
-      'Abschlusspflege'
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell anzupassen.',
+      'Reinigung & Peeling: Die Haut wird sanft gereinigt und mit einem Enzympeeling vorbereitet, sodass abgestorbene Hautschüppchen gelöst werden und die Wirkstoffe besser eindringen können.',
+      'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
+      'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
+      'Massage: Eine entspannende Massage von Gesicht, Hals und Dekolleté fördert die Durchblutung und sorgt für ein gelöstes, frisches Hautgefühl.',
+      'LED & Abschlusspflege: LED Skin Light unterstützt die Regeneration der Haut. Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
     ],
     suitableFor: [
       'Alle Hauttypen',
@@ -42,10 +42,44 @@ const treatments = [
   },
   {
     id: 2,
+    title: 'BeautySkin Deluxe',
+    subtitle: 'Premium Gesichtsbehandlung - Besonders beliebt!',
+    description: 'Erleben Sie eine luxuriöse Gesichtsbehandlung, die intensive Pflege, sichtbare Hautverfeinerung und pure Entspannung miteinander verbindet.',
+    duration: '60 Min',
+    price: '89€',
+    benefits: [
+      'Hautanalyse',
+      'Tiefenreinigung',
+      'Ultraschallpflege',
+      'Augenpflege',
+      'Premium-Maske',
+      'Glow-Finish'
+    ],
+    process: [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell auf Ihre Hautbedürfnisse abzustimmen.',
+      'Reinigung & Enzympeeling: Die Haut wird gründlich gereinigt und mit einem sanften Enzympeeling vorbereitet, um abgestorbene Hautzellen zu entfernen und die Aufnahmefähigkeit der Haut zu verbessern.',
+      'Ausreinigung: Verstopfte Poren und Unreinheiten werden schonend entfernt, um die Haut zu klären und für die Wirkstoffpflege vorzubereiten.',
+      'Wirkstoffampulle: Eine speziell ausgewählte Wirkstoffampulle wird eingearbeitet, um die Haut intensiv zu versorgen und ihre Regeneration zu fördern.',
+      'Augenkorrektur & Augenbrauenform: Bei Bedarf werden Augenbrauen in Form gebracht und kleine Korrekturen durchgeführt, um das gepflegte Gesamtbild zu unterstreichen.',
+      'Gesicht-, Hals- & Dekolleté-Massage: Eine wohltuende Massage sorgt für Entspannung, fördert die Durchblutung und lässt die Haut praller und vitaler erscheinen.',
+      'Maske mit Ultraschall: Eine hochwertige Maske wird mithilfe von Ultraschall tief in die Haut eingearbeitet, um die Wirkstoffaufnahme zu optimieren und das Ergebnis zu intensivieren.',
+      'Abschlusspflege mit Augencreme & UV-Schutz: Zum Abschluss wird eine reichhaltige Pflege aufgetragen, die die Haut schützt und ihr ein strahlendes, frisches Aussehen verleiht.'
+    ],
+    suitableFor: [
+      'Anspruchsvolle Haut',
+      'Premium Pflege',
+      'Anti-Aging',
+      'Besondere Anlässe',
+      'Verwöhnmomente',
+      'Alle Hauttypen'
+    ]
+  },
+  {
+    id: 3,
     title: 'BeautySkin Relax',
     subtitle: 'Entspannende Gesichtsbehandlung',
-    description: 'Eine entspannende Gesichtsbehandlung mit Massage und beruhigender Pflege für Körper und Seele.',
-    duration: '75 Min',
+    description: 'Genießen Sie ein intensives Pflege- und Massage-Erlebnis für vollkommene Hautentspannung und spürbare Regeneration.',
+    duration: '60 Min',
     price: '75€',
     benefits: [
       'Entspannende Massage',
@@ -56,12 +90,13 @@ const treatments = [
       'Regeneration'
     ],
     process: [
-      'Beratung und Entspannung',
-      'Sanfte Reinigung',
-      'Entspannungsmassage',
-      'Beruhigende Pflege',
-      'Entspannungsphase',
-      'Abschlusspflege'
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell anzupassen.',
+      'Reinigung & Peeling: Die Haut wird sanft gereinigt und mit einem Enzympeeling vorbereitet, sodass abgestorbene Hautschüppchen gelöst werden und die Wirkstoffe besser eindringen können.',
+      'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
+      'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
+      'Massage Gesicht, Hals, Dekolleté, Arme & Hände: Eine ausgedehnte Massage umfasst Gesicht, Hals, Dekolleté sowie Arme und Hände und sorgt für tiefgehende Entspannung und ein rundum gelöstes Hautgefühl.',
+      'Maske & LED Skin Light: Eine passende Maske unterstützt die Hautregeneration und wird durch LED-Lichttherapie intensiviert.',
+      'Abschlusspflege mit Augencreme & UV-Schutz: Zum Abschluss wird die Haut mit einer pflegenden Creme und UV-Schutz versiegelt, während eine spezielle Augenpflege die empfindliche Partie um die Augen gezielt versorgt.'
     ],
     suitableFor: [
       'Gestresste Haut',
@@ -73,12 +108,12 @@ const treatments = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: 'BeautySkin Hautklar',
     subtitle: 'Behandlung für klare Haut',
-    description: 'Spezielle Behandlung für klare und reine Haut mit intensiver Reinigung und klärenden Wirkstoffen.',
-    duration: '70 Min',
-    price: '80€',
+    description: 'Erleben Sie eine klärende Behandlung, die die Haut tiefenreinigt und das Hautbild sichtbar verfeinert.',
+    duration: '45 Min',
+    price: '49€',
     benefits: [
       'Intensive Reinigung',
       'Klärende Wirkstoffe',
@@ -88,12 +123,13 @@ const treatments = [
       'Strahlende Haut'
     ],
     process: [
-      'Hautanalyse',
-      'Intensive Reinigung',
-      'Klärendes Peeling',
-      'Porenreinigung',
-      'Klärende Pflege',
-      'Schutzpflege'
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell anzupassen.',
+      'Reinigung & Enzympeeling: Die Haut wird sanft gereinigt und mit einem Enzympeeling vorbereitet, sodass abgestorbene Hautschüppchen gelöst werden und Wirkstoffe besser eindringen können.',
+      'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
+      'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
+      'Massage Gesicht, Hals & Dekolleté: Eine wohltuende Massage fördert die Durchblutung und sorgt für ein gelöstes, frisches Hautgefühl.',
+      'Maske: Eine passende Maske beruhigt die Haut, unterstützt die Regeneration und verfeinert das Erscheinungsbild.',
+      'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln und vor äußeren Einflüssen zu schützen.'
     ],
     suitableFor: [
       'Unreine Haut',
@@ -105,12 +141,12 @@ const treatments = [
     ]
   },
   {
-    id: 4,
-    title: 'BeautySkin unreine Haut',
+    id: 5,
+    title: 'BeautySkin Unreine',
     subtitle: 'Intensive Behandlung für unreine Haut',
-    description: 'Intensive Behandlung für unreine und problematische Haut mit speziellen Wirkstoffen und Techniken.',
-    duration: '80 Min',
-    price: '85€',
+    description: 'Erleben Sie eine intensiv klärende Behandlung, die Unreinheiten vermindert und das Hautbild rein und ausgeglichen erscheinen lässt.',
+    duration: '60 Min',
+    price: '75€',
     benefits: [
       'Intensive Reinigung',
       'Entzündungshemmend',
@@ -120,12 +156,14 @@ const treatments = [
       'Hautregeneration'
     ],
     process: [
-      'Detaillierte Hautanalyse',
-      'Intensive Reinigung',
-      'Entzündungshemmende Behandlung',
-      'Beruhigende Pflege',
-      'Regenerationsmaske',
-      'Schutzpflege'
+      'Hautanalyse: Zu Beginn wird der Hautzustand analysiert, um die Behandlung gezielt auf die Bedürfnisse unreiner Haut abzustimmen.',
+      'Reinigung & Enzympeeling: Die Haut wird gereinigt und mit einem Enzympeeling vorbereitet, um überschüssige Hornschüppchen zu lösen und die Poren freizugeben.',
+      'Intensive Ausreinigung: Verstopfungen und Unreinheiten werden gründlich entfernt, um die Haut tief zu klären und Unterlagerungen zu reduzieren.',
+      'Wirkstoffampulle: Eine speziell ausgewählte Wirkstoffampulle wirkt talgregulierend und beruhigend auf irritierte Hautbereiche.',
+      'Hochfrequenz-Stab: Zur Desinfektion der behandelten Partien wird der Hochfrequenz-Stab eingesetzt, um Entzündungen zu mindern und die Haut zu beruhigen.',
+      'LED Skin Light & Maske: LED-Lichttherapie unterstützt die Regeneration und wird mit einer passenden Maske kombiniert, um die Haut zu klären und auszugleichen.',
+      'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine passende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu stabilisieren.',
+      'Hinweis: Bei dieser Behandlung wird ausschließlich mit Microsilver-Produkten gearbeitet.'
     ],
     suitableFor: [
       'Problematische Haut',
@@ -137,27 +175,29 @@ const treatments = [
     ]
   },
   {
-    id: 5,
-    title: 'BeautySkin reine Männersache',
+    id: 6,
+    title: 'BeautySkin Reine Männersache',
     subtitle: 'Speziell für Männer',
-    description: 'Speziell für Männer entwickelte Gesichtsbehandlung mit maskuliner Pflege und männergerechter Behandlung.',
-    duration: '65 Min',
-    price: '70€',
+    description: 'Erleben Sie eine tiefenreinigende Gesichtsbehandlung, die speziell auf die Bedürfnisse männlicher Haut abgestimmt ist.',
+    duration: '60 Min',
+    price: '69€',
     benefits: [
       'Männergerechte Pflege',
       'Intensive Reinigung',
-      'Bartpflege',
+      'Gesichtsmassage',
+      'Schutzpflege',
       'Hautstraffung',
-      'Anti-Aging',
-      'Maskuline Duftstoffe'
+      'Anti-Aging'
     ],
     process: [
-      'Beratung und Hautanalyse',
-      'Intensive Reinigung',
-      'Bartpflege',
-      'Gesichtsmassage',
-      'Straffende Pflege',
-      'Abschlusspflege'
+      'Hautanalyse: Zu Beginn wird der Hautzustand analysiert, um die Behandlung individuell auf die Bedürfnisse der Männerhaut abzustimmen.',
+      'Reinigung & Enzympeeling: Die Haut wird gründlich gereinigt und mit einem Enzympeeling vorbereitet, damit abgestorbene Hautzellen gelöst werden und die Poren frei werden.',
+      'Ausreinigung: Unreinheiten und Ablagerungen werden sanft, aber gründlich entfernt, um die Haut zu klären und ein frisches Hautgefühl zu schaffen.',
+      'Wirkstoffampulle: Eine speziell ausgewählte Ampulle versorgt die Haut mit Feuchtigkeit und regenerierenden Wirkstoffen, die Vitalität und Spannkraft fördern.',
+      'Hochfrequenz-Stab: Durch die Anwendung des Hochfrequenz-Stabs wird die Haut desinfiziert, beruhigt und die Durchblutung angeregt.',
+      'Gesichtsmassage: Eine entspannende Massage löst Spannungen und sorgt für ein vitalisiertes, erholtes Erscheinungsbild.',
+      'Maske: Eine passende Maske rundet die Behandlung ab und verleiht der Haut ein gepflegtes, ausgeglichenes Gefühl.',
+      'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut vor äußeren Einflüssen zu bewahren.'
     ],
     suitableFor: [
       'Männer',
@@ -166,38 +206,6 @@ const treatments = [
       'Männliche Haut',
       'Anti-Aging',
       'Pflegeeinsteiger'
-    ]
-  },
-  {
-    id: 6,
-    title: 'Fruchtsäurepeeling',
-    subtitle: 'Professionelles Fruchtsäurepeeling',
-    description: 'Professionelles Fruchtsäurepeeling für glatte und strahlende Haut mit natürlichen Fruchtsäuren.',
-    duration: '90 Min',
-    price: '90€',
-    benefits: [
-      'Natürliche Fruchtsäuren',
-      'Hauterneuerung',
-      'Glatte Haut',
-      'Strahlender Teint',
-      'Anti-Aging',
-      'Professionell'
-    ],
-    process: [
-      'Hautanalyse',
-      'Vorbereitung',
-      'Fruchtsäurepeeling',
-      'Neutralisation',
-      'Beruhigende Pflege',
-      'Schutzpflege'
-    ],
-    suitableFor: [
-      'Reife Haut',
-      'Faltenbehandlung',
-      'Hauterneuerung',
-      'Stumpfe Haut',
-      'Anti-Aging',
-      'Glatte Haut'
     ]
   }
 ]

@@ -19,7 +19,8 @@ export default function ImpressumPage() {
               <div className="bg-gray-50 rounded-2xl p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Anbieter</h2>
                 <div className="space-y-4 text-gray-700">
-                  <p><strong>BeautySkin</strong></p>
+                  <p><strong>BeautySkin</strong><br />
+                  Inhaberin: Ysabel Busch</p>
                   <p>R&Y Slivio-Meier-Straße 6<br />
                   10247 Berlin<br />
                   Deutschland</p>
@@ -47,6 +48,7 @@ export default function ImpressumPage() {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Verantwortlich für den Inhalt</h2>
                   <p className="text-gray-700">
+                    Ysabel Busch<br />
                     BeautySkin<br />
                     R&Y Slivio-Meier-Straße 6<br />
                     10247 Berlin

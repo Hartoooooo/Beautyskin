@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowRight, Clock, Star, CheckCircle, Sparkles, Heart, Eye } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Clock, Star, CheckCircle, Sparkles, Heart, Eye, ChevronDown, ChevronUp } from 'lucide-react'
 
 // Function to get specific benefits for each treatment
 const getTreatmentBenefits = (treatmentName: string) => {
@@ -31,7 +32,7 @@ const getTreatmentBenefits = (treatmentName: string) => {
       'Anti-Bakteriell',
       'Strahlende Haut'
     ],
-    'BeautySkin unreine Haut': [
+    'BeautySkin Unreine': [
       'Intensive Reinigung',
       'Entzündungshemmend',
       'Bakterienreduktion',
@@ -39,13 +40,21 @@ const getTreatmentBenefits = (treatmentName: string) => {
       'Narbenminderung',
       'Hautregeneration'
     ],
-    'BeautySkin reine Männersache': [
+    'BeautySkin Reine Männersache': [
       'Männergerechte Pflege',
       'Intensive Reinigung',
-      'Bartpflege',
+      'Gesichtsmassage',
+      'Schutzpflege',
       'Hautstraffung',
-      'Anti-Aging',
-      'Maskuline Duftstoffe'
+      'Anti-Aging'
+    ],
+    'BeautySkin Deluxe': [
+      'Hautanalyse',
+      'Tiefenreinigung',
+      'Ultraschallpflege',
+      'Augenpflege',
+      'Premium-Maske',
+      'Glow-Finish'
     ],
     'Fruchtsäurepeeling': [
       'Natürliche Fruchtsäuren',
@@ -134,17 +143,81 @@ const getTreatmentBenefits = (treatmentName: string) => {
   return benefitsMap[treatmentName] || ['Professionelle Behandlung', 'Individuelle Beratung', 'Hochwertige Produkte', 'Entspannung']
 }
 
+// Function to get detailed process steps for each treatment
+const getTreatmentProcess = (treatmentName: string) => {
+  const processMap: { [key: string]: string[] } = {
+    'BeautySkin Klassik': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell anzupassen.',
+      'Reinigung & Peeling: Die Haut wird sanft gereinigt und mit einem Enzympeeling vorbereitet, sodass abgestorbene Hautschüppchen gelöst werden und die Wirkstoffe besser eindringen können.',
+      'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
+      'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
+      'Massage: Eine entspannende Massage von Gesicht, Hals und Dekolleté fördert die Durchblutung und sorgt für ein gelöstes, frisches Hautgefühl.',
+      'LED & Abschlusspflege: LED Skin Light unterstützt die Regeneration der Haut. Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
+    ],
+    'BeautySkin Deluxe': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell auf Ihre Hautbedürfnisse abzustimmen.',
+      'Reinigung & Enzympeeling: Die Haut wird gründlich gereinigt und mit einem sanften Enzympeeling vorbereitet, um abgestorbene Hautzellen zu entfernen und die Aufnahmefähigkeit der Haut zu verbessern.',
+      'Ausreinigung: Verstopfte Poren und Unreinheiten werden schonend entfernt, um die Haut zu klären und für die Wirkstoffpflege vorzubereiten.',
+      'Wirkstoffampulle: Eine speziell ausgewählte Wirkstoffampulle wird eingearbeitet, um die Haut intensiv zu versorgen und ihre Regeneration zu fördern.',
+      'Augenkorrektur & Augenbrauenform: Bei Bedarf werden Augenbrauen in Form gebracht und kleine Korrekturen durchgeführt, um das gepflegte Gesamtbild zu unterstreichen.',
+      'Gesicht-, Hals- & Dekolleté-Massage: Eine wohltuende Massage sorgt für Entspannung, fördert die Durchblutung und lässt die Haut praller und vitaler erscheinen.',
+      'Maske mit Ultraschall: Eine hochwertige Maske wird mithilfe von Ultraschall tief in die Haut eingearbeitet, um die Wirkstoffaufnahme zu optimieren und das Ergebnis zu intensivieren.',
+      'Abschlusspflege mit Augencreme & UV-Schutz: Zum Abschluss wird eine reichhaltige Pflege aufgetragen, die die Haut schützt und ihr ein strahlendes, frisches Aussehen verleiht.'
+    ],
+    'BeautySkin Relax': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell anzupassen.',
+      'Reinigung & Peeling: Die Haut wird sanft gereinigt und mit einem Enzympeeling vorbereitet, sodass abgestorbene Hautschüppchen gelöst werden und die Wirkstoffe besser eindringen können.',
+      'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
+      'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
+      'Massage Gesicht, Hals, Dekolleté, Arme & Hände: Eine ausgedehnte Massage umfasst Gesicht, Hals, Dekolleté sowie Arme und Hände und sorgt für tiefgehende Entspannung und ein rundum gelöstes Hautgefühl.',
+      'Maske & LED Skin Light: Eine passende Maske unterstützt die Hautregeneration und wird durch LED-Lichttherapie intensiviert.',
+      'Abschlusspflege mit Augencreme & UV-Schutz: Zum Abschluss wird die Haut mit einer pflegenden Creme und UV-Schutz versiegelt, während eine spezielle Augenpflege die empfindliche Partie um die Augen gezielt versorgt.'
+    ],
+    'BeautySkin Hautklar': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell anzupassen.',
+      'Reinigung & Enzympeeling: Die Haut wird sanft gereinigt und mit einem Enzympeeling vorbereitet, sodass abgestorbene Hautschüppchen gelöst werden und Wirkstoffe besser eindringen können.',
+      'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
+      'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
+      'Massage Gesicht, Hals & Dekolleté: Eine wohltuende Massage fördert die Durchblutung und sorgt für ein gelöstes, frisches Hautgefühl.',
+      'Maske: Eine passende Maske beruhigt die Haut, unterstützt die Regeneration und verfeinert das Erscheinungsbild.',
+      'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln und vor äußeren Einflüssen zu schützen.'
+    ],
+    'BeautySkin Unreine': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand analysiert, um die Behandlung gezielt auf die Bedürfnisse unreiner Haut abzustimmen.',
+      'Reinigung & Enzympeeling: Die Haut wird gereinigt und mit einem Enzympeeling vorbereitet, um überschüssige Hornschüppchen zu lösen und die Poren freizugeben.',
+      'Intensive Ausreinigung: Verstopfungen und Unreinheiten werden gründlich entfernt, um die Haut tief zu klären und Unterlagerungen zu reduzieren.',
+      'Wirkstoffampulle: Eine speziell ausgewählte Wirkstoffampulle wirkt talgregulierend und beruhigend auf irritierte Hautbereiche.',
+      'Hochfrequenz-Stab: Zur Desinfektion der behandelten Partien wird der Hochfrequenz-Stab eingesetzt, um Entzündungen zu mindern und die Haut zu beruhigen.',
+      'LED Skin Light & Maske: LED-Lichttherapie unterstützt die Regeneration und wird mit einer passenden Maske kombiniert, um die Haut zu klären und auszugleichen.',
+      'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine passende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu stabilisieren.',
+      'Hinweis: Bei dieser Behandlung wird ausschließlich mit Microsilver-Produkten gearbeitet.'
+    ],
+    'BeautySkin Reine Männersache': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand analysiert, um die Behandlung individuell auf die Bedürfnisse der Männerhaut abzustimmen.',
+      'Reinigung & Enzympeeling: Die Haut wird gründlich gereinigt und mit einem Enzympeeling vorbereitet, damit abgestorbene Hautzellen gelöst werden und die Poren frei werden.',
+      'Ausreinigung: Unreinheiten und Ablagerungen werden sanft, aber gründlich entfernt, um die Haut zu klären und ein frisches Hautgefühl zu schaffen.',
+      'Wirkstoffampulle: Eine speziell ausgewählte Ampulle versorgt die Haut mit Feuchtigkeit und regenerierenden Wirkstoffen, die Vitalität und Spannkraft fördern.',
+      'Hochfrequenz-Stab: Durch die Anwendung des Hochfrequenz-Stabs wird die Haut desinfiziert, beruhigt und die Durchblutung angeregt.',
+      'Gesichtsmassage: Eine entspannende Massage löst Spannungen und sorgt für ein vitalisiertes, erholtes Erscheinungsbild.',
+      'Maske: Eine passende Maske rundet die Behandlung ab und verleiht der Haut ein gepflegtes, ausgeglichenes Gefühl.',
+      'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut vor äußeren Einflüssen zu bewahren.'
+    ]
+  }
+  
+  return processMap[treatmentName] || []
+}
+
 // Function to get duration for each specific treatment
 const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
   if (categoryId === 1) {
     // Gesichtsbehandlung
     const durationMap: { [key: string]: string } = {
       'BeautySkin Klassik': '60 Min',
-      'BeautySkin Relax': '75 Min',
-      'BeautySkin Hautklar': '70 Min',
-      'BeautySkin unreine Haut': '80 Min',
-      'BeautySkin reine Männersache': '65 Min',
-      'Fruchtsäurepeeling': '90 Min'
+      'BeautySkin Deluxe': '60 Min',
+      'BeautySkin Relax': '60 Min',
+      'BeautySkin Hautklar': '45 Min',
+      'BeautySkin Unreine': '60 Min',
+      'BeautySkin Reine Männersache': '60 Min'
     }
     return durationMap[treatmentName] || '60 Min'
   } else if (categoryId === 2) {
@@ -154,7 +227,8 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
       'Skin Oximizer': '60 Min',
       'Micro Needling': '90 Min',
       'Diamant Mikrodermabrasion': '70 Min',
-      'Radiofrequenzbehandlung': '80 Min'
+      'Radiofrequenzbehandlung': '80 Min',
+      'Fruchtsäurepeeling': '90 Min'
     }
     return durationMap[treatmentName] || '60 Min'
   } else if (categoryId === 3) {
@@ -206,12 +280,17 @@ const treatments = [
     ],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Fruchtsäurepeeling'],
+    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Deluxe'],
     treatments: [
       {
         name: 'BeautySkin Klassik',
         description: 'Klassische Gesichtsbehandlung mit Reinigung, Peeling und Pflege',
-        price: '65€'
+        price: '69€'
+      },
+      {
+        name: 'BeautySkin Deluxe',
+        description: 'Premium Gesichtsbehandlung mit exklusiver Pflege - Besonders beliebt!',
+        price: '89€'
       },
       {
         name: 'BeautySkin Relax',
@@ -221,22 +300,17 @@ const treatments = [
       {
         name: 'BeautySkin Hautklar',
         description: 'Spezielle Behandlung für klare und reine Haut',
-        price: '80€'
+        price: '49€'
       },
       {
-        name: 'BeautySkin unreine Haut',
+        name: 'BeautySkin Unreine',
         description: 'Intensive Behandlung für unreine und problematische Haut',
-        price: '85€'
+        price: '75€'
       },
       {
-        name: 'BeautySkin reine Männersache',
+        name: 'BeautySkin Reine Männersache',
         description: 'Speziell für Männer entwickelte Gesichtsbehandlung',
-        price: '70€'
-      },
-      {
-        name: 'Fruchtsäurepeeling',
-        description: 'Professionelles Fruchtsäurepeeling für glatte und strahlende Haut',
-        price: '90€'
+        price: '69€'
       }
     ]
   },
@@ -275,7 +349,7 @@ const treatments = [
     ],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Radiofrequenz'],
+    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Fruchtsäurepeeling'],
     treatments: [
       {
         name: 'Aqua Facial Behandlung',
@@ -301,6 +375,11 @@ const treatments = [
         name: 'Radiofrequenzbehandlung',
         description: 'Wärmeenergie für Straffung und Hautverbesserung',
         price: '110€'
+      },
+      {
+        name: 'Fruchtsäurepeeling',
+        description: 'Professionelles Fruchtsäurepeeling für glatte und strahlende Haut',
+        price: '90€'
       }
     ]
   },
@@ -416,9 +495,17 @@ const treatments = [
 
 export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
   const treatment = treatments.find(t => t.id === treatmentId)
+  const [expandedTreatments, setExpandedTreatments] = useState<{ [key: number]: boolean }>({})
   
   if (!treatment) {
     return <div>Behandlung nicht gefunden</div>
+  }
+
+  const toggleTreatment = (index: number) => {
+    setExpandedTreatments(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }))
   }
 
   return (
@@ -612,6 +699,60 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                                 ))}
                               </div>
                             </div>
+
+                            {/* Expandable Treatment Details */}
+                            {getTreatmentProcess(subTreatment.name).length > 0 && (
+                              <div className="border-t border-gray-200 pt-4">
+                                <button
+                                  onClick={() => toggleTreatment(index)}
+                                  className="flex items-center justify-between w-full text-left hover:text-gray-900 transition-colors"
+                                >
+                                  <span className="text-lg font-semibold text-gray-800">
+                                    Behandlungsablauf
+                                  </span>
+                                  {expandedTreatments[index] ? (
+                                    <ChevronUp className="h-5 w-5 text-gray-600" />
+                                  ) : (
+                                    <ChevronDown className="h-5 w-5 text-gray-600" />
+                                  )}
+                                </button>
+
+                                <AnimatePresence>
+                                  {expandedTreatments[index] && (
+                                    <motion.div
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: 'auto' }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      transition={{ duration: 0.3 }}
+                                      className="overflow-hidden"
+                                    >
+                                      <div className="mt-4 space-y-2">
+                                        {getTreatmentProcess(subTreatment.name).map((step, stepIndex) => {
+                                          const parts = step.split(':')
+                                          const hasColon = parts.length > 1
+                                          
+                                          return (
+                                            <div key={stepIndex} className="flex items-start space-x-2">
+                                              <span className="text-gray-600 mt-1.5">•</span>
+                                              <p className="text-gray-700 text-sm leading-relaxed flex-1">
+                                                {hasColon ? (
+                                                  <>
+                                                    <span className="font-bold">{parts[0]}:</span>
+                                                    {parts.slice(1).join(':')}
+                                                  </>
+                                                ) : (
+                                                  step
+                                                )}
+                                              </p>
+                                            </div>
+                                          )
+                                        })}
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </div>
+                            )}
                           </div>
                         </div>
 

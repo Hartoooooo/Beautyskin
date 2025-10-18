@@ -53,6 +53,7 @@ export default function DatenschutzPage() {
                   <div className="bg-gray-50 rounded-xl p-6 mb-4">
                     <p className="text-gray-700">
                       <strong>BeautySkin</strong><br />
+                      Inhaberin: Ysabel Busch<br />
                       R&Y Slivio-Meier-Straße 6<br />
                       10247 Berlin<br />
                       Deutschland

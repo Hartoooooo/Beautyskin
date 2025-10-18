@@ -11,18 +11,18 @@ const treatments = [
     subtitle: 'Professionelle Gesichtspflege',
     description: 'Unsere professionellen Gesichtsbehandlungen für gesunde und strahlende Haut. Mit hochwertigen Produkten und modernen Techniken.',
     icon: Heart,
-    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Fruchtsäurepeeling'],
+    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Deluxe'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    duration: '60-90 Min',
-    price: 'ab 65€',
+    duration: '45-60 Min',
+    price: 'ab 49€',
     treatments: [
       'BeautySkin Klassik',
+      'BeautySkin Deluxe',
       'BeautySkin Relax', 
       'BeautySkin Hautklar',
-      'BeautySkin unreine Haut',
-      'BeautySkin reine Männersache',
-      'Fruchtsäurepeeling'
+      'BeautySkin Unreine',
+      'BeautySkin Reine Männersache'
     ]
   },
   {
@@ -31,7 +31,7 @@ const treatments = [
     subtitle: 'Moderne Technologie für optimale Ergebnisse',
     description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Mit neuesten Geräten für beste Resultate.',
     icon: Sparkles,
-    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Radiofrequenz'],
+    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Fruchtsäurepeeling'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
     duration: '45-90 Min',
@@ -41,7 +41,8 @@ const treatments = [
       'Skin Oximizer',
       'Micro Needling',
       'Diamant Mikrodermabrasion',
-      'Radiofrequenzbehandlung'
+      'Radiofrequenzbehandlung',
+      'Fruchtsäurepeeling'
     ]
   },
   {

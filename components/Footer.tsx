@@ -28,7 +28,7 @@ export default function Footer() {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold gradient-text">BeautySkin</h3>
+                <h3 className="text-2xl font-bold text-white">BeautySkin</h3>
                 <p className="text-gray-300 mt-2">
                   Ihr professionelles Kosmetikstudio in Berlin für natürliche Schönheit und Wohlbefinden.
                 </p>
@@ -37,14 +37,18 @@ export default function Footer() {
               {/* Social Media */}
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/beautyskin.kosmetik/?igsh=cWs1dDlwcjljMmll"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-300"
+                  aria-label="BeautySkin auf Instagram"
                 >
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a
                   href="#"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-300"
+                  aria-label="BeautySkin auf Facebook"
                 >
                   <Facebook className="h-5 w-5" />
                 </a>
