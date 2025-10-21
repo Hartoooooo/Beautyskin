@@ -108,7 +108,7 @@ const treatments = [
     id: 4,
     title: 'Diamant Mikrodermabrasion',
     subtitle: 'Professionelle Diamantbehandlung',
-    description: 'Professionelle Diamant Mikrodermabrasion für glatte und strahlende Haut.',
+    description: 'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
     duration: '70 Min',
     price: '90€',
     benefits: [
@@ -166,38 +166,6 @@ const treatments = [
       'Anti-Aging',
       'Straffung',
       'Reife Haut'
-    ]
-  },
-  {
-    id: 6,
-    title: 'Fruchtsäurepeeling',
-    subtitle: 'Professionelles Fruchtsäurepeeling',
-    description: 'Professionelles Fruchtsäurepeeling für glatte und strahlende Haut mit natürlichen Fruchtsäuren.',
-    duration: '90 Min',
-    price: '90€',
-    benefits: [
-      'Natürliche Fruchtsäuren',
-      'Hauterneuerung',
-      'Glatte Haut',
-      'Strahlender Teint',
-      'Anti-Aging',
-      'Professionell'
-    ],
-    process: [
-      'Hautanalyse',
-      'Vorbereitung',
-      'Fruchtsäurepeeling',
-      'Neutralisation',
-      'Beruhigende Pflege',
-      'Schutzpflege'
-    ],
-    suitableFor: [
-      'Reife Haut',
-      'Faltenbehandlung',
-      'Hauterneuerung',
-      'Stumpfe Haut',
-      'Anti-Aging',
-      'Glatte Haut'
     ]
   }
 ]

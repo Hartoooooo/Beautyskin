@@ -11,7 +11,7 @@ const treatments = [
     subtitle: 'Professionelle Gesichtspflege',
     description: 'Unsere professionellen Gesichtsbehandlungen für gesunde und strahlende Haut. Mit hochwertigen Produkten und modernen Techniken.',
     icon: Heart,
-    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Deluxe'],
+    features: ['BeautySkin Klassik', 'BeautySkin Deluxe', 'AHA Peeling', 'Kräuter-Peeling'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
     duration: '45-60 Min',
@@ -22,7 +22,9 @@ const treatments = [
       'BeautySkin Relax', 
       'BeautySkin Hautklar',
       'BeautySkin Unreine',
-      'BeautySkin Reine Männersache'
+      'BeautySkin Reine Männersache',
+      'AHA Fruchtsäurepeeling',
+      'Kräuter-Peeling (Herbs2Peel)'
     ]
   },
   {
@@ -31,7 +33,7 @@ const treatments = [
     subtitle: 'Moderne Technologie für optimale Ergebnisse',
     description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Mit neuesten Geräten für beste Resultate.',
     icon: Sparkles,
-    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Fruchtsäurepeeling'],
+    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Radiofrequenz'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
     duration: '45-90 Min',
@@ -41,8 +43,7 @@ const treatments = [
       'Skin Oximizer',
       'Micro Needling',
       'Diamant Mikrodermabrasion',
-      'Radiofrequenzbehandlung',
-      'Fruchtsäurepeeling'
+      'Radiofrequenzbehandlung'
     ]
   },
   {

@@ -4,7 +4,7 @@ import CookieConsent from '@/components/CookieConsent'
 
 export const metadata: Metadata = {
   title: 'BeautySkin - Ihr Kosmetikstudio in Berlin',
-  description: 'Professionelle Kosmetikbehandlungen in Berlin. Hydrafacial, Microneedling, Gesichtsbehandlungen und mehr. Jetzt Termin buchen unter +49 170 4482725!',
+  description: 'Professionelle Kosmetikbehandlungen in Berlin. Hydrafacial, Microneedling, Gesichtsbehandlungen und mehr. Jetzt Termin anfragen unter +49 170 4482725!',
   keywords: 'Kosmetik, Berlin, Hydrafacial, Microneedling, Gesichtsbehandlung, Beauty, Skincare',
   authors: [{ name: 'BeautySkin' }],
 }

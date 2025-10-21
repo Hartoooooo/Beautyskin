@@ -83,10 +83,10 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <button className="btn-primary flex items-center justify-center space-x-2 group">
-                <span>Termin buchen</span>
+              <a href="/termin" className="btn-primary flex items-center justify-center space-x-2 group">
+                <span>Termin anfragen</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
               <button className="btn-secondary">
                 Kontakt aufnehmen
               </button>

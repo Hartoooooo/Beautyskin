@@ -259,12 +259,12 @@ export default function ContactSection() {
               Buchen Sie jetzt Ihren Termin und erleben Sie professionelle Kosmetik auf höchstem Niveau.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-                Termin buchen
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-all duration-300">
+              <a href="/termin" className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 inline-block">
+                Termin anfragen
+              </a>
+              <a href="/termin" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-all duration-300 inline-block">
                 Beratung anfragen
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>

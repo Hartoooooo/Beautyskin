@@ -207,6 +207,68 @@ const treatments = [
       'Anti-Aging',
       'Pflegeeinsteiger'
     ]
+  },
+  {
+    id: 7,
+    title: 'AHA Fruchtsäurepeeling',
+    subtitle: 'Hautverfeinernde Fruchtsäurebehandlung',
+    description: 'Erleben Sie eine hautverfeinernde Gesichtsbehandlung mit hochwirksamen Fruchtsäuren, die die Hautstruktur glätten, Poren verfeinern und das Hautbild sichtbar verbessern.',
+    duration: '45 Min',
+    price: '69€',
+    benefits: [
+      'Porenverfeinerung',
+      'Faltenminderung',
+      'Pigmentausgleich',
+      'Regeneration',
+      'Zellaktivierung',
+      'Hautglättung'
+    ],
+    process: [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um die Fruchtsäurekonzentration individuell auf Ihre Haut abzustimmen.',
+      'Reinigung & Vorbereitung: Die Haut wird gründlich gereinigt und vorbereitet, damit die Fruchtsäure ihre volle Wirkung entfalten kann.',
+      'AHA Fruchtsäurepeeling: Die dermato-kosmetischen Fruchtsäuren entfernen Verhornungen, verfeinern die Poren und mildern Falten sowie Pigmentstörungen. Gleichzeitig wird die Zellerneuerung aktiviert und die Bildung von körpereigenem Kollagen und Elastin angeregt.',
+      'Wirkstoffampulle & Maske: Nach dem Peeling wird eine regenerierende Ampulle aufgetragen, gefolgt von einer beruhigenden Maske, um die Haut zu pflegen und zu stabilisieren.',
+      'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu bewahren.'
+    ],
+    suitableFor: [
+      'Reife Haut',
+      'Falten & Linien',
+      'Pigmentflecken',
+      'Grobporige Haut',
+      'Verhornungen',
+      'Anti-Aging'
+    ]
+  },
+  {
+    id: 8,
+    title: 'Kräuter-Peeling (Herbs2Peel)',
+    subtitle: 'Natürliches Regenerations-Peeling',
+    description: 'Erleben Sie ein natürliches, professionelles Kräuter-Peeling zur Regeneration und Korrektur der Haut – individuell abgestimmt auf Ihren Hauttyp.',
+    duration: '60 Min',
+    price: '89€',
+    benefits: [
+      'Natürliche Regeneration',
+      'Hauterneuerung',
+      'Porenverfeinerung',
+      'Zellaktivierung',
+      'Gleichmäßiger Teint',
+      'Strahlende Frische'
+    ],
+    process: [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um die Kräutermischung optimal auf die individuellen Hautbedürfnisse abzustimmen.',
+      'Reinigung & Vorbereitung: Die Haut wird gründlich gereinigt, damit die natürlichen Kräuterwirkstoffe optimal aufgenommen werden können.',
+      'Kräuter-Peeling: Das Kräuterpeeling wird sanft einmassiert, wodurch die Hautregeneration aktiviert, das Hautbild verfeinert und die Zellerneuerung gefördert wird.',
+      'Maske & Wirkstoffpflege: Eine pflegende Maske beruhigt die Haut, während eine Wirkstoffpflege Feuchtigkeit spendet und das Ergebnis unterstützt.',
+      'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und den Erneuerungsprozess zu stabilisieren.'
+    ],
+    suitableFor: [
+      'Unreine Haut',
+      'Akne-Anzeichen',
+      'Anti-Aging',
+      'Hautstraffung',
+      'Pigmentflecken',
+      'Regenerationsbedarf'
+    ]
   }
 ]
 

@@ -30,6 +30,7 @@ export default function Header() {
 
   const navigation = [
     { name: 'Home', href: '/' },
+    { name: 'Termin anfragen', href: '/termin' },
     { name: 'Impressum', href: '/impressum' },
   ]
 

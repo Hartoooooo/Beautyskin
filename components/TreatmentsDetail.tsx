@@ -56,14 +56,6 @@ const getTreatmentBenefits = (treatmentName: string) => {
       'Premium-Maske',
       'Glow-Finish'
     ],
-    'Fruchtsäurepeeling': [
-      'Natürliche Fruchtsäuren',
-      'Hauterneuerung',
-      'Glatte Haut',
-      'Strahlender Teint',
-      'Anti-Aging',
-      'Professionell'
-    ],
     // Apparative Behandlungen
     'Aqua Facial Behandlung': [
       'Tiefe Reinigung',
@@ -227,6 +219,20 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Maske: Eine passende Maske rundet die Behandlung ab und verleiht der Haut ein gepflegtes, ausgeglichenes Gefühl.',
       'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut vor äußeren Einflüssen zu bewahren.'
     ],
+    'AHA Fruchtsäurepeeling': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um die Fruchtsäurekonzentration individuell auf Ihre Haut abzustimmen.',
+      'Reinigung & Vorbereitung: Die Haut wird gründlich gereinigt und vorbereitet, damit die Fruchtsäure ihre volle Wirkung entfalten kann.',
+      'AHA Fruchtsäurepeeling: Die dermato-kosmetischen Fruchtsäuren entfernen Verhornungen, verfeinern die Poren und mildern Falten sowie Pigmentstörungen. Gleichzeitig wird die Zellerneuerung aktiviert und die Bildung von körpereigenem Kollagen und Elastin angeregt.',
+      'Wirkstoffampulle & Maske: Nach dem Peeling wird eine regenerierende Ampulle aufgetragen, gefolgt von einer beruhigenden Maske, um die Haut zu pflegen und zu stabilisieren.',
+      'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu bewahren.'
+    ],
+    'Kräuter-Peeling (Herbs2Peel)': [
+      'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um die Kräutermischung optimal auf die individuellen Hautbedürfnisse abzustimmen.',
+      'Reinigung & Vorbereitung: Die Haut wird gründlich gereinigt, damit die natürlichen Kräuterwirkstoffe optimal aufgenommen werden können.',
+      'Kräuter-Peeling: Das Kräuterpeeling wird sanft einmassiert, wodurch die Hautregeneration aktiviert, das Hautbild verfeinert und die Zellerneuerung gefördert wird.',
+      'Maske & Wirkstoffpflege: Eine pflegende Maske beruhigt die Haut, während eine Wirkstoffpflege Feuchtigkeit spendet und das Ergebnis unterstützt.',
+      'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und den Erneuerungsprozess zu stabilisieren.'
+    ],
     'Aqua Facial Behandlung': [
       'Das Aqua Facial ist eine effektive, wasserbasierte Gesichtsbehandlung, bei der die Haut mit einem sanften Vakuum gereinigt und gleichzeitig mit Feuchtigkeit versorgt wird. Make-up-Reste, Talg, Schmutz und abgestorbene Hautzellen werden gelöst und direkt abgesaugt, ohne die Haut zu reizen.',
       'Während die Poren geklärt werden, werden hochwirksame Wirkstoffkomplexe eingeschleust, die die Haut glatter, frischer und strahlender wirken lassen. Ideal bei unreiner, fahler oder gestresster Haut – für einen sofort sichtbaren, ebenmäßigen Teint.',
@@ -289,7 +295,9 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
       'BeautySkin Relax': '60 Min',
       'BeautySkin Hautklar': '45 Min',
       'BeautySkin Unreine': '60 Min',
-      'BeautySkin Reine Männersache': '60 Min'
+      'BeautySkin Reine Männersache': '60 Min',
+      'AHA Fruchtsäurepeeling': '45 Min',
+      'Kräuter-Peeling (Herbs2Peel)': '60 Min'
     }
     return durationMap[treatmentName] || '60 Min'
   } else if (categoryId === 2) {
@@ -299,8 +307,7 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
       'Skin Oximizer': '60 Min',
       'Micro Needling': '90 Min',
       'Diamant Mikrodermabrasion': '70 Min',
-      'Radiofrequenzbehandlung': '80 Min',
-      'Fruchtsäurepeeling': '90 Min'
+      'Radiofrequenzbehandlung': '80 Min'
     }
     return durationMap[treatmentName] || '60 Min'
   } else if (categoryId === 3) {
@@ -360,7 +367,7 @@ const treatments = [
     ],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    features: ['BeautySkin Klassik', 'BeautySkin Relax', 'BeautySkin Hautklar', 'Deluxe'],
+    features: ['BeautySkin Klassik', 'BeautySkin Deluxe', 'AHA Peeling', 'Kräuter-Peeling'],
     treatments: [
       {
         name: 'BeautySkin Klassik',
@@ -391,6 +398,16 @@ const treatments = [
         name: 'BeautySkin Reine Männersache',
         description: 'Speziell für Männer entwickelte Gesichtsbehandlung',
         price: '69€'
+      },
+      {
+        name: 'AHA Fruchtsäurepeeling',
+        description: 'Hautverfeinernde Behandlung mit Fruchtsäuren',
+        price: '69€'
+      },
+      {
+        name: 'Kräuter-Peeling (Herbs2Peel)',
+        description: 'Natürliches Regenerations-Peeling',
+        price: '89€'
       }
     ]
   },
@@ -429,7 +446,7 @@ const treatments = [
     ],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Fruchtsäurepeeling'],
+    features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Radiofrequenz'],
     treatments: [
       {
         name: 'Aqua Facial Behandlung',
@@ -448,18 +465,13 @@ const treatments = [
       },
       {
         name: 'Diamant Mikrodermabrasion',
-        description: 'Professionelle Diamantbehandlung für glatte Haut',
+        description: 'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
         price: '90€'
       },
       {
         name: 'Radiofrequenzbehandlung',
         description: 'Wärmeenergie für Straffung und Hautverbesserung',
         price: '110€'
-      },
-      {
-        name: 'Fruchtsäurepeeling',
-        description: 'Professionelles Fruchtsäurepeeling für glatte und strahlende Haut',
-        price: '90€'
       }
     ]
   },
@@ -731,10 +743,10 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
 
                     {/* CTA */}
                     <div className="pt-4">
-                      <button className={`btn-primary bg-gradient-to-r ${treatment.color}`}>
-                        Termin buchen
+                      <a href="/termin" className={`btn-primary bg-gradient-to-r ${treatment.color}`}>
+                        Termin anfragen
                         <ArrowRight className="h-5 w-5 ml-2" />
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -866,19 +878,16 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                                           const hasColon = parts.length > 1
                                           
                                           return (
-                                            <div key={stepIndex} className="flex items-start space-x-2">
-                                              <span className="text-gray-600 mt-1.5">•</span>
-                                              <p className="text-gray-700 text-sm leading-relaxed flex-1">
-                                                {hasColon ? (
-                                                  <>
-                                                    <span className="font-bold">{parts[0]}:</span>
-                                                    {parts.slice(1).join(':')}
-                                                  </>
-                                                ) : (
-                                                  step
-                                                )}
-                                              </p>
-                                            </div>
+                                            <p key={stepIndex} className="text-gray-700 text-sm leading-relaxed">
+                                              {hasColon ? (
+                                                <>
+                                                  <span className="font-bold">{parts[0]}:</span>
+                                                  {parts.slice(1).join(':')}
+                                                </>
+                                              ) : (
+                                                step
+                                              )}
+                                            </p>
                                           )
                                         })}
                                       </div>
@@ -895,9 +904,9 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                           <div className={`w-32 h-32 bg-gradient-to-br ${treatment.color} rounded-full flex items-center justify-center`}>
                             <treatment.icon className="h-16 w-16 text-white" />
                           </div>
-                          <button className={`w-full bg-gradient-to-r ${treatment.color} text-white hover:shadow-lg px-6 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105`}>
-                            Termin buchen
-                          </button>
+                          <a href="/termin" className={`w-full bg-gradient-to-r ${treatment.color} text-white hover:shadow-lg px-6 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 block text-center`}>
+                            Termin anfragen
+                          </a>
                         </div>
                       </div>
                     </motion.div>
@@ -1097,7 +1106,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                         </div>
 
                         <button className={`w-full bg-gradient-to-r ${treatment.color} text-white hover:shadow-lg px-4 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105`}>
-                          Termin buchen
+                          Termin anfragen
                         </button>
                       </div>
                     </motion.div>
@@ -1127,12 +1136,12 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
               Behandlung für Ihre individuellen Bedürfnisse.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+              <a href="/termin" className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 inline-block">
                 Kostenlose Beratung
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300">
-                Termin buchen
-              </button>
+              </a>
+              <a href="/termin" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300 inline-block">
+                Termin anfragen
+              </a>
             </div>
           </motion.div>
         </div>

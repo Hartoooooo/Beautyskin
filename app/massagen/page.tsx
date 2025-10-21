@@ -13,8 +13,8 @@ const treatments = [
     title: 'Nacken-Massage',
     subtitle: 'Entspannung für Nacken und Schultern',
     description: 'Entspannende Massage speziell für Nacken und Schultern zur Linderung von Verspannungen.',
-    duration: '30 Min',
-    price: '35€',
+    duration: '15 Min',
+    price: '25€',
     benefits: [
       'Verspannungslösung',
       'Schmerzlinderung',
@@ -45,8 +45,8 @@ const treatments = [
     title: 'Entspannungsmassage mit Hot Stone',
     subtitle: 'Wohltuende Massage mit warmen Steinen',
     description: 'Entspannungsmassage mit warmen Steinen für tiefe Entspannung und Wohlbefinden.',
-    duration: '90 Min',
-    price: '65€',
+    duration: '45 Min',
+    price: '59€',
     benefits: [
       'Tiefe Entspannung',
       'Wärmeeffekt',
@@ -77,8 +77,8 @@ const treatments = [
     title: 'Kopf-Nacken-Rückenmassage',
     subtitle: 'Umfassende Massage für den ganzen Oberkörper',
     description: 'Umfassende Massage für Kopf, Nacken und Rücken zur ganzheitlichen Entspannung.',
-    duration: '60 Min',
-    price: '75€',
+    duration: '30 Min',
+    price: '39€',
     benefits: [
       'Ganzheitliche Entspannung',
       'Verspannungslösung',
@@ -102,38 +102,6 @@ const treatments = [
       'Stressabbau',
       'Verspannte Muskulatur',
       'Wohlbefinden'
-    ]
-  },
-  {
-    id: 4,
-    title: 'Lymphdrainage-Massage',
-    subtitle: 'Spezielle Massage zur Entstauung',
-    description: 'Professionelle Lymphdrainage zur Entstauung und Entgiftung des Körpers.',
-    duration: '45 Min',
-    price: '55€',
-    benefits: [
-      'Entstauung',
-      'Entgiftung',
-      'Durchblutungsförderung',
-      'Schwellungsreduktion',
-      'Immunsystemstärkung',
-      'Wohlbefinden'
-    ],
-    process: [
-      'Beratung',
-      'Vorbereitung',
-      'Lymphdrainage',
-      'Entstauungsmassage',
-      'Nachpflege',
-      'Nachsorgetipps'
-    ],
-    suitableFor: [
-      'Schwellungen',
-      'Wassereinlagerungen',
-      'Entgiftung',
-      'Immunsystemstärkung',
-      'Durchblutungsstörungen',
-      'Gesundheitsförderung'
     ]
   }
 ]
