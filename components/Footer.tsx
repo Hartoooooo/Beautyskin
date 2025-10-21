@@ -14,6 +14,7 @@ export default function Footer() {
     legal: [
       { name: 'Impressum', href: '/impressum' },
       { name: 'Datenschutz', href: '/datenschutz' },
+      { name: 'Cookie-Richtlinie', href: '/cookies' },
       { name: 'AGB', href: '/agb' },
       { name: 'Widerrufsbelehrung', href: '/widerruf' },
     ],

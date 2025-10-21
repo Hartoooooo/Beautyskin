@@ -38,6 +38,7 @@ export default function Header() {
     { name: 'Apparative Behandlungen', href: '/apparative-behandlungen' },
     { name: 'Massagen', href: '/massagen' },
     { name: 'Dauerhafte Haarentfernung', href: '/dauerhafte-haarentfernung' },
+    { name: 'Augenbrauenkorrektur', href: '/augenbrauenkorrektur' },
   ]
 
   return (

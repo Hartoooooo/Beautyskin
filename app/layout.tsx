@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import CookieConsent from '@/components/CookieConsent'
 
 export const metadata: Metadata = {
   title: 'BeautySkin - Ihr Kosmetikstudio in Berlin',
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <CookieConsent />
       </body>
     </html>
   )

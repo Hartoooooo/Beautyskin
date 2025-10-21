@@ -110,33 +110,58 @@ const getTreatmentBenefits = (treatmentName: string) => {
       'Verspannungslösung',
       'Schmerzlinderung',
       'Durchblutungsförderung',
-      'Entspannung',
       'Stressabbau',
-      'Wohlbefinden'
+      'Beweglichkeit',
+      'Schnelle Entlastung'
     ],
     'Entspannungsmassage mit Hot Stone': [
-      'Tiefe Entspannung',
-      'Wärmeeffekt',
-      'Durchblutungsförderung',
-      'Stressabbau',
       'Muskelentspannung',
-      'Wohlbefinden'
+      'Wärmetherapie',
+      'Stressabbau',
+      'Durchblutungsförderung',
+      'Wohlbefinden',
+      'Pflegendes Öl'
     ],
     'Kopf-Nacken-Rückenmassage': [
-      'Ganzheitliche Entspannung',
-      'Verspannungslösung',
-      'Durchblutungsförderung',
+      'Muskelentspannung',
       'Stressabbau',
-      'Kopfschmerzlinderung',
+      'Schmerzlinderung',
+      'Durchblutungsförderung',
+      'Kopffreiheit',
       'Wohlbefinden'
     ],
-    'Lymphdrainage-Massage': [
-      'Entstauung',
-      'Entgiftung',
-      'Durchblutungsförderung',
-      'Schwellungsreduktion',
-      'Immunsystemstärkung',
-      'Wohlbefinden'
+    // Augenbrauenkorrektur
+    'Augenbrauenkorrektur (Zupfen oder Waxing)': [
+      'Individuelle Formgebung',
+      'Präzise Arbeit',
+      'Gesichtsangepasst',
+      'Definition',
+      'Frischer Ausdruck',
+      'Professionell'
+    ],
+    'Augenbrauen färben': [
+      'Intensive Farbe',
+      'Mehr Definition',
+      'Ausdrucksstärke',
+      'Langanhaltend',
+      'Natürliches Ergebnis',
+      'Professionell'
+    ],
+    'Wimpern färben': [
+      'Intensive Farbe',
+      'Ohne Mascara',
+      'Natürlicher Look',
+      'Langanhaltend',
+      'Wasserfest',
+      'Zeitersparnis'
+    ],
+    'Augenbrauen & Wimpern Kombipaket': [
+      'Komplettbehandlung',
+      'Perfekte Abstimmung',
+      'Zeitersparnis',
+      'Preisvorteil',
+      'Ausdrucksstark',
+      'Professionell'
     ]
   }
   
@@ -201,6 +226,53 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Gesichtsmassage: Eine entspannende Massage löst Spannungen und sorgt für ein vitalisiertes, erholtes Erscheinungsbild.',
       'Maske: Eine passende Maske rundet die Behandlung ab und verleiht der Haut ein gepflegtes, ausgeglichenes Gefühl.',
       'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut vor äußeren Einflüssen zu bewahren.'
+    ],
+    'Aqua Facial Behandlung': [
+      'Das Aqua Facial ist eine effektive, wasserbasierte Gesichtsbehandlung, bei der die Haut mit einem sanften Vakuum gereinigt und gleichzeitig mit Feuchtigkeit versorgt wird. Make-up-Reste, Talg, Schmutz und abgestorbene Hautzellen werden gelöst und direkt abgesaugt, ohne die Haut zu reizen.',
+      'Während die Poren geklärt werden, werden hochwirksame Wirkstoffkomplexe eingeschleust, die die Haut glatter, frischer und strahlender wirken lassen. Ideal bei unreiner, fahler oder gestresster Haut – für einen sofort sichtbaren, ebenmäßigen Teint.',
+      'Ideal geeignet bei: Unreine Haut & Mitesser, Verstopfte Poren & Akne-Anzeichen, Fahle oder müde Haut ohne Glow, Feuchtigkeitsmangel / gestresste Haut, Pigmentflecken & ungleichmäßiger Teint, Erste Falten / Haut wirkt grobporig',
+      'Ergebnis: Die Haut wirkt nicht nur gereinigt, sondern sichtbar erfrischt, durchfeuchtet und feiner. Das Aqua Facial ist die perfekte Behandlung, wenn Sie sich ein klares, glattes und strahlendes Hautbild ohne Reizungen wünschen.'
+    ],
+    'Skin Oximizer': [
+      'Der Skin Oximizer ist eine revitalisierende Gesichtsbehandlung, die die Haut mit Sauerstoff und regenerierenden Wirkstoffen versorgt. Durch gezielte Sauerstoffanreicherung wird die Hautdurchblutung angeregt, Zellen aktiviert und die Aufnahmefähigkeit für Wirkstoffe deutlich verbessert.',
+      'Die Behandlung sorgt für ein frisches, pralles und sichtbar vitaleres Hautbild. Müdigkeit, fahler Teint und gestresste Hautstrukturen werden gemildert – ideal, wenn die Haut neue Energie und einen sofortigen Frischekick benötigt.',
+      'Ideal geeignet bei: Fahler oder müder Haut, Sauerstoff- und Energiedefizit der Haut, Feuchtigkeitsmangel & gestresster Haut, Erschlaffter Hautstruktur & fehlender Spannkraft, Erschöpftem Teint ohne Ausstrahlung, Ersten Linien & mattem Hautbild',
+      'Ergebnis: Die Haut wirkt erfrischt, rosig durchblutet und sichtbar vitaler. Der Skin Oximizer ist ideal, wenn die Haut neue Energie, mehr Ausstrahlung und einen natürlichen Glow erhalten soll.'
+    ],
+    'Micro Needling': [
+      'Micro Needling ist eine hochwirksame Anti-Aging-Behandlung, bei der die Haut durch feine Mikronadeln gezielt stimuliert wird. Diese sanften Mikroverletzungen aktivieren die körpereigene Kollagen- und Elastinproduktion, wodurch die Hautstruktur langfristig gefestigt und geglättet wird.',
+      'Die Behandlung verbessert die Aufnahme von Wirkstoffen, mildert Fältchen und Narben und sorgt für ein ebenmäßiges, vitales Hautbild. Ideal, um Hauterneuerung und Straffung auf natürliche Weise anzuregen.',
+      'Ideal geeignet bei: Falten & Linien, Narben & Aknenarben, Grobporiger Haut, Elastizitätsverlust, Pigmentflecken & unebenem Teint, Müder, fahler Haut',
+      'Ergebnis: Die Haut wirkt straffer, glatter und jugendlicher. Micro Needling fördert die natürliche Regeneration, verbessert die Hautstruktur sichtbar und sorgt für ein dauerhaft ebenmäßiges Hautbild.'
+    ],
+    'Diamant Mikrodermabrasion': [
+      'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
+      'Durch die kontrollierte Abtragung wirkt die Haut frischer, gleichmäßiger und strahlender. Ideal für alle, die ihr Hautbild verbessern, kleine Unebenheiten mindern und neue Hautfrische erleben möchten.',
+      'Ideal geeignet bei: Grobporiger Haut, Pigmentflecken & Sonnenschäden, Narben & Aknenarben, Falten & Linien, Verhornter, rauer Haut, Müdem, fahlen Teint',
+      'Ergebnis: Die Haut wirkt sofort glatter, reiner und ebenmäßiger. Die Diamant Mikrodermabrasion ist perfekt, um den Teint aufzufrischen, die Hautstruktur zu verfeinern und einen jugendlich strahlenden Glow zu erzielen.'
+    ],
+    'Radiofrequenzbehandlung': [
+      'Die Radiofrequenzbehandlung ist eine effektive Methode zur Hautstraffung und Verjüngung. Durch gezielte Erwärmung der tieferen Hautschichten wird die Kollagenproduktion stimuliert, die Elastizität verbessert und das Gewebe gestrafft – ganz ohne chirurgischen Eingriff.',
+      'Die Behandlung sorgt für eine sichtbare Glättung der Haut, definiert die Gesichtskonturen und verleiht einen jugendlich frischen Ausdruck. Ideal, um erschlaffter Haut neue Spannkraft und Festigkeit zu schenken.',
+      'Ideal geeignet bei: Falten & feinen Linien, Elastizitätsverlust, Erschlaffter Gesichtskontur, Müder, fahler Haut, Grobporiger Hautstruktur, Vorbeugung gegen Hautalterung',
+      'Ergebnis: Die Haut wirkt straffer, glatter und frischer. Die Radiofrequenzbehandlung aktiviert die körpereigene Regeneration, stärkt das Bindegewebe und sorgt für ein langanhaltend verjüngtes Hautbild.'
+    ],
+    'Nacken-Massage': [
+      'Eine gezielte Massage zur Lockerung der Nacken- und Schulterpartie. Durch sanften Druck und kreisende Bewegungen werden Verspannungen gelöst, die Durchblutung gefördert und muskuläre Blockaden gelindert.',
+      'Ideal bei Stress, einseitiger Haltung oder nach langen Arbeitstagen.',
+      'Ergebnis: Ein entspanntes Nacken- und Schultergefühl, spürbar mehr Leichtigkeit und neue Energie für den Alltag.'
+    ],
+    'Entspannungsmassage mit Hot Stone': [
+      'Erleben Sie pure Entspannung und wohltuende Wärme für Körper und Geist. Sanfte, rhythmische Massagebewegungen fördern die Durchblutung, lösen Muskelverspannungen und bringen den Körper wieder in Balance.',
+      'Die Hot Stone Massage kombiniert diese Technik mit warmen Basaltsteinen, die gezielt auf den Körper gelegt werden. Die gespeicherte Wärme dringt tief in die Muskulatur ein und sorgt für ein intensives Gefühl von Ruhe und Geborgenheit.',
+      'Verwendet wird dabei hochwertiges, warmes Öl, das die Haut pflegt und die Entspannung zusätzlich vertieft.',
+      'Ergebnis: Spürbar gelöste Muskeln, tiefe Entspannung und ein rundum harmonisches Körpergefühl – ideal, um den Alltag hinter sich zu lassen.'
+    ],
+    'Kopf-Nacken-Rückenmassage': [
+      'Verspannungen im Nacken- und Rückenbereich gehören zu den häufigsten Beschwerden im Alltag – verursacht durch Stress, einseitige Belastung oder langes Sitzen. Diese Massage löst gezielt muskuläre Spannungen im Nacken-, Schulter- und Rückenbereich und sorgt für eine spürbare Entlastung.',
+      'Durch sanfte, fließende Bewegungen und den Einsatz von warmem Öl werden Verspannungen gelockert und die Durchblutung gefördert. Die wohltuende Wärme der Hot Stones dringt tief in die Muskulatur ein und unterstützt die Entspannung zusätzlich.',
+      'Ideal bei Verspannungen durch sitzende Tätigkeiten oder einseitige Belastungen – für mehr Beweglichkeit und innere Ruhe.',
+      'Ergebnis: Ein gelöster Rücken, entspannter Nacken und ein klarer Kopf – für ein rundum leichtes und befreites Körpergefühl.'
     ]
   }
   
@@ -234,12 +306,20 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
   } else if (categoryId === 3) {
     // Massagen
     const durationMap: { [key: string]: string } = {
-      'Nacken-Massage': '30 Min',
-      'Entspannungsmassage mit Hot Stone': '90 Min',
-      'Kopf-Nacken-Rückenmassage': '60 Min',
-      'Lymphdrainage-Massage': '45 Min'
+      'Nacken-Massage': '15 Min',
+      'Entspannungsmassage mit Hot Stone': '45 Min',
+      'Kopf-Nacken-Rückenmassage': '30 Min'
     }
     return durationMap[treatmentName] || '60 Min'
+  } else if (categoryId === 5) {
+    // Augenbrauenkorrektur
+    const durationMap: { [key: string]: string } = {
+      'Augenbrauenkorrektur (Zupfen oder Waxing)': '15 Min',
+      'Augenbrauen färben': '15 Min',
+      'Wimpern färben': '15 Min',
+      'Augenbrauen & Wimpern Kombipaket': '30 Min'
+    }
+    return durationMap[treatmentName] || '15 Min'
   }
   return '60 Min'
 }
@@ -250,10 +330,10 @@ const treatments = [
     title: 'Gesichtsbehandlung',
     subtitle: 'Professionelle Gesichtspflege',
     description: 'Unsere professionellen Gesichtsbehandlungen für gesunde und strahlende Haut.',
-    fullDescription: 'Unsere Gesichtsbehandlungen umfassen eine umfassende Hautanalyse, professionelle Reinigung, sanftes Peeling und intensive Pflege. Wir verwenden hochwertige Produkte und moderne Techniken, um Ihre Haut optimal zu versorgen und zu verwöhnen.',
+    fullDescription: 'Unsere hochqualitative Gesichtsbehandlung pflegt und revitalisiert die Haut mit einer Maske und optionalen Seren. Sie hinterlässt ein strahlendes, erfrischtes und verjüngtes Hautbild.',
     icon: Heart,
-    duration: '60-90 Min',
-    price: 'ab 65€',
+    duration: '45-60 Min',
+    price: 'ab 49€',
     benefits: [
       'Professionelle Hautanalyse',
       'Tiefenreinigung',
@@ -319,7 +399,7 @@ const treatments = [
     title: 'Apparative Behandlungen',
     subtitle: 'Moderne Technologie für optimale Ergebnisse',
     description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung.',
-    fullDescription: 'Unsere apparativen Behandlungen nutzen modernste Technologie für intensive Hautverbesserung. Mit professionellen Geräten erzielen wir optimale Ergebnisse für Ihre Haut.',
+    fullDescription: 'Eine apparative Gesichtsbehandlung im Kosmetikstudio verwendet modernste Technologien, um spezielle Hautprobleme zu behandeln. Je nach Bedarf können verschiedene Geräte eingesetzt werden, um die Haut zu reinigen, zu glätten oder zu straffen.',
     icon: Sparkles,
     duration: '45-90 Min',
     price: 'ab 75€',
@@ -388,10 +468,10 @@ const treatments = [
     title: 'Massagen',
     subtitle: 'Entspannung und Wohlbefinden',
     description: 'Entspannende Massagen für Körper und Seele.',
-    fullDescription: 'Unsere Massagen dienen der Entspannung und dem Wohlbefinden. Sie verbessern die Durchblutung, entspannen die Muskulatur und fördern das allgemeine Wohlbefinden.',
+    fullDescription: 'Eine entspannende Massage ist eine wahre Wohltat für den Körper und Geist. Die Massage ist eine der ältesten Formen der Heilung und ein großartiger Weg, um schnell in einen entspannten Geisteszustand zu gelangen.',
     icon: Heart,
-    duration: '30-90 Min',
-    price: 'ab 35€',
+    duration: '15-45 Min',
+    price: 'ab 25€',
     benefits: [
       'Entspannung der Muskulatur',
       'Verbesserte Durchblutung',
@@ -418,27 +498,22 @@ const treatments = [
     ],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage', 'Lymphdrainage'],
+    features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage'],
     treatments: [
       {
         name: 'Nacken-Massage',
         description: 'Entspannende Massage für Nacken und Schultern',
-        price: '35€'
+        price: '25€'
       },
       {
         name: 'Entspannungsmassage mit Hot Stone',
         description: 'Wohltuende Massage mit warmen Steinen für tiefe Entspannung',
-        price: '65€'
+        price: '59€'
       },
       {
         name: 'Kopf-Nacken-Rückenmassage',
         description: 'Umfassende Massage für Kopf, Nacken und Rücken',
-        price: '75€'
-      },
-      {
-        name: 'Lymphdrainage-Massage',
-        description: 'Spezielle Massage zur Entstauung und Entgiftung',
-        price: '55€'
+        price: '39€'
       }
     ]
   },
@@ -488,6 +563,65 @@ const treatments = [
         name: 'Für Männer',
         description: 'Spezielle Preise für männliche Kunden',
         price: 'Wangen 25€, Brust 60€, Schultern 45€, Achseln 40€, Arme komplett 75€, Unterer Rücken 55€, Rücken 80€, Bauch 65€, Unterschenkel 75€, Oberschenkel 65€, Beine komplett 110€'
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: 'Augenbrauenkorrektur',
+    subtitle: 'Perfekte Augenbrauen & Wimpern',
+    description: 'Professionelle Augenbrauen- und Wimpernbehandlungen für einen ausdrucksstarken Blick.',
+    fullDescription: 'Perfekt geformte Augenbrauen und gepflegte Wimpern verleihen dem Gesicht Ausdruck, Definition und Frische. Ob durch Zupfen, Waxing oder Färben – jede Behandlung wird individuell auf Ihre Gesichtsform und Ihren Stil abgestimmt.',
+    icon: Eye,
+    duration: '15-30 Min',
+    price: 'ab 15€',
+    benefits: [
+      'Individuelle Formgebung',
+      'Professionelle Färbung',
+      'Mehr Ausdruck',
+      'Definition',
+      'Langanhaltend',
+      'Zeitersparnis'
+    ],
+    process: [
+      'Beratung zur Form und Farbe',
+      'Individuelle Anpassung',
+      'Professionelle Behandlung',
+      'Qualitätskontrolle',
+      'Pflegetipps',
+      'Nachsorge-Empfehlungen'
+    ],
+    suitableFor: [
+      'Alle Gesichtsformen',
+      'Helle Brauen/Wimpern',
+      'Mehr Definition',
+      'Natürlicher Look',
+      'Zeitersparnis',
+      'Besondere Anlässe'
+    ],
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    features: ['Zupfen', 'Waxing', 'Färben', 'Kombipaket'],
+    treatments: [
+      {
+        name: 'Augenbrauenkorrektur (Zupfen oder Waxing)',
+        description: 'Professionelle Formgebung durch Zupfen oder Waxing',
+        price: '15€'
+      },
+      {
+        name: 'Augenbrauen färben',
+        description: 'Intensive Farbe für mehr Definition',
+        price: '15€'
+      },
+      {
+        name: 'Wimpern färben',
+        description: 'Natürlich intensive Wimpern ohne Mascara',
+        price: '15€'
+      },
+      {
+        name: 'Augenbrauen & Wimpern Kombipaket',
+        description: 'Zupfen und Färben – Komplettpaket zum Vorteilspreis',
+        price: '40€'
       }
     ]
   }

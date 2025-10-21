@@ -51,16 +51,15 @@ const treatments = [
     subtitle: 'Entspannung und Wohlbefinden',
     description: 'Entspannende Massagen für Körper und Seele. Zur Verbesserung der Durchblutung und Entspannung der Muskulatur.',
     icon: Heart,
-    features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage', 'Lymphdrainage'],
+    features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    duration: '30-90 Min',
-    price: 'ab 35€',
+    duration: '15-45 Min',
+    price: 'ab 25€',
     treatments: [
       'Nacken-Massage',
       'Entspannungsmassage mit Hot Stone',
-      'Kopf-Nacken-Rückenmassage',
-      'Lymphdrainage-Massage'
+      'Kopf-Nacken-Rückenmassage'
     ]
   },
   {
@@ -77,6 +76,24 @@ const treatments = [
     treatments: [
       'Für Frauen: Gesicht komplett 40€, Kinn 15€, Wangen 25€, Hals 25€, Nacken 35€, Schultern 40€, Achseln 35€, Brust 30€, Arme komplett 60€, Unterarm 35€, Hände 20€, Rücken 50€, Bikinizone 45€, Beine komplett 99€, Füße 20€',
       'Für Männer: Wangen 25€, Brust 60€, Schultern 45€, Achseln 40€, Arme komplett 75€, Rücken 80€, Bauch 65€, Beine komplett 110€'
+    ]
+  },
+  {
+    id: 5,
+    title: 'Augenbrauenkorrektur',
+    subtitle: 'Perfekte Augenbrauen & Wimpern',
+    description: 'Professionelle Augenbrauen- und Wimpernbehandlungen für einen ausdrucksstarken Blick.',
+    icon: Eye,
+    features: ['Zupfen', 'Waxing', 'Färben', 'Kombipaket'],
+    color: 'from-gray-600 to-gray-700',
+    bgColor: 'from-gray-50 to-gray-100',
+    duration: '15-30 Min',
+    price: 'ab 15€',
+    treatments: [
+      'Augenbrauenkorrektur (Zupfen oder Waxing)',
+      'Augenbrauen färben',
+      'Wimpern färben',
+      'Augenbrauen & Wimpern Kombipaket'
     ]
   }
 ]
@@ -103,7 +120,7 @@ export default function TreatmentsSection() {
         </motion.div>
 
         {/* Treatments Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
           {treatments.map((treatment, index) => (
             <motion.div
               key={treatment.id}
@@ -111,7 +128,7 @@ export default function TreatmentsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group"
+              className={`group ${index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
             >
               <div className={`h-full bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 card-hover`}>
                 {/* Icon */}
@@ -149,7 +166,8 @@ export default function TreatmentsSection() {
                         treatment.id === 1 ? '/gesichtsbehandlung' :
                         treatment.id === 2 ? '/apparative-behandlungen' :
                         treatment.id === 3 ? '/massagen' :
-                        '/dauerhafte-haarentfernung'
+                        treatment.id === 4 ? '/dauerhafte-haarentfernung' :
+                        '/augenbrauenkorrektur'
                       }
                       className={`inline-flex items-center space-x-2 text-white bg-gradient-to-r ${treatment.color} hover:shadow-lg px-6 py-3 rounded-xl font-semibold transition-all duration-300 group-hover:scale-105`}
                     >
