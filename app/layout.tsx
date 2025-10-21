@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import CookieConsent from '@/components/CookieConsent'
+import FloatingBookingButton from '@/components/FloatingBookingButton'
 
 export const metadata: Metadata = {
   title: 'BeautySkin - Ihr Kosmetikstudio in Berlin',
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className="antialiased">
         {children}
         <CookieConsent />
+        <FloatingBookingButton />
       </body>
     </html>
   )
