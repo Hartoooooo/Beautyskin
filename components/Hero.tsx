@@ -39,9 +39,9 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Lassen Sie sich von unserem professionellen Behandlungsspektrum inspirieren! 
-                Wir beraten Sie gerne individuell zu Ihrer passenden Kosmetik-Behandlung 
-                und Produkten in unserem Kosmetikstudio in Berlin.
+                Entdecken Sie unsere vielfältigen professionellen Dienstleistungen und lassen Sie sich von unserem Behandlungsangebot begeistern! 
+                Unser erfahrenes Team steht Ihnen zur individuellen Beratung bezüglich Ihrer persönlichen Schönheitspflege und hochwertigen Produkten 
+                in unserem erstklassigen Kosmetikstudio in Friedrichshain, Berlin, zur Verfügung.
               </motion.p>
             </div>
 
@@ -58,11 +58,7 @@ export default function Hero() {
               </div>
               <div className="space-y-2 text-gray-600">
                 <div className="flex justify-between">
-                  <span>Mo–Do</span>
-                  <span className="font-medium">10:00–18:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Freitag</span>
+                  <span>Mo–Fr</span>
                   <span className="font-medium">10:00–18:00</span>
                 </div>
                 <div className="flex justify-between">

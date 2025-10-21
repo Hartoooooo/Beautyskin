@@ -9,6 +9,7 @@ import { Heart, Sparkles, Eye, Calendar, User, Mail, Phone, MessageSquare, Arrow
 interface FormData {
   category: string
   treatments: string[]
+  treatmentsByCategory: { [key: string]: string[] }
   firstName: string
   lastName: string
   email: string
@@ -345,6 +346,7 @@ export default function TerminPage() {
   const [formData, setFormData] = useState<FormData>({
     category: '',
     treatments: [],
+    treatmentsByCategory: {},
     firstName: '',
     lastName: '',
     email: '',
@@ -355,8 +357,14 @@ export default function TerminPage() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [expandedTreatment, setExpandedTreatment] = useState<number | null>(null)
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
 
   const selectedCategory = treatmentCategories.find(cat => cat.id === formData.category)
+
+  // Hole gespeicherte Behandlungen für eine Kategorie
+  const getTreatmentsForCategory = (categoryId: string) => {
+    return formData.treatmentsByCategory[categoryId] || []
+  }
 
   // Berechne die Gesamtdauer der ausgewählten Behandlungen
   const getTotalDuration = () => {
@@ -418,23 +426,33 @@ export default function TerminPage() {
   const availableTimeSlots = getAvailableTimeSlots()
 
   const handleCategorySelect = (categoryId: string) => {
-    setFormData({ ...formData, category: categoryId, treatments: [] })
+    // Lade zuvor gespeicherte Behandlungen für diese Kategorie
+    const savedTreatments = formData.treatmentsByCategory[categoryId] || []
+    setFormData({ 
+      ...formData, 
+      category: categoryId, 
+      treatments: savedTreatments 
+    })
     setStep(2)
   }
 
   const handleTreatmentToggle = (treatmentName: string) => {
     const currentTreatments = formData.treatments
-    if (currentTreatments.includes(treatmentName)) {
-      setFormData({
-        ...formData,
-        treatments: currentTreatments.filter(t => t !== treatmentName)
-      })
-    } else {
-      setFormData({
-        ...formData,
-        treatments: [...currentTreatments, treatmentName]
-      })
+    const newTreatments = currentTreatments.includes(treatmentName)
+      ? currentTreatments.filter(t => t !== treatmentName)
+      : [...currentTreatments, treatmentName]
+    
+    // Speichere die Behandlungen für die aktuelle Kategorie
+    const updatedTreatmentsByCategory = {
+      ...formData.treatmentsByCategory,
+      [formData.category]: newTreatments
     }
+    
+    setFormData({
+      ...formData,
+      treatments: newTreatments,
+      treatmentsByCategory: updatedTreatmentsByCategory
+    })
   }
 
   const toggleExpanded = (index: number) => {
@@ -452,6 +470,7 @@ export default function TerminPage() {
     setFormData({
       category: '',
       treatments: [],
+      treatmentsByCategory: {},
       firstName: '',
       lastName: '',
       email: '',
@@ -537,25 +556,62 @@ export default function TerminPage() {
                     </h2>
                     
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {treatmentCategories.map((category) => (
-                        <motion.button
-                          key={category.id}
-                          onClick={() => handleCategorySelect(category.id)}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className={`bg-gradient-to-br ${category.id === formData.category ? 'ring-4 ring-gray-300' : ''} from-gray-50 to-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-left`}
-                        >
-                          <div className={`w-16 h-16 bg-gradient-to-br ${category.color} rounded-2xl flex items-center justify-center mb-4`}>
-                            <category.icon className="h-8 w-8 text-white" />
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">
-                            {category.name}
-                          </h3>
-                          <p className="text-gray-600 text-sm">
-                            {category.treatments.length} Behandlungen verfügbar
-                          </p>
-                        </motion.button>
-                      ))}
+                      {treatmentCategories.map((category) => {
+                        const selectedCount = getTreatmentsForCategory(category.id).length
+                        const selectedTreatments = getTreatmentsForCategory(category.id)
+                        
+                        return (
+                          <motion.button
+                            key={category.id}
+                            onClick={() => handleCategorySelect(category.id)}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className={`relative bg-gradient-to-br ${category.id === formData.category ? 'ring-4 ring-gray-300' : ''} from-gray-50 to-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-left`}
+                          >
+                            {selectedCount > 0 && (
+                              <div 
+                                className="absolute top-4 right-4 w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg group/badge z-10"
+                                onMouseEnter={(e) => {
+                                  e.stopPropagation()
+                                  setHoveredCategory(category.id)
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.stopPropagation()
+                                  setHoveredCategory(null)
+                                }}
+                              >
+                                <span className="text-white font-bold text-sm">{selectedCount}</span>
+                                
+                                {/* Tooltip */}
+                                {hoveredCategory === category.id && (
+                                  <div className="absolute top-12 right-0 w-64 bg-white rounded-xl shadow-2xl p-4 border-2 border-green-500 z-50">
+                                    <div className="absolute -top-2 right-3 w-4 h-4 bg-white border-l-2 border-t-2 border-green-500 transform rotate-45"></div>
+                                    <h4 className="font-bold text-gray-900 mb-2 text-sm">Ausgewählte Behandlungen:</h4>
+                                    <ul className="space-y-1">
+                                      {selectedTreatments.map((treatment, idx) => (
+                                        <li key={idx} className="text-xs text-gray-700 flex items-start">
+                                          <Check className="h-3 w-3 text-green-500 mr-1 mt-0.5 flex-shrink-0" />
+                                          <span>{treatment}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                            
+                            <div className={`w-16 h-16 bg-gradient-to-br ${category.color} rounded-2xl flex items-center justify-center mb-4`}>
+                              <category.icon className="h-8 w-8 text-white" />
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">
+                              {category.name}
+                            </h3>
+                            <p className="text-gray-600 text-sm">
+                              {category.treatments.length} Behandlungen verfügbar
+                            </p>
+                          </motion.button>
+                        )
+                      })}
                     </div>
                   </motion.div>
                 )}
@@ -586,7 +642,7 @@ export default function TerminPage() {
                             >
                               <div className="flex items-center space-x-4">
                                 {formData.treatments.includes(treatment.name) && (
-                                  <div className="w-8 h-8 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0">
                                     <Check className="h-5 w-5 text-white" />
                                   </div>
                                 )}
@@ -703,7 +759,7 @@ export default function TerminPage() {
                         className="flex-1 bg-gray-100 text-gray-700 hover:bg-gray-200 px-6 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
                       >
                         <ArrowLeft className="h-5 w-5" />
-                        <span>Zurück</span>
+                        <span>Weitere Behandlung wählen</span>
                       </button>
                       <button
                         onClick={() => setStep(3)}
