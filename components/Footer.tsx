@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Instagram, Facebook, Clock } from 'lucide-react'
+import WhatsAppIcon from './WhatsAppIcon'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -52,6 +53,15 @@ export default function Footer() {
                   aria-label="BeautySkin auf Facebook"
                 >
                   <Facebook className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://wa.me/message/G5TR7ZJCEOXDO1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors duration-300"
+                  aria-label="BeautySkin auf WhatsApp"
+                >
+                  <WhatsAppIcon className="h-5 w-5" />
                 </a>
               </div>
             </div>
