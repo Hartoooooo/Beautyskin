@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Star, Clock, Shield } from 'lucide-react'
+import WhatsAppIcon from './WhatsAppIcon'
 
 export default function Hero() {
   return (
@@ -83,9 +84,15 @@ export default function Hero() {
                 <span>Termin anfragen</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <button className="btn-secondary">
-                Kontakt aufnehmen
-              </button>
+              <a 
+                href="https://wa.me/message/G5TR7ZJCEOXDO1" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-secondary flex items-center justify-center space-x-2 group"
+              >
+                <WhatsAppIcon className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span>Kontakt aufnehmen</span>
+              </a>
             </motion.div>
 
             {/* Trust Indicators */}
