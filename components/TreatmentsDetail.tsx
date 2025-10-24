@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Clock, Star, CheckCircle, Sparkles, Heart, Eye, ChevronDown, ChevronUp } from 'lucide-react'
+import AddTreatmentButton from './AddTreatmentButton'
 
 // Function to get specific benefits for each treatment
 const getTreatmentBenefits = (treatmentName: string) => {
@@ -743,10 +744,14 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
 
                     {/* CTA */}
                     <div className="pt-4">
-                      <a href="/termin" className={`btn-primary bg-gradient-to-r ${treatment.color}`}>
-                        Termin anfragen
-                        <ArrowRight className="h-5 w-5 ml-2" />
-                      </a>
+                      <AddTreatmentButton 
+                        treatment={{
+                          id: `${treatment.id}-main`,
+                          name: treatment.title,
+                          price: treatment.price
+                        }}
+                        className="w-full sm:w-auto"
+                      />
                     </div>
                   </div>
                 </div>
@@ -904,9 +909,14 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                           <div className={`w-32 h-32 bg-gradient-to-br ${treatment.color} rounded-full flex items-center justify-center`}>
                             <treatment.icon className="h-16 w-16 text-white" />
                           </div>
-                          <a href="/termin" className={`w-full bg-gradient-to-r ${treatment.color} text-white hover:shadow-lg px-6 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 block text-center`}>
-                            Termin anfragen
-                          </a>
+                          <AddTreatmentButton 
+                            treatment={{
+                              id: `${treatment.id}-${index}`,
+                              name: subTreatment.name,
+                              price: subTreatment.price
+                            }}
+                            className="w-full"
+                          />
                         </div>
                       </div>
                     </motion.div>
@@ -1105,9 +1115,14 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                           </span>
                         </div>
 
-                        <button className={`w-full bg-gradient-to-r ${treatment.color} text-white hover:shadow-lg px-4 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105`}>
-                          Termin anfragen
-                        </button>
+                        <AddTreatmentButton 
+                          treatment={{
+                            id: `${treatment.id}-sub-${index}`,
+                            name: subTreatment.name,
+                            price: subTreatment.price
+                          }}
+                          className="w-full"
+                        />
                       </div>
                     </motion.div>
                   ))}

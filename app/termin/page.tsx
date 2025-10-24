@@ -1,10 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, Sparkles, Eye, Calendar, User, Mail, Phone, MessageSquare, ArrowRight, ArrowLeft, Check, Clock, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { useTreatmentCart } from '@/contexts/TreatmentCartContext'
+import { useSearchParams } from 'next/navigation'
 
 interface FormData {
   category: string
@@ -342,6 +344,10 @@ const treatmentCategories = [
 ]
 
 export default function TerminPage() {
+  const searchParams = useSearchParams()
+  const { selectedTreatments, clearTreatments } = useTreatmentCart()
+  const skipToStep3 = searchParams.get('skip') === '3'
+  
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
     category: '',
@@ -358,6 +364,40 @@ export default function TerminPage() {
   const [submitted, setSubmitted] = useState(false)
   const [expandedTreatment, setExpandedTreatment] = useState<number | null>(null)
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
+
+  // Behandlungen aus Cart laden und direkt zu Step 3 springen
+  useEffect(() => {
+    if (skipToStep3 && selectedTreatments.length > 0) {
+      // Gruppiere Behandlungen nach Kategorie basierend auf dem Namen
+      const treatmentsByCategory: { [key: string]: string[] } = {}
+      
+      selectedTreatments.forEach(treatment => {
+        // Finde die passende Kategorie für diese Behandlung
+        for (const category of treatmentCategories) {
+          const matchingTreatment = category.treatments.find(t => t.name === treatment.name)
+          if (matchingTreatment) {
+            if (!treatmentsByCategory[category.id]) {
+              treatmentsByCategory[category.id] = []
+            }
+            treatmentsByCategory[category.id].push(treatment.name)
+            break
+          }
+        }
+      })
+
+      // Setze die erste Kategorie als aktive Kategorie
+      const firstCategory = Object.keys(treatmentsByCategory)[0]
+      if (firstCategory) {
+        setFormData(prev => ({
+          ...prev,
+          category: firstCategory,
+          treatments: treatmentsByCategory[firstCategory] || [],
+          treatmentsByCategory: treatmentsByCategory
+        }))
+        setStep(3)
+      }
+    }
+  }, [skipToStep3, selectedTreatments])
 
   const selectedCategory = treatmentCategories.find(cat => cat.id === formData.category)
 
