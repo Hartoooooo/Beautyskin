@@ -8,7 +8,7 @@ export default function CookiesPage() {
     <main className="min-h-screen">
       <Header />
       <div>
-        <section className="pt-20 pb-20 bg-white">
+        <section className="pt-20 pb-20 bg-[#e9dbd2]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-8">Cookie-Richtlinie</h1>
             
@@ -50,7 +50,7 @@ export default function CookiesPage() {
                         Aktionen gesetzt, wie z.B. das Festlegen Ihrer Datenschutzeinstellungen.
                       </p>
                       
-                      <div className="bg-white rounded-lg p-4 mt-4">
+                      <div className="bg-[#e9dbd2] rounded-lg p-4 mt-4">
                         <table className="w-full text-sm">
                           <thead>
                             <tr className="border-b border-gray-200">
@@ -81,7 +81,7 @@ export default function CookiesPage() {
                         welche Seiten am beliebtesten sind und wie Besucher sich auf der Website bewegen.
                       </p>
                       
-                      <div className="bg-white rounded-lg p-4 mt-4">
+                      <div className="bg-[#e9dbd2] rounded-lg p-4 mt-4">
                         <table className="w-full text-sm">
                           <thead>
                             <tr className="border-b border-gray-200">

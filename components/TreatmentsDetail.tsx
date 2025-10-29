@@ -658,7 +658,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
   return (
     <div>
       {/* Hero Section */}
-      <section className={`bg-gradient-to-br ${treatment.bgColor} via-white ${treatment.bgColor} pt-20 pb-20`}>
+      <section className={`bg-gradient-to-br ${treatment.bgColor} via-[#e9dbd2] ${treatment.bgColor} pt-20 pb-20`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -677,7 +677,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
       </section>
 
       {/* Treatment Detail */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#e9dbd2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {treatment.id !== 1 && treatment.id !== 2 && treatment.id !== 3 && (

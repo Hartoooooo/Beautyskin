@@ -154,7 +154,7 @@ export default function Footer() {
               <div className="text-gray-400 text-sm">
                 © {currentYear} BeautySkin. Alle Rechte vorbehalten.
               </div>
-              <div className="text-gray-500 text-xs mt-1">
+              <div className="text-gray-400 text-xs mt-1">
                 Umsetzung von Neoklar<sup className="text-[0.6em]">TM</sup>
               </div>
             </div>

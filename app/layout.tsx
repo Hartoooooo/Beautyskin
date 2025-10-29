@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#475569" />
+        <meta name="theme-color" content="#454545" />
       </head>
       <body className="antialiased">
         <ClientProviders>

@@ -5,7 +5,7 @@ import { Award, Heart, Star, Users } from 'lucide-react'
 
 export default function AboutSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-primary-50">
+    <section className="py-20 bg-[#e9dbd2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -30,7 +30,7 @@ export default function AboutSection() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               {/* Placeholder Image */}
-              <div className="aspect-[4/5] bg-gradient-to-br from-primary-100 via-primary-50 to-white flex items-center justify-center">
+              <div className="aspect-[4/5] bg-gradient-to-br from-primary-100 via-primary-50 to-[#e9dbd2] flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-40 h-40 mx-auto bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center mb-6 shadow-xl">
                     <Users className="h-20 w-20 text-white" />
@@ -50,7 +50,7 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6"
+              className="absolute -bottom-6 -right-6 bg-[#e9dbd2] rounded-2xl shadow-xl p-6"
             >
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center">

@@ -6,7 +6,7 @@ import WhatsAppIcon from './WhatsAppIcon'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-primary-50 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-[#e9dbd2] to-primary-50 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
@@ -48,7 +48,7 @@ export default function Hero() {
 
             {/* Opening Hours */}
             <motion.div 
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg"
+              className="bg-[#e9dbd2]/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -122,8 +122,8 @@ export default function Hero() {
           >
             <div className="relative z-10">
               <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary-100 to-primary-200 p-8 shadow-2xl">
-                <div className="h-full bg-white rounded-2xl shadow-lg overflow-hidden">
-                  <div className="h-full bg-gradient-to-br from-primary-50 to-white flex items-center justify-center">
+                <div className="h-full bg-[#e9dbd2] rounded-2xl shadow-lg overflow-hidden">
+                  <div className="h-full bg-gradient-to-br from-primary-50 to-[#e9dbd2] flex items-center justify-center">
                     <div className="text-center space-y-4">
                       <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
                         <span className="text-white text-4xl font-bold">BS</span>

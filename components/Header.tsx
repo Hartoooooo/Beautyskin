@@ -44,7 +44,7 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white shadow-md'
+      isScrolled ? 'bg-[#e9dbd2]/95 backdrop-blur-md shadow-lg' : 'bg-[#e9dbd2] shadow-md'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -75,7 +75,7 @@ export default function Header() {
               </button>
               
               {/* Dropdown Menu */}
-              <div className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 w-80 bg-white rounded-2xl shadow-2xl py-4 px-2 transition-all duration-300 origin-top ${
+              <div className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 w-80 bg-[#e9dbd2] rounded-2xl shadow-2xl py-4 px-2 transition-all duration-300 origin-top ${
                 isBehandlungenOpen 
                   ? 'opacity-100 scale-100 pointer-events-auto' 
                   : 'opacity-0 scale-95 pointer-events-none'
@@ -85,7 +85,7 @@ export default function Header() {
                     key={behandlung.name}
                     href={behandlung.href}
                     onClick={() => setIsBehandlungenOpen(false)}
-                    className="block px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors duration-200 group"
+                    className="block px-6 py-3 rounded-xl hover:bg-[#e9dbd2] transition-colors duration-200 group"
                   >
                     <span className="text-gray-700 font-medium group-hover:text-primary-600 transition-colors duration-200 font-vogue">
                       {behandlung.name}
@@ -127,7 +127,7 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#e9dbd2] rounded-lg shadow-lg">
               {navigation.map((item) => (
                 <Link
                   key={item.name}

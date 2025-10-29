@@ -22,8 +22,8 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 233, 219, 210;
+  --background-end-rgb: 233, 219, 210;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -74,16 +74,16 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #e9dbd2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #64748b;
+  background: #454545;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #303030;
 }
 
 /* Smooth scrolling */
@@ -94,12 +94,12 @@ html {
 /* Custom components */
 .glass-effect {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(233, 219, 210, 0.9);
+  border: 1px solid rgba(233, 219, 210, 0.2);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #475569, #334155);
+  background: linear-gradient(135deg, #454545, #303030);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

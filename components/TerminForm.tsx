@@ -524,7 +524,7 @@ export default function TerminForm() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 pt-32 pb-20">
+      <section className="bg-gradient-to-br from-gray-50 via-[#e9dbd2] to-gray-50 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -544,7 +544,7 @@ export default function TerminForm() {
       </section>
 
       {/* Form Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#e9dbd2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {!submitted ? (
             <>
@@ -560,8 +560,8 @@ export default function TerminForm() {
                       <div className="flex flex-col items-center">
                         <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
                           step >= stepItem.number 
-                            ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white' 
-                            : 'bg-gray-200 text-gray-400'
+                            ? 'bg-[#454545] text-white' 
+                            : 'bg-[#454545]/30 text-[#454545]'
                         }`}>
                           {step > stepItem.number ? <Check className="h-6 w-6" /> : stepItem.number}
                         </div>
@@ -569,7 +569,7 @@ export default function TerminForm() {
                       </div>
                       {stepItem.number < 3 && (
                         <div className={`w-16 h-1 mx-2 mb-6 transition-all duration-300 ${
-                          step > stepItem.number ? 'bg-gradient-to-r from-gray-600 to-gray-700' : 'bg-gray-200'
+                          step > stepItem.number ? 'bg-[#454545]' : 'bg-[#454545]/30'
                         }`} />
                       )}
                     </div>
@@ -721,7 +721,7 @@ export default function TerminForm() {
                                 className="overflow-hidden"
                               >
                                 <div className="px-6 pb-6 pt-2 border-t border-gray-200">
-                                  <div className="bg-white/70 rounded-xl p-4 space-y-4">
+                                  <div className="bg-[#e9dbd2]/70 rounded-xl p-4 space-y-4">
                                     {/* Beschreibung */}
                                     <div className="flex items-start space-x-2">
                                       <Info className="h-5 w-5 text-gray-600 mt-0.5 flex-shrink-0" />
@@ -968,7 +968,7 @@ export default function TerminForm() {
                                       className={`py-2 px-3 rounded-lg font-medium text-sm transition-all duration-200 ${
                                         formData.time === slot
                                           ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white shadow-lg'
-                                          : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                                          : 'bg-[#e9dbd2] text-gray-700 hover:bg-gray-100 border border-gray-200'
                                       }`}
                                     >
                                       {slot}

@@ -101,7 +101,7 @@ const treatments = [
 
 export default function TreatmentsSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-[#e9dbd2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -153,7 +153,7 @@ export default function TreatmentsSection() {
                     {treatment.features.map((feature, featureIndex) => (
                       <span
                         key={featureIndex}
-                        className="px-3 py-1 bg-white/70 rounded-full text-sm font-medium text-gray-700"
+                        className="px-3 py-1 bg-[#e9dbd2]/70 rounded-full text-sm font-medium text-gray-700"
                       >
                         {feature}
                       </span>
@@ -190,14 +190,14 @@ export default function TreatmentsSection() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-white rounded-3xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="bg-[#454545] rounded-3xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-white mb-4">
               Alle Behandlungen entdecken
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-white mb-6">
               Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
             </p>
-            <Link href="/behandlungen" className="btn-primary inline-flex items-center space-x-2">
+            <Link href="/behandlungen" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
               <span>Alle Behandlungen ansehen</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
