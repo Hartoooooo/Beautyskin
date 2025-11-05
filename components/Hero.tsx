@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Star, Clock, Shield } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -122,16 +123,14 @@ export default function Hero() {
           >
             <div className="relative z-10">
               <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary-100 to-primary-200 p-8 shadow-2xl">
-                <div className="h-full bg-[#e9dbd2] rounded-2xl shadow-lg overflow-hidden">
-                  <div className="h-full bg-gradient-to-br from-primary-50 to-[#e9dbd2] flex items-center justify-center">
-                    <div className="text-center space-y-4">
-                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
-                        <span className="text-white text-4xl font-bold">BS</span>
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900">BeautySkin</h3>
-                      <p className="text-gray-600">Professionelle Kosmetik</p>
-                    </div>
-                  </div>
+                <div className="h-full bg-[#e9dbd2] rounded-2xl shadow-lg overflow-hidden relative">
+                  <Image
+                    src="/DSC_0435.JPG"
+                    alt="BeautySkin Kosmetikstudio - Professionelle Kosmetikbehandlungen"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
             </div>

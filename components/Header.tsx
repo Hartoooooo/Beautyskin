@@ -18,15 +18,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsBehandlungenOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -65,29 +56,37 @@ export default function Header() {
             </Link>
             
             {/* Behandlungen Dropdown */}
-            <div className="relative" ref={dropdownRef}>
+            <div 
+              className="relative" 
+              ref={dropdownRef}
+              onMouseEnter={() => setIsBehandlungenOpen(true)}
+              onMouseLeave={() => setIsBehandlungenOpen(false)}
+            >
               <button
-                onClick={() => setIsBehandlungenOpen(!isBehandlungenOpen)}
                 className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
               >
                 <span>Behandlungen</span>
-                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isBehandlungenOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-4 w-4 transition-transform duration-300 ease-in-out ${isBehandlungenOpen ? 'rotate-180' : ''}`} />
               </button>
               
+              {/* Unsichtbare Brücke zwischen Button und Dropdown */}
+              <div className={`absolute top-full left-1/2 -translate-x-1/2 w-80 h-2 transition-all duration-300 ${
+                isBehandlungenOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`} />
+              
               {/* Dropdown Menu */}
-              <div className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 w-80 bg-[#e9dbd2] rounded-2xl shadow-2xl py-4 px-2 transition-all duration-300 origin-top ${
+              <div className={`absolute top-full left-1/2 -translate-x-1/2 w-80 bg-[#e9dbd2] rounded-2xl shadow-2xl py-4 px-2 transition-all duration-300 ease-in-out origin-top ${
                 isBehandlungenOpen 
-                  ? 'opacity-100 scale-100 pointer-events-auto' 
-                  : 'opacity-0 scale-95 pointer-events-none'
-              }`}>
+                  ? 'opacity-100 scale-100 pointer-events-auto translate-y-0' 
+                  : 'opacity-0 scale-95 pointer-events-none -translate-y-2'
+              }`} style={{ marginTop: '8px', paddingTop: '12px' }}>
                 {behandlungen.map((behandlung, index) => (
                   <Link
                     key={behandlung.name}
                     href={behandlung.href}
-                    onClick={() => setIsBehandlungenOpen(false)}
-                    className="block px-6 py-3 rounded-xl hover:bg-[#e9dbd2] transition-colors duration-200 group"
+                    className="block px-6 py-3 rounded-xl hover:bg-[#454545]/10 transition-all duration-200 group"
                   >
-                    <span className="text-gray-700 font-medium group-hover:text-primary-600 transition-colors duration-200 font-vogue">
+                    <span className="text-gray-700 font-medium group-hover:text-[#454545] transition-colors duration-200 font-vogue">
                       {behandlung.name}
                     </span>
                   </Link>

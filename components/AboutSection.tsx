@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Award, Heart, Star, Users } from 'lucide-react'
+import Image from 'next/image'
 
 export default function AboutSection() {
   return (
@@ -29,14 +30,15 @@ export default function AboutSection() {
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              {/* Placeholder Image */}
-              <div className="aspect-[4/5] bg-gradient-to-br from-primary-100 via-primary-50 to-[#e9dbd2] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-40 h-40 mx-auto bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center mb-6 shadow-xl">
-                    <Users className="h-20 w-20 text-white" />
-                  </div>
-                  <p className="text-gray-400 text-lg font-medium">Profilbild folgt</p>
-                </div>
+              {/* Image */}
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="/20251105_0844_Frau%20mit%20Beauty-Logo_remix_01k99ffe3fe06bc09dx1y3bdbz.png"
+                  alt="Raquel Hardel - Gründerin & Kosmetikerin bei BeautySkin"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               
               {/* Decorative Elements */}
@@ -58,7 +60,7 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Erfahrung seit</p>
-                  <p className="text-xl font-bold text-gray-900">2020</p>
+                  <p className="text-xl font-bold text-gray-900">2001</p>
                 </div>
               </div>
             </motion.div>
