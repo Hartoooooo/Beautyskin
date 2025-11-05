@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { ArrowRight, Clock, Star, CheckCircle, Sparkles, Heart, Eye, ChevronDown, ChevronUp } from 'lucide-react'
 import AddTreatmentButton from './AddTreatmentButton'
 
@@ -660,19 +661,49 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
       {/* Hero Section */}
       <section className={`bg-gradient-to-br ${treatment.bgColor} via-[#e9dbd2] ${treatment.bgColor} pt-20 pb-20`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              <span className="gradient-text">{treatment.title}</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              {treatment.fullDescription}
-            </p>
-          </motion.div>
+          {treatment.id === 4 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center space-y-6"
+            >
+              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900">
+                Dauerhafte Haarentfernung
+              </h1>
+              <p className="text-xl text-gray-700 font-medium">
+                Ice Diodenlaser für dauerhafte Ergebnisse
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 mt-8">
+                <div className="bg-white/90 rounded-xl px-6 py-3 shadow-lg">
+                  <p className="text-lg font-bold text-gray-900">Ice Diodenlaser</p>
+                </div>
+                <div className="bg-white/90 rounded-xl px-6 py-3 shadow-lg">
+                  <p className="text-lg font-bold text-gray-900">Dauerhaft</p>
+                </div>
+                <div className="bg-white/90 rounded-xl px-6 py-3 shadow-lg">
+                  <p className="text-lg font-bold text-gray-900">Schmerzarm</p>
+                </div>
+                <div className="bg-white/90 rounded-xl px-6 py-3 shadow-lg">
+                  <p className="text-lg font-bold text-gray-900">Effektiv</p>
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                <span className="gradient-text">{treatment.title}</span>
+              </h1>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                {treatment.fullDescription}
+              </p>
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -689,7 +720,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                 className="grid lg:grid-cols-2 gap-12 items-start"
               >
                 {/* Content */}
-                <div>
+                <div className="flex flex-col lg:h-[384px] lg:justify-between">
                   <div className="space-y-6">
                     {/* Header */}
                     <div className="flex items-center space-x-4 mb-6">
@@ -710,79 +741,202 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <p className="text-lg text-gray-600 leading-relaxed">
                       {treatment.fullDescription}
                     </p>
+                  </div>
 
-                    {/* Info Cards */}
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="bg-gray-50 rounded-xl p-4">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <Clock className="h-5 w-5 text-primary-600" />
-                          <span className="font-semibold text-gray-900">Behandlungsdauer</span>
+                  {/* Benefits - Bündig mit Bild unten */}
+                  <div className="mt-auto">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">Vorteile</h3>
+                    <div className="grid sm:grid-cols-2 gap-2">
+                      {treatment.benefits.map((benefit, benefitIndex) => (
+                        <div key={benefitIndex} className="flex items-center space-x-2">
+                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                          <span className="text-gray-600 text-sm">{benefit}</span>
                         </div>
-                        <p className="text-gray-600">{treatment.duration}</p>
-                      </div>
-                      <div className="bg-gray-50 rounded-xl p-4">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <Star className="h-5 w-5 text-primary-600" />
-                          <span className="font-semibold text-gray-900">Preis</span>
-                        </div>
-                        <p className="text-gray-600">{treatment.price}</p>
-                      </div>
-                    </div>
-
-                    {/* Benefits */}
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Vorteile</h3>
-                      <div className="grid sm:grid-cols-2 gap-2">
-                        {treatment.benefits.map((benefit, benefitIndex) => (
-                          <div key={benefitIndex} className="flex items-center space-x-2">
-                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                            <span className="text-gray-600 text-sm">{benefit}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="pt-4">
-                      <AddTreatmentButton 
-                        treatment={{
-                          id: `${treatment.id}-main`,
-                          name: treatment.title,
-                          price: treatment.price
-                        }}
-                        className="w-full sm:w-auto"
-                      />
+                      ))}
                     </div>
                   </div>
                 </div>
 
                 {/* Visual */}
                 <div>
-                  <div className={`h-96 bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg relative overflow-hidden`}>
-                    <div className="h-full bg-white rounded-2xl shadow-lg flex items-center justify-center">
-                      <div className="text-center space-y-4">
-                        <div className={`w-24 h-24 mx-auto bg-gradient-to-br ${treatment.color} rounded-full flex items-center justify-center`}>
-                          <treatment.icon className="h-12 w-12 text-white" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900">{treatment.title}</h3>
-                        <p className="text-gray-600">{treatment.subtitle}</p>
-                        
-                        {/* Features */}
-                        <div className="flex flex-wrap gap-2 justify-center">
-                          {treatment.features.map((feature, featureIndex) => (
-                            <span
-                              key={featureIndex}
-                              className="px-3 py-1 bg-gray-100 rounded-full text-sm font-medium text-gray-700"
-                            >
-                              {feature}
-                            </span>
-                          ))}
+                  {treatment.id === 4 ? (
+                    <div className="h-96 rounded-3xl shadow-lg relative overflow-hidden">
+                      <Image
+                        src="/Dauerhaft Hero.png"
+                        alt="Dauerhafte Haarentfernung"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center pb-8">
+                        <div className="grid grid-cols-2 gap-8 text-center">
+                          <div>
+                            <p className="text-white font-semibold text-lg mb-px">Behandlungsdauer</p>
+                            <p className="text-white font-bold text-lg">{treatment.duration}</p>
+                          </div>
+                          <div>
+                            <p className="text-white font-semibold text-lg mb-px">Preis</p>
+                            <p className="text-white font-bold text-lg">{treatment.price}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className={`h-96 bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg relative overflow-hidden`}>
+                      <div className="h-full bg-white rounded-2xl shadow-lg flex items-center justify-center">
+                        <div className="text-center space-y-4">
+                          <div className={`w-24 h-24 mx-auto bg-gradient-to-br ${treatment.color} rounded-full flex items-center justify-center`}>
+                            <treatment.icon className="h-12 w-12 text-white" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900">{treatment.title}</h3>
+                          <p className="text-gray-600">{treatment.subtitle}</p>
+                          
+                          {/* Features */}
+                          <div className="flex flex-wrap gap-2 justify-center">
+                            {treatment.features.map((feature, featureIndex) => (
+                              <span
+                                key={featureIndex}
+                                className="px-3 py-1 bg-gray-100 rounded-full text-sm font-medium text-gray-700"
+                              >
+                                {feature}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </motion.div>
+            )}
+
+            {/* Info Section for Haarentfernung */}
+            {treatment.id === 4 && (
+              <div className="mt-16 mb-16">
+                <div className="grid md:grid-cols-3 gap-8">
+                  {/* SICHER */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="bg-[#454545] rounded-3xl overflow-hidden text-white flex flex-col"
+                  >
+                    {/* Bild-Header mit SICHER */}
+                    <div className="relative h-48">
+                      <Image
+                        src="/Sichherheit.png"
+                        alt="Sichere Laser-Haarentfernung"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-[#454545]/60 flex items-center justify-center">
+                        <h3 className="text-3xl font-bold text-white">SICHER</h3>
+                      </div>
+                    </div>
+                    
+                    {/* Text-Bereich */}
+                    <div className="p-8 space-y-4 text-white/90 leading-relaxed flex-1">
+                      <p>
+                        Unsere Geräte für die dauerhafte Laser-Haarentfernung nutzen modernste Technik für maximale Sicherheit.
+                      </p>
+                      <p>
+                        Eine einstellbare Pulsdauer und Stärke der Laserschüsse ermöglicht es, für jeden Haut- und Haartyp die optimale Einstellung zu finden und diese individuell auf jeden Kunden anzupassen. So können wir bei jedem nachhaltige und dauerhafte Ergebnisse erzielen.
+                      </p>
+                      <p>
+                        Die stärksten und effektivsten Kühlsysteme auf dem Markt (ICE Technology & Kryogen Spray) sowie kontrollierbare Eindringtiefe garantieren eine gefahrlose und verbrennungsfreie Behandlung.
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* EFFEKTIV */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="bg-[#454545] rounded-3xl overflow-hidden text-white flex flex-col"
+                  >
+                    {/* Bild-Header mit EFFEKTIV */}
+                    <div className="relative h-48">
+                      <Image
+                        src="/Blue Modern Best Medical Doctors Service Flyer 1.png"
+                        alt="Effektive Laser-Haarentfernung"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-[#454545]/60 flex items-center justify-center">
+                        <h3 className="text-3xl font-bold text-white">EFFEKTIV</h3>
+                      </div>
+                    </div>
+                    
+                    {/* Text-Bereich */}
+                    <div className="p-8 space-y-4 text-white/90 leading-relaxed flex-1">
+                      <p>
+                        Unser Studio für dauerhafte Haarentfernung ist mit den derzeit leistungsstärksten Laser- und Nadelepilations-Geräten auf dem Markt ausgestattet, sodass die Behandlung bei allen Haut- und Haartypen möglich ist.
+                      </p>
+                      <div className="space-y-3">
+                        <div className="flex items-start space-x-2">
+                          <span className="text-white font-bold">✓</span>
+                          <p><strong>ALEXANDRIT-Laser:</strong> Für hellere Haut- und Haartypen</p>
+                        </div>
+                        <div className="flex items-start space-x-2">
+                          <span className="text-white font-bold">✓</span>
+                          <p><strong>DIODEN-Laser:</strong> Ideal für tief sitzende dunklere Haarfollikel</p>
+                        </div>
+                        <div className="flex items-start space-x-2">
+                          <span className="text-white font-bold">✓</span>
+                          <p><strong>YAG-Laser:</strong> Für dunkelhäutige bzw. gebräunte Kunden</p>
+                        </div>
+                        <div className="flex items-start space-x-2">
+                          <span className="text-white font-bold">✓</span>
+                          <p><strong>NADELEPILATION:</strong> Für hartnäckige hellere Härchen, die für das Lasergerät schwer erkennbar oder zu fein sind</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* SCHMERZARM */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="bg-[#454545] rounded-3xl overflow-hidden text-white flex flex-col"
+                  >
+                    {/* Bild-Header mit SCHMERZARM */}
+                    <div className="relative h-48">
+                      <Image
+                        src="/Dauerhaft Hero.png"
+                        alt="Schmerzarme Laser-Haarentfernung"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-[#454545]/60 flex items-center justify-center">
+                        <h3 className="text-3xl font-bold text-white">SCHMERZARM</h3>
+                      </div>
+                    </div>
+                    
+                    {/* Text-Bereich */}
+                    <div className="p-8 space-y-4 text-white/90 leading-relaxed flex-1">
+                      <p>
+                        Schmerzen waren schon immer ein großes Problem bei Laserbehandlungen – <strong>NICHT MEHR!</strong>
+                      </p>
+                      <p>
+                        Die bei uns verwendeten Geräte von Alma Lasers und Candela verfügen über innovative Kühlsysteme und sorgen für ein angenehm kühlendes Gefühl auf der zu behandelnden Hautzone, sodass Sie die Laser-Haarentfernung so schmerzarm und angenehm wie möglich erleben können.
+                      </p>
+                      <div className="space-y-2 mt-4">
+                        <p><strong>Kontaktkühlung ICE Technology</strong> (bis zu minus 16 Grad Celsius)</p>
+                        <p><strong>DCD™ und ICD™ Kryogen-Kühlung</strong></p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
             )}
 
             {/* Specific Treatments */}
@@ -803,7 +957,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                       viewport={{ once: true }}
                       className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300`}
                     >
-                      <div className="grid lg:grid-cols-3 gap-8 items-center">
+                      <div className="grid lg:grid-cols-3 gap-8">
                         {/* Treatment Info */}
                         <div className="lg:col-span-2">
                           <div className="space-y-6">
@@ -814,28 +968,6 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                               <p className="text-lg text-gray-600">
                                 {subTreatment.description}
                               </p>
-                            </div>
-
-                            {/* Price and Duration */}
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="bg-white/70 rounded-xl p-4">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <Clock className="h-5 w-5 text-gray-600" />
-                                  <span className="font-semibold text-gray-900">Behandlungsdauer</span>
-                                </div>
-                                <p className="text-gray-600 text-lg font-semibold">
-                                  {getTreatmentDuration(subTreatment.name, treatment.id)}
-                                </p>
-                              </div>
-                              <div className="bg-white/70 rounded-xl p-4">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <Star className="h-5 w-5 text-gray-600" />
-                                  <span className="font-semibold text-gray-900">Preis</span>
-                                </div>
-                                <p className="text-gray-600 text-lg font-semibold">
-                                  {subTreatment.price}
-                                </p>
-                              </div>
                             </div>
 
                             {/* Benefits */}
@@ -904,19 +1036,43 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                           </div>
                         </div>
 
-                        {/* Visual and CTA */}
-                        <div className="flex flex-col items-center space-y-6">
-                          <div className={`w-32 h-32 bg-gradient-to-br ${treatment.color} rounded-full flex items-center justify-center`}>
-                            <treatment.icon className="h-16 w-16 text-white" />
+                        {/* Right Column */}
+                        <div className="flex flex-col items-center lg:items-end lg:h-full">
+                          {/* Price and Duration - Desktop in einer Zeile, oben */}
+                          <div className="w-full lg:w-auto">
+                            <div className="grid grid-cols-2 lg:flex lg:flex-row gap-4">
+                              <div className="lg:text-right">
+                                <div className="flex items-center lg:justify-end space-x-2 mb-2">
+                                  <Clock className="h-5 w-5 text-gray-600" />
+                                  <span className="font-semibold text-gray-900">Dauer</span>
+                                </div>
+                                <p className="text-gray-600 text-lg font-semibold">
+                                  {getTreatmentDuration(subTreatment.name, treatment.id)}
+                                </p>
+                              </div>
+                              <div className="lg:text-right">
+                                <div className="flex items-center lg:justify-end space-x-2 mb-2">
+                                  <Star className="h-5 w-5 text-gray-600" />
+                                  <span className="font-semibold text-gray-900">Preis</span>
+                                </div>
+                                <p className="text-gray-600 text-lg font-semibold">
+                                  {subTreatment.price}
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                          <AddTreatmentButton 
-                            treatment={{
-                              id: `${treatment.id}-${index}`,
-                              name: subTreatment.name,
-                              price: subTreatment.price
-                            }}
-                            className="w-full"
-                          />
+                          
+                          {/* Button - independent, aligned with Behandlungsablauf */}
+                          <div className="w-full lg:w-auto lg:mt-auto lg:pt-4">
+                            <AddTreatmentButton 
+                              treatment={{
+                                id: `${treatment.id}-${index}`,
+                                name: subTreatment.name,
+                                price: subTreatment.price
+                              }}
+                              className="w-full lg:w-auto"
+                            />
+                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -926,162 +1082,251 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                 // Special layout for Haarentfernung
                 <div className="grid lg:grid-cols-2 gap-8">
                   <div className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg`}>
-                    <h4 className="text-2xl font-bold text-gray-900 mb-6 text-center">Für Frauen</h4>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Gesicht komplett</span>
-                          <span className="text-orange-600 font-bold">40€</span>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-8 text-center">Für Frauen</h4>
+                    
+                    {/* Gesicht */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Gesicht</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Gesicht komplett</span>
+                            <span className="text-[#454545] font-bold">40€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Kinn</span>
+                            <span className="text-[#454545] font-bold">15€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Wangen</span>
+                            <span className="text-[#454545] font-bold">25€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Hals</span>
+                            <span className="text-[#454545] font-bold">25€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Nacken</span>
+                            <span className="text-[#454545] font-bold">35€</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Kinn</span>
-                          <span className="text-orange-600 font-bold">15€</span>
+                    </div>
+
+                    {/* Oberkörper */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Oberkörper</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Schultern</span>
+                            <span className="text-[#454545] font-bold">40€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Brust</span>
+                            <span className="text-[#454545] font-bold">30€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Rücken</span>
+                            <span className="text-[#454545] font-bold">50€</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Wangen</span>
-                          <span className="text-orange-600 font-bold">25€</span>
+                    </div>
+
+                    {/* Intimbereich */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Intimbereich</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Bikinizone</span>
+                            <span className="text-[#454545] font-bold">45€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Bikizone und Intimbereich</span>
+                            <span className="text-[#454545] font-bold">60€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Po</span>
+                            <span className="text-[#454545] font-bold">35€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Pofalte</span>
+                            <span className="text-[#454545] font-bold">25€</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Hals</span>
-                          <span className="text-orange-600 font-bold">25€</span>
+                    </div>
+
+                    {/* Arme */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Arme</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Arme komplett</span>
+                            <span className="text-[#454545] font-bold">60€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Achseln</span>
+                            <span className="text-[#454545] font-bold">35€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Unterarm</span>
+                            <span className="text-[#454545] font-bold">35€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Hände</span>
+                            <span className="text-[#454545] font-bold">20€</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Nacken</span>
-                          <span className="text-orange-600 font-bold">35€</span>
+                    </div>
+
+                    {/* Beine */}
+                    <div>
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Beine</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Unterschenkel</span>
+                            <span className="text-[#454545] font-bold">45€</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Schultern</span>
-                          <span className="text-orange-600 font-bold">40€</span>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Oberschenkel</span>
+                            <span className="text-[#454545] font-bold">55€</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Achseln</span>
-                          <span className="text-orange-600 font-bold">35€</span>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Beine komplett</span>
+                            <span className="text-[#454545] font-bold">99€</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Brust</span>
-                          <span className="text-orange-600 font-bold">30€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Arme komplett</span>
-                          <span className="text-orange-600 font-bold">60€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Unterarm</span>
-                          <span className="text-orange-600 font-bold">35€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Hände</span>
-                          <span className="text-orange-600 font-bold">20€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Rücken</span>
-                          <span className="text-orange-600 font-bold">50€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Bikinizone</span>
-                          <span className="text-orange-600 font-bold">45€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Beine komplett</span>
-                          <span className="text-orange-600 font-bold">99€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Füße</span>
-                          <span className="text-orange-600 font-bold">20€</span>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Füße</span>
+                            <span className="text-[#454545] font-bold">20€</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   
                   <div className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg`}>
-                    <h4 className="text-2xl font-bold text-gray-900 mb-6 text-center">Für Männer</h4>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Wangen</span>
-                          <span className="text-orange-600 font-bold">25€</span>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-8 text-center">Für Männer</h4>
+
+                    {/* Gesicht */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Gesicht</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Wangen</span>
+                            <span className="text-[#454545] font-bold">25€</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Brust</span>
-                          <span className="text-orange-600 font-bold">60€</span>
+                    </div>
+
+                    {/* Oberkörper */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Oberkörper</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Brust</span>
+                            <span className="text-[#454545] font-bold">60€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Schultern</span>
+                            <span className="text-[#454545] font-bold">45€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Rücken</span>
+                            <span className="text-[#454545] font-bold">80€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Bauch</span>
+                            <span className="text-[#454545] font-bold">65€</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Schultern</span>
-                          <span className="text-orange-600 font-bold">45€</span>
+                    </div>
+
+                    {/* Arme */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Arme</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Arme komplett</span>
+                            <span className="text-[#454545] font-bold">75€</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Achseln</span>
+                            <span className="text-[#454545] font-bold">40€</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Achseln</span>
-                          <span className="text-orange-600 font-bold">40€</span>
+                    </div>
+
+                    {/* Beine */}
+                    <div>
+                      <h5 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#454545]">Beine</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Unterschenkel</span>
+                            <span className="text-[#454545] font-bold">75€</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Arme komplett</span>
-                          <span className="text-orange-600 font-bold">75€</span>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Oberschenkel</span>
+                            <span className="text-[#454545] font-bold">65€</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Rücken</span>
-                          <span className="text-orange-600 font-bold">80€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Bauch</span>
-                          <span className="text-orange-600 font-bold">65€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Unterschenkel</span>
-                          <span className="text-orange-600 font-bold">75€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Oberschenkel</span>
-                          <span className="text-orange-600 font-bold">65€</span>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-medium text-sm">Beine komplett</span>
-                          <span className="text-orange-600 font-bold">110€</span>
+                        <div className="bg-white/70 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-900 font-medium text-sm">Beine komplett</span>
+                            <span className="text-[#454545] font-bold">110€</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1129,6 +1374,132 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                 </div>
               )}
             </div>
+
+            {/* Info Section - How it works */}
+            {treatment.id === 4 && (
+              <div className="mt-20 space-y-16">
+                {/* Hauptüberschrift */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <h2 className="text-4xl font-bold text-gray-900 mb-4">Alles über Laser-Haarentfernung</h2>
+                  <div className="w-24 h-1 bg-[#454545] mx-auto"></div>
+                </motion.div>
+
+                {/* Wie funktioniert die Laser-Haarentfernung? */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-white/70 rounded-3xl p-8 md:p-10 shadow-lg"
+                >
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">Wie funktioniert die Laser-Haarentfernung?</h3>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      Die Laser-Haarentfernung funktioniert durch gezielte Wärmeeinwirkung auf die Haarwurzel. Ein medizinisches Lasergerät wird über die Haut geführt und sendet konzentrierte Lichtstrahlen mit spezifischer Wellenlänge, Intensität und Pulsdauer aus.
+                    </p>
+                    <p>
+                      Der Haarfarbstoff Melanin nimmt die gebündelte Lichtenergie auf und wandelt sie in Wärme um. Diese Wärmeentwicklung führt zur Verödung der Haarwurzel. Innerhalb von ein bis drei Wochen fällt das Haar aus und neues Haar kann nicht mehr oder nur sehr fein nachwachsen.
+                    </p>
+                    <div className="bg-[#454545]/10 rounded-xl p-4 mt-6 border-l-4 border-[#454545]">
+                      <p className="font-semibold text-gray-900">
+                        Damit ist die Laser-Haarentfernung effektiv und schonend zugleich.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Unsere Laser-Technologie - Prominent platziert */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-gradient-to-br from-[#454545] to-[#303030] rounded-3xl p-8 md:p-10 shadow-xl text-white"
+                >
+                  <h3 className="text-2xl font-bold mb-4">Unsere Laser-Technologie</h3>
+                  <p className="text-white/90 leading-relaxed text-lg">
+                    Wir setzen auf den Goldstandard der Branche mit dem <strong>Diodenlaser (810 nm)</strong>, der Effizienz und Sicherheit für mittlere Hauttypen bietet.
+                  </p>
+                </motion.div>
+
+                {/* Vorteile im Grid */}
+                <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-8"
+                  >
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2">Warum Laser statt andere Methoden?</h3>
+                    <p className="text-gray-600">Vergleichen Sie die Vorteile</p>
+                  </motion.div>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Vorteile gegenüber IPL */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      viewport={{ once: true }}
+                      className="bg-white/70 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                    >
+                      <h4 className="text-xl font-bold text-gray-900 mb-4">Vorteile gegenüber IPL-Systemen</h4>
+                      <p className="text-gray-700 leading-relaxed">
+                        Im Gegensatz zur IPL-Methode (Intense Pulse Light), die mit einem breiten Lichtspektrum arbeitet, gelangt das Licht eines Lasers gezielter und tiefer in die Haarwurzel. So erzielen wir eine deutlich effektivere Haarentfernung mit weniger Sitzungen und schneller sichtbaren, langanhaltenden Ergebnissen. Zudem ist die Laser-Methode hautschonender, da die Energie präzise auf die Haarwurzel abgegeben wird und nicht die umliegende Haut erhitzt.
+                      </p>
+                    </motion.div>
+
+                    {/* Vorteile gegenüber Nadel-Epilation */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      viewport={{ once: true }}
+                      className="bg-white/70 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                    >
+                      <h4 className="text-xl font-bold text-gray-900 mb-4">Vorteile gegenüber der Nadel-Epilation</h4>
+                      <p className="text-gray-700 leading-relaxed">
+                        Die Nadel-Epilation (auch Elektro-Epilation) erfordert, dass eine dünne Nadel in jeden Haarkanal einzeln eingeführt wird – ein aufwendiger und schmerzhafter Prozess, der für große Areale nicht empfehlenswert ist. Die Laser-Haarentfernung bietet dagegen eine sanfte und schonende Alternative, die auch für größere Körperbereiche ideal geeignet ist.
+                      </p>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Ist Laser-Haarentfernung für mich geeignet? */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="bg-white/70 rounded-3xl p-8 md:p-10 shadow-lg"
+                >
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">Ist Laser-Haarentfernung für mich geeignet?</h3>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      In unserem Studio für dauerhafte Laser-Haarentfernung setzen wir auf modernste Technologie und bieten Effizienz und Sicherheit für unterschiedliche Haut- und Haartypen. Die Behandlung ist schonend zur Haut und leistungsstark genug, um die Haarfollikel dauerhaft zu veröden.
+                    </p>
+                    <div className="bg-gray-50 rounded-xl p-5 mt-6 border-l-4 border-[#454545]">
+                      <p className="font-semibold text-gray-900 mb-2">Grundsätzlich gilt:</p>
+                      <p>
+                        Je dunkler die Haare, umso besser das Ergebnis. Sehr blonde, weiße, graue oder rote Haare lassen sich dagegen kaum behandeln, da ihnen dunkle Pigmente fehlen, die der Laser erfassen kann. Auch die Dicke des Haares spielt eine Rolle – dickere Haare werden besser erfasst als leichtes Flaumhaar.
+                      </p>
+                    </div>
+                    <div className="bg-[#454545]/10 rounded-xl p-5 mt-6">
+                      <p className="font-semibold text-gray-900">
+                        Sie möchten wissen, ob eine Behandlung in Ihrem Fall Erfolg verspricht? Wir beraten Sie gern persönlich in unserem Studio!
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            )}
           </div>
         </div>
       </section>

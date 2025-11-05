@@ -22,7 +22,7 @@ export default function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Termin anfragen', href: '/termin' },
-    { name: 'Impressum', href: '/impressum' },
+    { name: 'Gutscheine', href: '/gutscheine' },
   ]
 
   const behandlungen = [
@@ -95,10 +95,10 @@ export default function Header() {
             </div>
             
             <Link
-              href="/impressum"
+              href="/gutscheine"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
             >
-              Impressum
+              Gutscheine
             </Link>
           </nav>
 

@@ -60,7 +60,7 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Erfahrung seit</p>
-                  <p className="text-xl font-bold text-gray-900">2001</p>
+                  <p className="text-xl font-bold text-gray-900">2018</p>
                 </div>
               </div>
             </motion.div>
