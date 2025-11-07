@@ -54,7 +54,7 @@ const treatments = [
     subtitle: 'Entspannung und Wohlbefinden',
     description: 'Entspannende Massagen für Körper und Seele. Zur Verbesserung der Durchblutung und Entspannung der Muskulatur.',
     icon: Heart,
-    image: '/Massagen Startseite.webp',
+    image: '/Massagen%20Startseite.webp',
     features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',

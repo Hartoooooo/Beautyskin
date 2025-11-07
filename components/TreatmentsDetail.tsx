@@ -862,7 +862,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     {/* Bild-Header mit EFFEKTIV */}
                     <div className="relative h-48">
                       <Image
-                        src="/Blue Modern Best Medical Doctors Service Flyer 1.webp"
+                        src="/Blue%20Modern%20Best%20Medical%20Doctors%20Service%20Flyer%201.webp"
                         alt="Effektive Laser-Haarentfernung"
                         fill
                         className="object-cover"
