@@ -762,7 +762,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                   {treatment.id === 4 ? (
                     <div className="h-96 rounded-3xl shadow-lg relative overflow-hidden">
                       <Image
-                        src="/Dauerhaft Hero.png"
+                        src="/Dauerhaft Hero.webp"
                         alt="Dauerhafte Haarentfernung"
                         fill
                         className="object-cover"
@@ -826,7 +826,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     {/* Bild-Header mit SICHER */}
                     <div className="relative h-48">
                       <Image
-                        src="/Sichherheit.png"
+                        src="/Sichherheit.webp"
                         alt="Sichere Laser-Haarentfernung"
                         fill
                         className="object-cover"
@@ -862,7 +862,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     {/* Bild-Header mit EFFEKTIV */}
                     <div className="relative h-48">
                       <Image
-                        src="/Blue Modern Best Medical Doctors Service Flyer 1.png"
+                        src="/Blue Modern Best Medical Doctors Service Flyer 1.webp"
                         alt="Effektive Laser-Haarentfernung"
                         fill
                         className="object-cover"
@@ -910,7 +910,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     {/* Bild-Header mit SCHMERZARM */}
                     <div className="relative h-48">
                       <Image
-                        src="/Dauerhaft Hero.png"
+                        src="/Dauerhaft Hero.webp"
                         alt="Schmerzarme Laser-Haarentfernung"
                         fill
                         className="object-cover"

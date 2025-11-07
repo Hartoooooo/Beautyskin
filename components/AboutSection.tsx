@@ -33,7 +33,7 @@ export default function AboutSection() {
               {/* Image */}
               <div className="aspect-[4/5] relative">
                 <Image
-                  src="/20251105_0844_Frau%20mit%20Beauty-Logo_remix_01k99ffe3fe06bc09dx1y3bdbz.png"
+                  src="/20251105_0844_Frau%20mit%20Beauty-Logo_remix_01k99ffe3fe06bc09dx1y3bdbz.webp"
                   alt="Raquel Hardel - Gründerin & Kosmetikerin bei BeautySkin"
                   fill
                   className="object-cover"
@@ -84,18 +84,28 @@ export default function AboutSection() {
               
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Willkommen bei BeautySkin! Mein Name ist Racell Hardel und ich freue mich, 
-                  Sie in meinem Kosmetikstudio in Friedrichshain, Berlin, begrüßen zu dürfen.
+                  Willkommen bei BeautySkin R&Y, Ihrem persönlichen Rückzugsort in ruhiger Lage im lebendigen Friedrichshain – für Menschen, die Schönheit, Qualität und Entspannung schätzen.
                 </p>
                 <p>
-                  Mit langjähriger Erfahrung und Leidenschaft für natürliche Schönheit biete ich 
-                  Ihnen professionelle Behandlungen, die auf Ihre individuellen Bedürfnisse 
-                  abgestimmt sind. Mein Ziel ist es, dass Sie sich in Ihrer Haut wohlfühlen 
-                  und Ihre natürliche Schönheit zum Strahlen bringen.
+                  Ich bin Raquel Hardel, gebürtige Peruanerin und seit über 30 Jahren mit Herz und Heimat in Deutschland verwurzelt. Seit mehr als 15 Jahren begleite ich als Kosmetikerin Menschen auf ihrem Weg zu gesunder, strahlender Haut – mit fundiertem Fachwissen, Feingefühl und echter Begeisterung.
                 </p>
                 <p>
-                  Bei BeautySkin legen wir großen Wert auf hochwertige Produkte, modernste 
-                  Behandlungsmethoden und eine persönliche, entspannte Atmosphäre.
+                  Meine Spezialisierung liegt auf hochwertigen Gesichtsbehandlungen und wirkungsvoller Anti-Aging-Kosmetik. Ich arbeite ausschließlich mit den renommierten CNC-Produkten, die für sichtbare Ergebnisse auf höchstem Niveau stehen.
+                </p>
+                <p className="font-semibold text-gray-900">
+                  Was mich besonders macht?
+                </p>
+                <p>
+                  Ich nehme mir Zeit. Für Sie. Für Ihre Haut. Und für ein Erlebnis, das über Kosmetik hinausgeht:
+                </p>
+                <p>
+                  Wohltuende Düfte, sanftes Licht, warme Töne und ein Raum, der zur Ruhe einlädt.
+                </p>
+                <p>
+                  Individuelle Beratung, tiefe Entspannung und spürbare Wirkung – das ist meine Handschrift.
+                </p>
+                <p>
+                  Ich freue mich darauf, Sie persönlich kennenzulernen und Ihnen bei BeautySkin R&Y eine kleine Auszeit voller Luxus und Achtsamkeit zu schenken.
                 </p>
               </div>
             </div>

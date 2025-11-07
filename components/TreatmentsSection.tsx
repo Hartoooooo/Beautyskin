@@ -12,8 +12,8 @@ const treatments = [
     subtitle: 'Professionelle Gesichtspflege',
     description: 'Unsere professionellen Gesichtsbehandlungen für gesunde und strahlende Haut. Mit hochwertigen Produkten und modernen Techniken.',
     icon: Heart,
-    image: '/Gesichtsbehandlungen.png',
-    features: ['BeautySkin Klassik', 'BeautySkin Deluxe', 'AHA Peeling', 'Kräuter-Peeling'],
+    image: '/Gesichtsbehandlungen.webp',
+    features: ['B.Skin Klassik', 'B.Skin Deluxe', 'AHA Peeling', 'Kräuter-Peeling'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
     duration: '45-60 Min',
@@ -54,7 +54,7 @@ const treatments = [
     subtitle: 'Entspannung und Wohlbefinden',
     description: 'Entspannende Massagen für Körper und Seele. Zur Verbesserung der Durchblutung und Entspannung der Muskulatur.',
     icon: Heart,
-    image: '/Massagen Startseite.png',
+    image: '/Massagen Startseite.webp',
     features: ['Nacken-Massage', 'Hot Stone', 'Rücken-Massage'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
@@ -72,7 +72,7 @@ const treatments = [
     subtitle: 'Ice Diodenlaser für dauerhafte Ergebnisse',
     description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm und effektiv.',
     icon: Eye,
-    image: '/Haarentfernunhg.png',
+    image: '/Haarentfernunhg.webp',
     features: ['Ice Diodenlaser', 'Dauerhaft', 'Schmerzarm', 'Effektiv'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
@@ -165,10 +165,10 @@ export default function TreatmentsSection() {
                     <div className="relative z-10 flex-1 flex flex-col justify-end p-8">
                       {/* Features */}
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {treatment.features.map((feature, featureIndex) => (
+                        {treatment.features.slice(0, 3).map((feature, featureIndex) => (
                           <span
                             key={featureIndex}
-                            className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium text-white"
+                            className="px-2.5 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium text-white"
                           >
                             {feature}
                           </span>
@@ -213,10 +213,10 @@ export default function TreatmentsSection() {
 
                       {/* Features */}
                       <div className="flex flex-wrap gap-2">
-                        {treatment.features.map((feature, featureIndex) => (
+                        {treatment.features.slice(0, 3).map((feature, featureIndex) => (
                           <span
                             key={featureIndex}
-                            className="px-3 py-1 bg-[#e9dbd2]/70 rounded-full text-sm font-medium text-gray-700"
+                            className="px-2.5 py-1 bg-[#e9dbd2]/70 rounded-full text-xs font-medium text-gray-700"
                           >
                             {feature}
                           </span>

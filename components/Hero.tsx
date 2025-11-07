@@ -1,11 +1,46 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Star, Clock, Shield } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
+
+const heroImages = [
+  '/aussen.webp',
+  '/drin1.webp',
+  '/drin2.webp',
+  '/drin3.webp'
+]
 
 export default function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+
+  // Preload alle Bilder beim Mount
+  useEffect(() => {
+    const preloadImages = heroImages.map((src) => {
+      return new Promise((resolve, reject) => {
+        const img = new window.Image()
+        img.onload = resolve
+        img.onerror = reject
+        img.src = src
+      })
+    })
+
+    Promise.all(preloadImages).then(() => {
+      setImagesLoaded(true)
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!imagesLoaded) return
+    
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
+    }, 5000) // Wechselt alle 5 Sekunden
+    return () => clearInterval(interval)
+  }, [imagesLoaded])
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-[#e9dbd2] to-primary-50 overflow-hidden">
       {/* Background Elements */}
@@ -114,7 +149,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Image Slideshow */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -122,15 +157,44 @@ export default function Hero() {
             className="relative"
           >
             <div className="relative z-10">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary-100 to-primary-200 p-8 shadow-2xl">
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary-100 to-primary-200 p-2 shadow-2xl">
                 <div className="h-full bg-[#e9dbd2] rounded-2xl shadow-lg overflow-hidden relative">
-                  <Image
-                    src="/DSC_0435.JPG"
-                    alt="BeautySkin Kosmetikstudio - Professionelle Kosmetikbehandlungen"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  {/* Alle Bilder vorab laden, aber nur aktuelles anzeigen */}
+                  {heroImages.map((src, index) => (
+                    <motion.div
+                      key={src}
+                      initial={{ opacity: 0 }}
+                      animate={{ 
+                        opacity: index === currentImageIndex ? 1 : 0,
+                        zIndex: index === currentImageIndex ? 10 : 0
+                      }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={src}
+                        alt={`BeautySkin Kosmetikstudio - ${index === 0 ? 'Außenansicht' : `Innenansicht ${index}`}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={index === 0}
+                      />
+                    </motion.div>
+                  ))}
+                  
+                  {/* Navigation Dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                    {heroImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentImageIndex ? 'bg-white w-6' : 'bg-white/50'
+                        }`}
+                        aria-label={`Bild ${index + 1} anzeigen`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
