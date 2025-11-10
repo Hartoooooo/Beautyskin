@@ -2,9 +2,33 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Gesichtsbehandlung - BeautySkin',
-  description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut. BeautySkin Klassik, Relax, Hautklar und mehr.',
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Gesichtsbehandlung',
+  description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut in Berlin. BeautySkin Klassik, Deluxe, Relax, Hautklar und mehr. Jetzt Termin buchen!',
+  openGraph: {
+    title: 'Gesichtsbehandlung - BeautySkin Berlin',
+    description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut. BeautySkin Klassik, Deluxe, Relax, Hautklar und mehr.',
+    url: 'https://beautyskin-studio.de/gesichtsbehandlung',
+    images: [
+      {
+        url: '/Gesichtsbehandlungen.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Gesichtsbehandlung BeautySkin Berlin',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gesichtsbehandlung - BeautySkin Berlin',
+    description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut',
+    images: ['/Gesichtsbehandlungen.webp'],
+  },
+  alternates: {
+    canonical: 'https://beautyskin-studio.de/gesichtsbehandlung',
+  },
 }
 
 const treatments = [

@@ -763,7 +763,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <div className="h-96 rounded-3xl shadow-lg relative overflow-hidden">
                       <Image
                         src="/Dauerhaft Hero.webp"
-                        alt="Dauerhafte Haarentfernung"
+                        alt="Dauerhafte Haarentfernung mit Ice Diodenlaser bei BeautySkin Berlin - Professionelle Laser-Haarentfernung"
                         fill
                         className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 50vw"
@@ -827,7 +827,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <div className="relative h-48">
                       <Image
                         src="/Sichherheit.webp"
-                        alt="Sichere Laser-Haarentfernung"
+                        alt="Sichere Laser-Haarentfernung mit modernster Technik bei BeautySkin Berlin"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -863,7 +863,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <div className="relative h-48">
                       <Image
                         src="/Blue%20Modern%20Best%20Medical%20Doctors%20Service%20Flyer%201.webp"
-                        alt="Effektive Laser-Haarentfernung"
+                        alt="Effektive Laser-Haarentfernung mit leistungsstarken Geräten bei BeautySkin Berlin"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -911,7 +911,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <div className="relative h-48">
                       <Image
                         src="/Dauerhaft Hero.webp"
-                        alt="Schmerzarme Laser-Haarentfernung"
+                        alt="Schmerzarme Laser-Haarentfernung mit Kühltechnologie bei BeautySkin Berlin"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"

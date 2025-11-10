@@ -2,9 +2,33 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Massagen - BeautySkin',
-  description: 'Entspannende Massagen für Körper und Seele. Nacken-Massage, Hot Stone, Kopf-Nacken-Rückenmassage und Lymphdrainage.',
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Massagen',
+  description: 'Entspannende Massagen für Körper und Seele in Berlin. Nacken-Massage, Hot Stone Massage, Kopf-Nacken-Rückenmassage. Jetzt Termin buchen!',
+  openGraph: {
+    title: 'Massagen - BeautySkin Berlin',
+    description: 'Entspannende Massagen für Körper und Seele. Nacken-Massage, Hot Stone, Kopf-Nacken-Rückenmassage.',
+    url: 'https://beautyskin-studio.de/massagen',
+    images: [
+      {
+        url: '/Massagen Startseite.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Massagen BeautySkin Berlin',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Massagen - BeautySkin Berlin',
+    description: 'Entspannende Massagen für Körper und Seele',
+    images: ['/Massagen Startseite.webp'],
+  },
+  alternates: {
+    canonical: 'https://beautyskin-studio.de/massagen',
+  },
 }
 
 const treatments = [

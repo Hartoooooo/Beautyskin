@@ -1,9 +1,17 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export const metadata = {
-  title: 'Datenschutz - BeautySkin',
+export const metadata: Metadata = {
+  title: 'Datenschutz',
   description: 'Datenschutzerklärung von BeautySkin Kosmetikstudio Berlin.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://beautyskin-studio.de/datenschutz',
+  },
 }
 
 export default function DatenschutzPage() {

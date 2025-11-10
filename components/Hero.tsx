@@ -43,14 +43,55 @@ export default function Hero() {
   }, [imagesLoaded])
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-[#e9dbd2] to-primary-50 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
+      {/* Mobile Background Slideshow */}
+      <div className="lg:hidden absolute inset-0 z-0">
+        {heroImages.map((src, index) => (
+          <motion.div
+            key={`mobile-bg-${src}`}
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: index === currentImageIndex ? 1 : 0,
+              zIndex: index === currentImageIndex ? 1 : 0
+            }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={src}
+              alt={`BeautySkin Kosmetikstudio Berlin ${index === 0 ? 'Außenansicht' : `Innenansicht ${index}`}`}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={index === 0}
+            />
+          </motion.div>
+        ))}
+        {/* Dark Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
+        
+        {/* Navigation Dots for Mobile */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentImageIndex ? 'bg-white w-6' : 'bg-white/50'
+              }`}
+              aria-label={`Bild ${index + 1} anzeigen`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Background Elements - Desktop only */}
+      <div className="hidden lg:block absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{animationDelay: '4s'}}></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div
@@ -61,7 +102,7 @@ export default function Hero() {
           >
             <div className="space-y-4">
               <motion.h1 
-                className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-apple"
+                className="text-5xl lg:text-6xl font-bold text-white lg:text-gray-900 leading-tight font-apple drop-shadow-lg lg:drop-shadow-none"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -71,7 +112,7 @@ export default function Hero() {
               </motion.h1>
               
               <motion.p 
-                className="text-xl text-gray-600 leading-relaxed font-apple"
+                className="hidden md:block text-xl text-gray-600 leading-relaxed font-apple"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -84,7 +125,7 @@ export default function Hero() {
 
             {/* Opening Hours */}
             <motion.div 
-              className="bg-[#e9dbd2]/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg"
+              className="bg-white/90 lg:bg-[#e9dbd2]/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -140,21 +181,21 @@ export default function Hero() {
             >
               <div className="flex items-center space-x-2">
                 <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                <span className="text-gray-600">4.9 Sterne (350+)</span>
+                <span className="text-white lg:text-gray-600 drop-shadow-lg lg:drop-shadow-none">4.9 Sterne (350+)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Shield className="h-5 w-5 text-green-500" />
-                <span className="text-gray-600">Zertifizierte Kosmetiker</span>
+                <span className="text-white lg:text-gray-600 drop-shadow-lg lg:drop-shadow-none">Zertifizierte Kosmetiker</span>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Image Slideshow */}
+          {/* Right Column - Image Slideshow (Desktop only) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
+            className="hidden lg:block relative"
           >
             <div className="relative z-10">
               <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary-100 to-primary-200 p-2 shadow-2xl">
@@ -173,10 +214,10 @@ export default function Hero() {
                     >
                       <Image
                         src={src}
-                        alt={`BeautySkin Kosmetikstudio - ${index === 0 ? 'Außenansicht' : `Innenansicht ${index}`}`}
+                        alt={`BeautySkin Kosmetikstudio Berlin ${index === 0 ? 'Außenansicht' : `Innenansicht ${index}`} - Professionelles Kosmetikstudio in Friedrichshain`}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
+                        sizes="50vw"
                         priority={index === 0}
                       />
                     </motion.div>

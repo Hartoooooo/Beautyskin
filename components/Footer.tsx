@@ -7,9 +7,7 @@ export default function Footer() {
 
   const footerLinks = {
     studio: [
-      { name: 'Behandlungen', href: '/behandlungen' },
       { name: 'Termine', href: '#termin' },
-      { name: 'Gutscheine', href: '#gutschein' },
       { name: 'Kontakt', href: '#kontakt' },
     ],
     legal: [
@@ -17,7 +15,6 @@ export default function Footer() {
       { name: 'Datenschutz', href: '/datenschutz' },
       { name: 'Cookie-Richtlinie', href: '/cookies' },
       { name: 'AGB', href: '/agb' },
-      { name: 'Widerrufsbelehrung', href: '/widerruf' },
     ],
   }
 

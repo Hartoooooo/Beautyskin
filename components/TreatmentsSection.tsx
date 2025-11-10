@@ -32,9 +32,10 @@ const treatments = [
   {
     id: 2,
     title: 'Apparative Behandlungen',
-    subtitle: 'Moderne Technologie für optimale Ergebnisse',
+    subtitle: 'Technologie für optimale Ergebnisse',
     description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Mit neuesten Geräten für beste Resultate.',
     icon: Sparkles,
+    image: '/apparativ.webp',
     features: ['Aqua Facial', 'Skin Oximizer', 'Micro Needling', 'Radiofrequenz'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
@@ -89,6 +90,7 @@ const treatments = [
     subtitle: 'Perfekte Augenbrauen & Wimpern',
     description: 'Professionelle Augenbrauen- und Wimpernbehandlungen für einen ausdrucksstarken Blick.',
     icon: Eye,
+    image: '/pinzette.webp',
     features: ['Zupfen', 'Waxing', 'Färben', 'Kombipaket'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
@@ -135,14 +137,14 @@ export default function TreatmentsSection() {
               viewport={{ once: true }}
               className={`group ${index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
             >
-              <div className={`h-full bg-gradient-to-br ${treatment.bgColor} rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 card-hover flex flex-col ${treatment.image ? 'relative' : ''}`}>
+              <div className={`h-full bg-gradient-to-br ${treatment.bgColor} rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 card-hover flex flex-col ${treatment.image ? `relative ${index < 3 ? 'min-h-[380px]' : 'min-h-[350px]'}` : ''}`}>
                 {/* Full height image for cards with images */}
                 {treatment.image ? (
                   <>
                     <div className="absolute inset-0 w-full h-full overflow-hidden group-hover:scale-105 transition-transform duration-300">
                       <Image
                         src={treatment.image}
-                        alt={treatment.title}
+                        alt={`${treatment.title} - Professionelle ${treatment.title.toLowerCase()} bei BeautySkin Kosmetikstudio Berlin`}
                         fill
                         className={`object-cover ${treatment.id === 4 ? 'object-left' : ''}`}
                       />
@@ -257,13 +259,13 @@ export default function TreatmentsSection() {
         >
           <div className="bg-[#454545] rounded-3xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Alle Behandlungen entdecken
+              Termin anfragen
             </h3>
             <p className="text-white mb-6">
               Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
             </p>
-            <Link href="/behandlungen" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
-              <span>Alle Behandlungen ansehen</span>
+            <Link href="/termin" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
+              <span>Jetzt Termin buchen</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

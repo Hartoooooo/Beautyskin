@@ -2,9 +2,33 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Augenbrauenkorrektur - BeautySkin',
-  description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung. Perfekt geformte Augenbrauen für mehr Ausdruck.',
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Augenbrauenkorrektur',
+  description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung in Berlin. Perfekt geformte Augenbrauen für mehr Ausdruck. Zupfen, Waxing und Färben.',
+  openGraph: {
+    title: 'Augenbrauenkorrektur - BeautySkin Berlin',
+    description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung. Perfekt geformte Augenbrauen für mehr Ausdruck.',
+    url: 'https://beautyskin-studio.de/augenbrauenkorrektur',
+    images: [
+      {
+        url: '/pinzette.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Augenbrauenkorrektur BeautySkin Berlin',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Augenbrauenkorrektur - BeautySkin Berlin',
+    description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung',
+    images: ['/pinzette.webp'],
+  },
+  alternates: {
+    canonical: 'https://beautyskin-studio.de/augenbrauenkorrektur',
+  },
 }
 
 const treatments = [

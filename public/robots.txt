@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://beautyskin-studio.de/sitemap.xml
+
+# Disallow admin and private pages
+Disallow: /api/
+Disallow: /_next/
+
+# Allow all public pages
+Allow: /
+Allow: /gesichtsbehandlung
+Allow: /apparative-behandlungen
+Allow: /massagen
+Allow: /dauerhafte-haarentfernung
+Allow: /augenbrauenkorrektur
+Allow: /termin
+

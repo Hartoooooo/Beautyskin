@@ -2,9 +2,33 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Dauerhafte Haarentfernung - BeautySkin',
-  description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm und effektiv für alle Hauttypen.',
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Dauerhafte Haarentfernung',
+  description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser in Berlin. Schmerzarm und effektiv für alle Hauttypen. Jetzt Termin buchen!',
+  openGraph: {
+    title: 'Dauerhafte Haarentfernung - BeautySkin Berlin',
+    description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm und effektiv für alle Hauttypen.',
+    url: 'https://beautyskin-studio.de/dauerhafte-haarentfernung',
+    images: [
+      {
+        url: '/Haarentfernunhg.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Dauerhafte Haarentfernung BeautySkin Berlin',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Dauerhafte Haarentfernung - BeautySkin Berlin',
+    description: 'Professionelle dauerhafte Haarentfernung mit Ice Diodenlaser',
+    images: ['/Haarentfernunhg.webp'],
+  },
+  alternates: {
+    canonical: 'https://beautyskin-studio.de/dauerhafte-haarentfernung',
+  },
 }
 
 const femaleTreatments = [

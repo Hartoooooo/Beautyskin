@@ -2,9 +2,33 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Apparative Behandlungen - BeautySkin',
-  description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Micro Needling und mehr.',
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Apparative Behandlungen',
+  description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung in Berlin. Aqua Facial, Skin Oximizer, Micro Needling, Radiofrequenz und mehr.',
+  openGraph: {
+    title: 'Apparative Behandlungen - BeautySkin Berlin',
+    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Micro Needling und mehr.',
+    url: 'https://beautyskin-studio.de/apparative-behandlungen',
+    images: [
+      {
+        url: '/apparativ.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Apparative Behandlungen BeautySkin Berlin',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Apparative Behandlungen - BeautySkin Berlin',
+    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung',
+    images: ['/apparativ.webp'],
+  },
+  alternates: {
+    canonical: 'https://beautyskin-studio.de/apparative-behandlungen',
+  },
 }
 
 const treatments = [

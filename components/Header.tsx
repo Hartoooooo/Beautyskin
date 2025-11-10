@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, Phone, MapPin, ChevronDown } from 'lucide-react'
 
 export default function Header() {
@@ -22,7 +23,6 @@ export default function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Termin anfragen', href: '/termin' },
-    { name: 'Gutscheine', href: '/gutscheine' },
   ]
 
   const behandlungen = [
@@ -41,8 +41,15 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold gradient-text font-vogue">
-              BeautySkin
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/bs Logo+.png"
+                alt="BeautySkin Logo - Kosmetikstudio Berlin"
+                width={180}
+                height={60}
+                className="h-10 md:h-11 w-auto object-contain"
+                priority
+              />
             </Link>
           </div>
 
@@ -93,13 +100,6 @@ export default function Header() {
                 ))}
               </div>
             </div>
-            
-            <Link
-              href="/gutscheine"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
-            >
-              Gutscheine
-            </Link>
           </nav>
 
           {/* Contact Info - Rechts */}
