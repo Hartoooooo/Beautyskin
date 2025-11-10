@@ -1,33 +1,19 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
+import { ServiceSchema } from '@/components/StructuredData'
 
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Apparative Behandlungen',
-  description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung in Berlin. Aqua Facial, Skin Oximizer, Micro Needling, Radiofrequenz und mehr.',
-  openGraph: {
-    title: 'Apparative Behandlungen - BeautySkin Berlin',
-    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Micro Needling und mehr.',
-    url: 'https://beautyskin-studio.de/apparative-behandlungen',
-    images: [
-      {
-        url: '/apparativ.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Apparative Behandlungen BeautySkin Berlin',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Apparative Behandlungen - BeautySkin Berlin',
-    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung',
-    images: ['/apparativ.webp'],
-  },
+export const metadata = {
+  title: 'Apparative Kosmetikbehandlungen Berlin',
+  description: 'Hochmoderne apparative Behandlungen in Berlin Friedrichshain. Aqua Facial, Microneedling, Diamant Mikrodermabrasion, Radiofrequenz. Professionelle Hautverbesserung mit neuester Technologie.',
   alternates: {
-    canonical: 'https://beautyskin-studio.de/apparative-behandlungen',
+    canonical: 'https://www.beautyskin-berlin.de/apparative-behandlungen',
+  },
+  openGraph: {
+    title: 'Apparative Kosmetikbehandlungen Berlin - BeautySkin',
+    description: 'Neueste Technologie für Ihre Haut: Aqua Facial, Microneedling, Radiofrequenz und mehr in Berlin Friedrichshain.',
+    url: 'https://www.beautyskin-berlin.de/apparative-behandlungen',
+    images: [{ url: 'https://www.beautyskin-berlin.de/apparativ.webp' }],
   },
 }
 
@@ -197,6 +183,14 @@ const treatments = [
 export default function ApparativeBehandlungenPage() {
   return (
     <main className="min-h-screen">
+      <ServiceSchema
+        name="Apparative Kosmetikbehandlungen Berlin"
+        description="Hochmoderne apparative Behandlungen mit neuester Technologie. Aqua Facial, Microneedling, Diamant Mikrodermabrasion, Radiofrequenz und mehr in Berlin Friedrichshain."
+        category="Apparative Kosmetik"
+        priceRange="85€ - 120€"
+        duration="60-90 Minuten"
+        url="https://www.beautyskin-berlin.de/apparative-behandlungen"
+      />
       <Header />
       <TreatmentsDetail treatmentId={2} />
       <Footer />

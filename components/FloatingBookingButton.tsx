@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Calendar, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -12,121 +12,10 @@ export default function FloatingBookingButton() {
   const { getTreatmentCount, selectedTreatments, removeTreatment } = useTreatmentCart()
   const treatmentCount = getTreatmentCount()
   const [showTooltip, setShowTooltip] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
 
   // Button auf Impressum und Datenschutz Seiten ausblenden
   const hideOnPages = ['/impressum', '/datenschutz']
-  const shouldHide = hideOnPages.includes(pathname)
-
-  useEffect(() => {
-    if (shouldHide) return
-    const checkVisibility = () => {
-      let shouldHide = false
-
-      // Auf Startseite: Prüfe ob Hero im Viewport ist
-      if (pathname === '/') {
-        const heroSection = document.querySelector('section[class*="min-h-screen"]') as HTMLElement
-        if (heroSection) {
-          const heroRect = heroSection.getBoundingClientRect()
-          const heroInViewport = heroRect.top < window.innerHeight && heroRect.bottom > 0
-          if (heroInViewport) {
-            shouldHide = true
-          }
-        }
-      }
-
-      // Auf allen Seiten: Prüfe ob Footer im Viewport ist
-      if (!shouldHide) {
-        const footer = document.querySelector('footer') as HTMLElement
-        if (footer) {
-          const footerRect = footer.getBoundingClientRect()
-          const footerInViewport = footerRect.top < window.innerHeight && footerRect.bottom > 0
-          if (footerInViewport) {
-            shouldHide = true
-          }
-        }
-      }
-
-      setIsVisible(!shouldHide)
-    }
-
-    // Initial check nach kurzer Verzögerung, damit DOM geladen ist
-    const timeoutId = setTimeout(checkVisibility, 100)
-
-    // Event listener für Scroll
-    window.addEventListener('scroll', checkVisibility, { passive: true })
-    window.addEventListener('resize', checkVisibility, { passive: true })
-
-    // Intersection Observer für bessere Performance
-    const observers: IntersectionObserver[] = []
-
-    // Hero Observer (nur auf Startseite)
-    if (pathname === '/') {
-      const heroSection = document.querySelector('section[class*="min-h-screen"]')
-      if (heroSection) {
-        const heroObserver = new IntersectionObserver(
-          (entries) => {
-            const heroVisible = entries.some(entry => entry.isIntersecting)
-            if (heroVisible) {
-              setIsVisible(false)
-            } else {
-              // Prüfe Footer wenn Hero nicht sichtbar
-              const footer = document.querySelector('footer')
-              if (footer) {
-                const footerRect = footer.getBoundingClientRect()
-                const footerInViewport = footerRect.top < window.innerHeight && footerRect.bottom > 0
-                setIsVisible(!footerInViewport)
-              } else {
-                setIsVisible(true)
-              }
-            }
-          },
-          { threshold: 0.1, rootMargin: '0px' }
-        )
-        heroObserver.observe(heroSection)
-        observers.push(heroObserver)
-      }
-    }
-
-    // Footer Observer (auf allen Seiten)
-    const footer = document.querySelector('footer')
-    if (footer) {
-      const footerObserver = new IntersectionObserver(
-        (entries) => {
-          const footerVisible = entries.some(entry => entry.isIntersecting)
-          if (footerVisible) {
-            setIsVisible(false)
-          } else {
-            // Prüfe Hero wenn Footer nicht sichtbar (nur auf Startseite)
-            if (pathname === '/') {
-              const heroSection = document.querySelector('section[class*="min-h-screen"]')
-              if (heroSection) {
-                const heroRect = heroSection.getBoundingClientRect()
-                const heroInViewport = heroRect.top < window.innerHeight && heroRect.bottom > 0
-                setIsVisible(!heroInViewport)
-              } else {
-                setIsVisible(true)
-              }
-            } else {
-              setIsVisible(true)
-            }
-          }
-        },
-        { threshold: 0.1, rootMargin: '0px' }
-      )
-      footerObserver.observe(footer)
-      observers.push(footerObserver)
-    }
-
-    return () => {
-      clearTimeout(timeoutId)
-      window.removeEventListener('scroll', checkVisibility)
-      window.removeEventListener('resize', checkVisibility)
-      observers.forEach((observer) => observer.disconnect())
-    }
-  }, [pathname, shouldHide])
-
-  if (shouldHide || !isVisible) {
+  if (hideOnPages.includes(pathname)) {
     return null
   }
 

@@ -44,7 +44,7 @@ export default function Header() {
             <Link href="/" className="flex items-center">
               <Image
                 src="/bs Logo+.png"
-                alt="BeautySkin Logo - Kosmetikstudio Berlin"
+                alt="BeautySkin Logo"
                 width={180}
                 height={60}
                 className="h-10 md:h-11 w-auto object-contain"

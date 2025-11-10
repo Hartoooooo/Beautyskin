@@ -763,7 +763,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <div className="h-96 rounded-3xl shadow-lg relative overflow-hidden">
                       <Image
                         src="/Dauerhaft Hero.webp"
-                        alt="Dauerhafte Haarentfernung mit Ice Diodenlaser bei BeautySkin Berlin - Professionelle Laser-Haarentfernung"
+                        alt="Dauerhafte Haarentfernung"
                         fill
                         className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 50vw"
@@ -827,7 +827,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <div className="relative h-48">
                       <Image
                         src="/Sichherheit.webp"
-                        alt="Sichere Laser-Haarentfernung mit modernster Technik bei BeautySkin Berlin"
+                        alt="Sichere Laser-Haarentfernung"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -862,8 +862,8 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     {/* Bild-Header mit EFFEKTIV */}
                     <div className="relative h-48">
                       <Image
-                        src="/Blue%20Modern%20Best%20Medical%20Doctors%20Service%20Flyer%201.webp"
-                        alt="Effektive Laser-Haarentfernung mit leistungsstarken Geräten bei BeautySkin Berlin"
+                        src="/beine.webp"
+                        alt="Effektive Laser-Haarentfernung"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -911,7 +911,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     <div className="relative h-48">
                       <Image
                         src="/Dauerhaft Hero.webp"
-                        alt="Schmerzarme Laser-Haarentfernung mit Kühltechnologie bei BeautySkin Berlin"
+                        alt="Schmerzarme Laser-Haarentfernung"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -1334,7 +1334,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                 </div>
               ) : (
                 // Standard layout for other treatments
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className={`grid md:grid-cols-2 gap-6 ${treatment.id === 5 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
                   {treatment.treatments.map((subTreatment, index) => (
                     <motion.div
                       key={index}
@@ -1342,33 +1342,63 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300`}
+                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 ${treatment.id === 5 ? 'flex flex-col h-full' : ''}`}
                     >
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="text-xl font-bold text-gray-900 mb-2">
-                            {subTreatment.name}
-                          </h4>
-                          <p className="text-gray-600 text-sm">
-                            {subTreatment.description}
-                          </p>
-                        </div>
-                        
-                        <div className="flex justify-between items-center">
-                          <span className="text-2xl font-bold text-gray-900">
-                            {subTreatment.price}
-                          </span>
-                        </div>
+                      {treatment.id === 5 ? (
+                        <div className="flex flex-col h-full">
+                          <div className="mb-4 min-h-[100px]">
+                            <h4 className="text-xl font-bold text-gray-900 mb-2">
+                              {subTreatment.name}
+                            </h4>
+                            <p className="text-gray-600 text-sm">
+                              {subTreatment.description}
+                            </p>
+                          </div>
+                          
+                          <div className="flex justify-between items-center mb-4 h-10">
+                            <span className="text-2xl font-bold text-gray-900">
+                              {subTreatment.price}
+                            </span>
+                          </div>
 
-                        <AddTreatmentButton 
-                          treatment={{
-                            id: `${treatment.id}-sub-${index}`,
-                            name: subTreatment.name,
-                            price: subTreatment.price
-                          }}
-                          className="w-full"
-                        />
-                      </div>
+                          <div className="mt-auto">
+                            <AddTreatmentButton 
+                              treatment={{
+                                id: `${treatment.id}-sub-${index}`,
+                                name: subTreatment.name,
+                                price: subTreatment.price
+                              }}
+                              className="w-full"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="text-xl font-bold text-gray-900 mb-2">
+                              {subTreatment.name}
+                            </h4>
+                            <p className="text-gray-600 text-sm">
+                              {subTreatment.description}
+                            </p>
+                          </div>
+                          
+                          <div className="flex justify-between items-center">
+                            <span className="text-2xl font-bold text-gray-900">
+                              {subTreatment.price}
+                            </span>
+                          </div>
+
+                          <AddTreatmentButton 
+                            treatment={{
+                              id: `${treatment.id}-sub-${index}`,
+                              name: subTreatment.name,
+                              price: subTreatment.price
+                            }}
+                            className="w-full"
+                          />
+                        </div>
+                      )}
                     </motion.div>
                   ))}
                 </div>

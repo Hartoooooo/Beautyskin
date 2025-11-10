@@ -54,7 +54,7 @@ export default function AddTreatmentButton({ treatment, className = '' }: AddTre
         ) : (
           <>
             <Plus className="h-5 w-5" />
-            <span>Behandlung auswählen</span>
+            <span>Auswählen</span>
           </>
         )}
       </button>

@@ -1,33 +1,19 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
+import { ServiceSchema } from '@/components/StructuredData'
 
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Gesichtsbehandlung',
-  description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut in Berlin. BeautySkin Klassik, Deluxe, Relax, Hautklar und mehr. Jetzt Termin buchen!',
-  openGraph: {
-    title: 'Gesichtsbehandlung - BeautySkin Berlin',
-    description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut. BeautySkin Klassik, Deluxe, Relax, Hautklar und mehr.',
-    url: 'https://beautyskin-studio.de/gesichtsbehandlung',
-    images: [
-      {
-        url: '/Gesichtsbehandlungen.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Gesichtsbehandlung BeautySkin Berlin',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Gesichtsbehandlung - BeautySkin Berlin',
-    description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut',
-    images: ['/Gesichtsbehandlungen.webp'],
-  },
+export const metadata = {
+  title: 'Gesichtsbehandlung Berlin',
+  description: 'Professionelle Gesichtsbehandlungen in Berlin Friedrichshain für gesunde und strahlende Haut. BeautySkin Klassik, Deluxe, Relax, Hautklar, AHA Peeling und mehr. Jetzt Termin buchen!',
   alternates: {
-    canonical: 'https://beautyskin-studio.de/gesichtsbehandlung',
+    canonical: 'https://www.beautyskin-berlin.de/gesichtsbehandlung',
+  },
+  openGraph: {
+    title: 'Gesichtsbehandlung Berlin - BeautySkin',
+    description: 'Professionelle Gesichtsbehandlungen in Berlin Friedrichshain. Individuelle Hautpflege für jeden Hauttyp.',
+    url: 'https://www.beautyskin-berlin.de/gesichtsbehandlung',
+    images: [{ url: 'https://www.beautyskin-berlin.de/Gesichtsbehandlungen.webp' }],
   },
 }
 
@@ -299,6 +285,14 @@ const treatments = [
 export default function GesichtsbehandlungPage() {
   return (
     <main className="min-h-screen">
+      <ServiceSchema
+        name="Professionelle Gesichtsbehandlung Berlin"
+        description="Professionelle Gesichtsbehandlungen in Berlin Friedrichshain. BeautySkin Klassik, Deluxe, Relax, Hautklar, AHA Peeling und Kräuter-Peeling für alle Hauttypen."
+        category="Gesichtsbehandlung"
+        priceRange="49€ - 89€"
+        duration="45-60 Minuten"
+        url="https://www.beautyskin-berlin.de/gesichtsbehandlung"
+      />
       <Header />
       <TreatmentsDetail treatmentId={1} />
       <Footer />

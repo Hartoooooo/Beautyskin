@@ -183,7 +183,7 @@ export default function ContactSection() {
                   >
                     <div className="space-y-3">
                       <p className="text-gray-700 italic leading-relaxed">
-                        &ldquo;{reviews[currentReview].text}&rdquo;
+                        "{reviews[currentReview].text}"
                       </p>
                       <div className="space-y-1">
                         <p className="text-sm font-semibold text-gray-900">

@@ -1,33 +1,19 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
+import { ServiceSchema } from '@/components/StructuredData'
 
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Massagen',
-  description: 'Entspannende Massagen für Körper und Seele in Berlin. Nacken-Massage, Hot Stone Massage, Kopf-Nacken-Rückenmassage. Jetzt Termin buchen!',
-  openGraph: {
-    title: 'Massagen - BeautySkin Berlin',
-    description: 'Entspannende Massagen für Körper und Seele. Nacken-Massage, Hot Stone, Kopf-Nacken-Rückenmassage.',
-    url: 'https://beautyskin-studio.de/massagen',
-    images: [
-      {
-        url: '/Massagen Startseite.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Massagen BeautySkin Berlin',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Massagen - BeautySkin Berlin',
-    description: 'Entspannende Massagen für Körper und Seele',
-    images: ['/Massagen Startseite.webp'],
-  },
+export const metadata = {
+  title: 'Massagen Berlin Friedrichshain',
+  description: 'Entspannende Massagen in Berlin Friedrichshain für Körper und Seele. Nacken-Massage, Hot Stone, Kopf-Nacken-Rückenmassage. Professionelle Entspannung und Stressabbau.',
   alternates: {
-    canonical: 'https://beautyskin-studio.de/massagen',
+    canonical: 'https://www.beautyskin-berlin.de/massagen',
+  },
+  openGraph: {
+    title: 'Entspannende Massagen Berlin - BeautySkin',
+    description: 'Gönnen Sie sich eine wohltuende Massage in Berlin Friedrichshain. Hot Stone, Nacken-Massage und mehr.',
+    url: 'https://www.beautyskin-berlin.de/massagen',
+    images: [{ url: 'https://www.beautyskin-berlin.de/Massagen%20Startseite.webp' }],
   },
 }
 
@@ -133,6 +119,14 @@ const treatments = [
 export default function MassagenPage() {
   return (
     <main className="min-h-screen">
+      <ServiceSchema
+        name="Entspannende Massagen Berlin"
+        description="Professionelle Massagen in Berlin Friedrichshain für Körper und Seele. Nacken-Massage, Hot Stone, Kopf-Nacken-Rückenmassage für Entspannung und Stressabbau."
+        category="Massage & Wellness"
+        priceRange="25€ - 59€"
+        duration="15-45 Minuten"
+        url="https://www.beautyskin-berlin.de/massagen"
+      />
       <Header />
       <TreatmentsDetail treatmentId={3} />
       <Footer />

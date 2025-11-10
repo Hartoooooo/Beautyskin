@@ -3,32 +3,16 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import TerminForm from '@/components/TerminForm'
 
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Termin anfragen',
-  description: 'Buchen Sie Ihren Termin bei BeautySkin in Berlin. Wählen Sie aus unserem umfangreichen Behandlungsangebot: Gesichtsbehandlungen, Massagen, Haarentfernung und mehr.',
-  openGraph: {
-    title: 'Termin anfragen - BeautySkin Berlin',
-    description: 'Buchen Sie Ihren Termin bei BeautySkin. Wählen Sie aus unserem umfangreichen Behandlungsangebot.',
-    url: 'https://beautyskin-studio.de/termin',
-    images: [
-      {
-        url: '/aussen.webp',
-        width: 1200,
-        height: 630,
-        alt: 'BeautySkin Kosmetikstudio Termin buchen',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Termin anfragen - BeautySkin Berlin',
-    description: 'Buchen Sie Ihren Termin bei BeautySkin',
-    images: ['/aussen.webp'],
-  },
+export const metadata = {
+  title: 'Termin buchen Berlin',
+  description: 'Buchen Sie jetzt Ihren Termin bei BeautySkin in Berlin Friedrichshain. Kosmetikbehandlungen, Massagen, Haarentfernung und mehr. Telefonisch: +49 170 4482725 oder per Kontaktformular.',
   alternates: {
-    canonical: 'https://beautyskin-studio.de/termin',
+    canonical: 'https://www.beautyskin-berlin.de/termin',
+  },
+  openGraph: {
+    title: 'Termin buchen - BeautySkin Berlin',
+    description: 'Vereinbaren Sie jetzt Ihren Termin im BeautySkin Kosmetikstudio in Berlin Friedrichshain.',
+    url: 'https://www.beautyskin-berlin.de/termin',
   },
 }
 

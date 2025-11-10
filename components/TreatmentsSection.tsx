@@ -144,9 +144,10 @@ export default function TreatmentsSection() {
                     <div className="absolute inset-0 w-full h-full overflow-hidden group-hover:scale-105 transition-transform duration-300">
                       <Image
                         src={treatment.image}
-                        alt={`${treatment.title} - Professionelle ${treatment.title.toLowerCase()} bei BeautySkin Kosmetikstudio Berlin`}
+                        alt={`${treatment.title} - ${treatment.subtitle} im BeautySkin Kosmetikstudio Berlin`}
                         fill
                         className={`object-cover ${treatment.id === 4 ? 'object-left' : ''}`}
+                        priority={index === 0}
                       />
                       {/* Gradient Overlay from bottom to middle */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -259,13 +260,13 @@ export default function TreatmentsSection() {
         >
           <div className="bg-[#454545] rounded-3xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Termin anfragen
+              Alle Behandlungen entdecken
             </h3>
             <p className="text-white mb-6">
               Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
             </p>
-            <Link href="/termin" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
-              <span>Jetzt Termin buchen</span>
+            <Link href="/behandlungen" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
+              <span>Alle Behandlungen ansehen</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

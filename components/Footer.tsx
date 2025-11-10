@@ -7,6 +7,7 @@ export default function Footer() {
 
   const footerLinks = {
     studio: [
+      { name: 'Behandlungen', href: '/behandlungen' },
       { name: 'Termine', href: '#termin' },
       { name: 'Kontakt', href: '#kontakt' },
     ],

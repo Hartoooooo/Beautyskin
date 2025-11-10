@@ -1,33 +1,19 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
+import { ServiceSchema } from '@/components/StructuredData'
 
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Augenbrauenkorrektur',
-  description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung in Berlin. Perfekt geformte Augenbrauen für mehr Ausdruck. Zupfen, Waxing und Färben.',
-  openGraph: {
-    title: 'Augenbrauenkorrektur - BeautySkin Berlin',
-    description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung. Perfekt geformte Augenbrauen für mehr Ausdruck.',
-    url: 'https://beautyskin-studio.de/augenbrauenkorrektur',
-    images: [
-      {
-        url: '/pinzette.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Augenbrauenkorrektur BeautySkin Berlin',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Augenbrauenkorrektur - BeautySkin Berlin',
-    description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung',
-    images: ['/pinzette.webp'],
-  },
+export const metadata = {
+  title: 'Augenbrauenkorrektur Berlin | Wimpernfärbung',
+  description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung in Berlin Friedrichshain. Zupfen, Waxing, Färben und Kombipaket ab 15€. Perfekte Augenbrauen für einen ausdrucksstarken Blick.',
   alternates: {
-    canonical: 'https://beautyskin-studio.de/augenbrauenkorrektur',
+    canonical: 'https://www.beautyskin-berlin.de/augenbrauenkorrektur',
+  },
+  openGraph: {
+    title: 'Augenbrauenkorrektur Berlin - BeautySkin',
+    description: 'Perfekte Augenbrauen durch professionelles Zupfen, Waxing und Färben in Berlin Friedrichshain.',
+    url: 'https://www.beautyskin-berlin.de/augenbrauenkorrektur',
+    images: [{ url: 'https://www.beautyskin-berlin.de/pinzette.webp' }],
   },
 }
 
@@ -160,6 +146,14 @@ const treatments = [
 export default function AugenbrauenkorrekturPage() {
   return (
     <main className="min-h-screen">
+      <ServiceSchema
+        name="Augenbrauenkorrektur & Wimpernfärbung Berlin"
+        description="Professionelle Augenbrauenkorrektur und Wimpernfärbung in Berlin Friedrichshain. Zupfen, Waxing, Färben und Kombipaket für perfekt geformte Augenbrauen."
+        category="Augenbrauen & Wimpern"
+        priceRange="15€ - 40€"
+        duration="15-30 Minuten"
+        url="https://www.beautyskin-berlin.de/augenbrauenkorrektur"
+      />
       <Header />
       <TreatmentsDetail treatmentId={5} />
       <Footer />
