@@ -16,11 +16,10 @@ export default function FloatingBookingButton() {
 
   // Button auf Impressum und Datenschutz Seiten ausblenden
   const hideOnPages = ['/impressum', '/datenschutz']
-  if (hideOnPages.includes(pathname)) {
-    return null
-  }
+  const shouldHide = hideOnPages.includes(pathname)
 
   useEffect(() => {
+    if (shouldHide) return
     const checkVisibility = () => {
       let shouldHide = false
 
@@ -125,9 +124,9 @@ export default function FloatingBookingButton() {
       window.removeEventListener('resize', checkVisibility)
       observers.forEach((observer) => observer.disconnect())
     }
-  }, [pathname])
+  }, [pathname, shouldHide])
 
-  if (!isVisible) {
+  if (shouldHide || !isVisible) {
     return null
   }
 

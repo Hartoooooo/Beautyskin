@@ -28,7 +28,7 @@ export default function AGPage() {
               <div className="bg-gray-50 rounded-2xl p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Geltungsbereich</h2>
                 <p className="text-gray-700">
-                  Diese Allgemeinen Geschäftsbedingungen gelten für alle Anfragen, Terminvereinbarungen und Behandlungen zwischen dem Kosmetikstudio BeautySkin, Inhaberin Ysabel Busch, R&Y Slivio-Meier-Straße 6, 10247 Berlin (nachfolgend „Studio" genannt), und den Kundinnen und Kunden (nachfolgend „Kunde" genannt).
+                  Diese Allgemeinen Geschäftsbedingungen gelten für alle Anfragen, Terminvereinbarungen und Behandlungen zwischen dem Kosmetikstudio BeautySkin, Inhaberin Ysabel Busch, R&Y Slivio-Meier-Straße 6, 10247 Berlin (nachfolgend &ldquo;Studio&rdquo; genannt), und den Kundinnen und Kunden (nachfolgend &ldquo;Kunde&rdquo; genannt).
                 </p>
               </div>
 

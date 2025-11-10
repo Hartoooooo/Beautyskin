@@ -5,8 +5,11 @@ import FloatingBookingButton from '@/components/FloatingBookingButton'
 import ClientProviders from '@/components/ClientProviders'
 import StructuredData from '@/components/StructuredData'
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://beautyskin-studio.de')
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://beautyskin-studio.de'),
+  metadataBase: new URL(baseUrl),
   title: {
     default: 'BeautySkin - Ihr Kosmetikstudio in Berlin',
     template: '%s | BeautySkin'
