@@ -33,7 +33,7 @@ export default function AboutSection() {
               {/* Image */}
               <div className="aspect-[4/5] relative">
                 <Image
-                  src="/20251105_0844_Frau%20mit%20Beauty-Logo_remix_01k99ffe3fe06bc09dx1y3bdbz.webp"
+                  src="/raquel.webp"
                   alt="Raquel Hardel - Gründerin & Kosmetikerin bei BeautySkin"
                   fill
                   className="object-cover"

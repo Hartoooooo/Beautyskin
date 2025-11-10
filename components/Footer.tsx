@@ -16,7 +16,6 @@ export default function Footer() {
       { name: 'Datenschutz', href: '/datenschutz' },
       { name: 'Cookie-Richtlinie', href: '/cookies' },
       { name: 'AGB', href: '/agb' },
-      { name: 'Widerrufsbelehrung', href: '/widerruf' },
     ],
   }
 
