@@ -4,16 +4,8 @@ import Footer from '@/components/Footer'
 import TerminForm from '@/components/TerminForm'
 
 export const metadata = {
-  title: 'Termin buchen Berlin',
-  description: 'Buchen Sie jetzt Ihren Termin bei BeautySkin in Berlin Friedrichshain. Kosmetikbehandlungen, Massagen, Haarentfernung und mehr. Telefonisch: +49 170 4482725 oder per Kontaktformular.',
-  alternates: {
-    canonical: 'https://www.beautyskin-berlin.de/termin',
-  },
-  openGraph: {
-    title: 'Termin buchen - BeautySkin Berlin',
-    description: 'Vereinbaren Sie jetzt Ihren Termin im BeautySkin Kosmetikstudio in Berlin Friedrichshain.',
-    url: 'https://www.beautyskin-berlin.de/termin',
-  },
+  title: 'Termin anfragen - BeautySkin',
+  description: 'Buchen Sie Ihren Termin bei BeautySkin. Wählen Sie aus unserem umfangreichen Behandlungsangebot.',
 }
 
 function LoadingFallback() {

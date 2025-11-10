@@ -144,10 +144,9 @@ export default function TreatmentsSection() {
                     <div className="absolute inset-0 w-full h-full overflow-hidden group-hover:scale-105 transition-transform duration-300">
                       <Image
                         src={treatment.image}
-                        alt={`${treatment.title} - ${treatment.subtitle} im BeautySkin Kosmetikstudio Berlin`}
+                        alt={treatment.title}
                         fill
                         className={`object-cover ${treatment.id === 4 ? 'object-left' : ''}`}
-                        priority={index === 0}
                       />
                       {/* Gradient Overlay from bottom to middle */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />

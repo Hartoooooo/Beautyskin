@@ -2,11 +2,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Datenschutz',
-  description: 'Datenschutzerklärung von BeautySkin Kosmetikstudio Berlin. Informationen zum Schutz Ihrer persönlichen Daten.',
-  alternates: {
-    canonical: 'https://www.beautyskin-berlin.de/datenschutz',
-  },
+  title: 'Datenschutz - BeautySkin',
+  description: 'Datenschutzerklärung von BeautySkin Kosmetikstudio Berlin.',
 }
 
 export default function DatenschutzPage() {
@@ -35,7 +32,7 @@ export default function DatenschutzPage() {
                   
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h3>
                   <p className="text-gray-700 mb-4">
-                    Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt &quot;Hinweis zur Verantwortlichen Stelle&quot; in dieser Datenschutzerklärung entnehmen.
+                    Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle" in dieser Datenschutzerklärung entnehmen.
                   </p>
 
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Wie erfassen wir Ihre Daten?</h3>
@@ -107,7 +104,7 @@ export default function DatenschutzPage() {
                     
                     <p className="text-gray-700 mb-3"><strong>Cookie-Einstellungen:</strong></p>
                     <p className="text-gray-700 mb-4">
-                      Wir speichern Ihre Cookie-Präferenzen in einem Cookie namens &quot;cookieConsent&quot;, um Ihre Auswahl zu merken. Dieses Cookie ist technisch notwendig und wird für 365 Tage gespeichert.
+                      Wir speichern Ihre Cookie-Präferenzen in einem Cookie namens "cookieConsent", um Ihre Auswahl zu merken. Dieses Cookie ist technisch notwendig und wird für 365 Tage gespeichert.
                     </p>
 
                     <p className="text-gray-700 mb-3"><strong>Analyse-Cookies (optional):</strong></p>
@@ -127,7 +124,7 @@ export default function DatenschutzPage() {
                   
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Google Analytics (optional)</h3>
                   <p className="text-gray-700 mb-4">
-                    Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics nur mit Ihrer ausdrücklichen Einwilligung. Anbieter ist die Google Ireland Limited (&quot;Google&quot;), Gordon House, Barrow Street, Dublin 4, Irland.
+                    Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics nur mit Ihrer ausdrücklichen Einwilligung. Anbieter ist die Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Irland.
                   </p>
                   <p className="text-gray-700 mb-4">
                     Google Analytics verwendet Cookies. Die durch das Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.

@@ -2,11 +2,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Impressum',
-  description: 'Impressum und rechtliche Informationen von BeautySkin Kosmetikstudio Berlin Friedrichshain.',
-  alternates: {
-    canonical: 'https://www.beautyskin-berlin.de/impressum',
-  },
+  title: 'Impressum - BeautySkin',
+  description: 'Impressum und rechtliche Informationen von BeautySkin Kosmetikstudio Berlin.',
 }
 
 export default function ImpressumPage() {

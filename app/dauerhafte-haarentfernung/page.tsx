@@ -1,20 +1,10 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
-import { ServiceSchema } from '@/components/StructuredData'
 
 export const metadata = {
-  title: 'Dauerhafte Haarentfernung Berlin | Ice Diodenlaser',
-  description: 'Professionelle dauerhafte Haarentfernung mit Ice Diodenlaser in Berlin Friedrichshain. Schmerzarm, effektiv und sicher für alle Hauttypen. Jetzt Termin buchen ab 15€.',
-  alternates: {
-    canonical: 'https://www.beautyskin-berlin.de/dauerhafte-haarentfernung',
-  },
-  openGraph: {
-    title: 'Dauerhafte Haarentfernung Berlin - Ice Diodenlaser | BeautySkin',
-    description: 'Schmerzarme dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Für Damen und Herren.',
-    url: 'https://www.beautyskin-berlin.de/dauerhafte-haarentfernung',
-    images: [{ url: 'https://www.beautyskin-berlin.de/Haarentfernunhg.webp' }],
-  },
+  title: 'Dauerhafte Haarentfernung - BeautySkin',
+  description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm und effektiv für alle Hauttypen.',
 }
 
 const femaleTreatments = [
@@ -57,14 +47,6 @@ const maleTreatments = [
 export default function DauerhafteHaarentfernungPage() {
   return (
     <main className="min-h-screen">
-      <ServiceSchema
-        name="Dauerhafte Haarentfernung mit Ice Diodenlaser Berlin"
-        description="Professionelle dauerhafte Haarentfernung mit Ice Diodenlaser in Berlin Friedrichshain. Schmerzarm, effektiv und sicher für alle Hauttypen und Körperbereiche."
-        category="Dauerhafte Haarentfernung"
-        priceRange="15€ - 110€"
-        duration="15-60 Minuten"
-        url="https://www.beautyskin-berlin.de/dauerhafte-haarentfernung"
-      />
       <Header />
       <TreatmentsDetail treatmentId={4} />
       <Footer />
