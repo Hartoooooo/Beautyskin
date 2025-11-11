@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Calendar, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -12,20 +12,74 @@ export default function FloatingBookingButton() {
   const { getTreatmentCount, selectedTreatments, removeTreatment } = useTreatmentCart()
   const treatmentCount = getTreatmentCount()
   const [showTooltip, setShowTooltip] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
 
-  // Button auf Impressum und Datenschutz Seiten ausblenden
-  const hideOnPages = ['/impressum', '/datenschutz']
-  if (hideOnPages.includes(pathname)) {
+  // Button auf Impressum, Datenschutz und Termin Seiten ausblenden
+  const hideOnPages = ['/impressum', '/datenschutz', '/termin']
+  const shouldHide = hideOnPages.includes(pathname)
+
+  // Button-Sichtbarkeit basierend auf Scroll-Position
+  useEffect(() => {
+    // Wenn Button komplett ausgeblendet werden soll, nicht weiter prüfen
+    if (shouldHide) {
+      setIsVisible(false)
+      return
+    }
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+      
+      // Footer-Bereich: letzte 400px (ungefähr Footer-Höhe)
+      const footerStart = documentHeight - 400
+      
+      // Auf Startseite: Button im Hero-Bereich UND Footer-Bereich ausblenden
+      if (pathname === '/') {
+        const heroHeight = windowHeight
+        // Button ausblenden wenn im Hero-Bereich oder Footer-Bereich
+        if (scrollY < heroHeight || scrollY + windowHeight >= footerStart) {
+          setIsVisible(false)
+        } else {
+          setIsVisible(true)
+        }
+      } else {
+        // Auf allen anderen Seiten: Button nur im Footer-Bereich ausblenden
+        if (scrollY + windowHeight >= footerStart) {
+          setIsVisible(false)
+        } else {
+          setIsVisible(true)
+        }
+      }
+    }
+
+    // Initial check
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [pathname, shouldHide])
+
+  // Button komplett ausblenden auf bestimmten Seiten
+  if (shouldHide) {
     return null
   }
 
   return (
-    <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.3, delay: 0.5 }}
-      className="fixed bottom-6 right-6 z-50"
-    >
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed bottom-6 right-6 z-50"
+        >
       {/* Tooltip mit ausgewählten Behandlungen */}
       <AnimatePresence>
         {showTooltip && treatmentCount > 0 && (
@@ -106,7 +160,9 @@ export default function FloatingBookingButton() {
           </AnimatePresence>
         </motion.button>
       </Link>
-    </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 
