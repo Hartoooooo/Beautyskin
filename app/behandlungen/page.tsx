@@ -1,10 +1,47 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Behandlungen - BeautySkin',
-  description: 'Alle unsere professionellen Kosmetikbehandlungen im Überblick. Hydrafacial, Microneedling, Gesichtsbehandlungen und mehr.',
+const siteUrl = 'https://www.beautyskin-berlin.de'
+
+export const metadata: Metadata = {
+  title: 'Behandlungen',
+  description: 'Alle unsere professionellen Kosmetikbehandlungen im Überblick. Gesichtsbehandlungen, Hydrafacial, Microneedling, dauerhafte Haarentfernung, Massagen und Augenbrauenkorrektur in Berlin-Friedrichshain.',
+  keywords: [
+    'Kosmetikbehandlungen Berlin',
+    'Beauty Behandlungen Berlin',
+    'Gesichtsbehandlung Berlin',
+    'Laser Haarentfernung Berlin',
+    'Massage Berlin',
+    'Hydrafacial Berlin',
+    'Microneedling Berlin',
+    'Kosmetikstudio Berlin',
+    'BeautySkin Behandlungen',
+    'Professionelle Kosmetik Berlin',
+  ],
+  openGraph: {
+    title: 'Behandlungen | BeautySkin Berlin',
+    description: 'Alle unsere professionellen Kosmetikbehandlungen im Überblick. Gesichtsbehandlungen, Hydrafacial, Microneedling und mehr.',
+    url: `${siteUrl}/behandlungen`,
+    images: [`${siteUrl}/raquel.webp`],
+    type: 'website',
+    locale: 'de_DE',
+  },
+  alternates: {
+    canonical: `${siteUrl}/behandlungen`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function BehandlungenPage() {

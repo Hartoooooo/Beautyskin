@@ -1,9 +1,26 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export const metadata = {
-  title: 'Datenschutz - BeautySkin',
-  description: 'Datenschutzerklärung von BeautySkin Kosmetikstudio Berlin.',
+const siteUrl = 'https://www.beautyskin-berlin.de'
+
+export const metadata: Metadata = {
+  title: 'Datenschutz',
+  description: 'Datenschutzerklärung von BeautySkin Kosmetikstudio Berlin. Informationen zur Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten gemäß DSGVO.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: `${siteUrl}/datenschutz`,
+  },
+  openGraph: {
+    title: 'Datenschutz | BeautySkin Berlin',
+    description: 'Datenschutzerklärung von BeautySkin Kosmetikstudio Berlin.',
+    url: `${siteUrl}/datenschutz`,
+    type: 'website',
+    locale: 'de_DE',
+  },
 }
 
 export default function DatenschutzPage() {

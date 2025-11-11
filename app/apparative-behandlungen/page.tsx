@@ -1,10 +1,47 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Apparative Behandlungen - BeautySkin',
-  description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Micro Needling und mehr.',
+const siteUrl = 'https://www.beautyskin-berlin.de'
+
+export const metadata: Metadata = {
+  title: 'Apparative Behandlungen',
+  description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung in Berlin-Friedrichshain. Aqua Facial, Skin Oximizer, Micro Needling, Diamant Mikrodermabrasion und Radiofrequenzbehandlung. Ab 75€.',
+  keywords: [
+    'Apparative Behandlungen Berlin',
+    'Aqua Facial Berlin',
+    'Micro Needling Berlin',
+    'Skin Oximizer Berlin',
+    'Diamant Mikrodermabrasion Berlin',
+    'Radiofrequenzbehandlung Berlin',
+    'Hydrafacial Berlin',
+    'Professionelle Hautbehandlung Berlin',
+    'Anti-Aging Geräte Berlin',
+    'Hautstraffung Berlin',
+  ],
+  openGraph: {
+    title: 'Apparative Behandlungen | BeautySkin Berlin',
+    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Micro Needling und mehr.',
+    url: `${siteUrl}/apparative-behandlungen`,
+    images: [`${siteUrl}/apparativ.webp`],
+    type: 'website',
+    locale: 'de_DE',
+  },
+  alternates: {
+    canonical: `${siteUrl}/apparative-behandlungen`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 const treatments = [
@@ -171,8 +208,46 @@ const treatments = [
 ]
 
 export default function ApparativeBehandlungenPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Apparative Behandlungen',
+    provider: {
+      '@type': 'BeautySalon',
+      name: 'BeautySkin',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'R&Y Slivio-Meier-Straße 6',
+        addressLocality: 'Berlin',
+        postalCode: '10247',
+        addressCountry: 'DE',
+      },
+      telephone: '+491704482725',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Berlin',
+    },
+    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Micro Needling, Diamant Mikrodermabrasion und Radiofrequenzbehandlung.',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EUR',
+      price: '75',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '75',
+        priceCurrency: 'EUR',
+        unitText: 'ab',
+      },
+    },
+  }
+
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <TreatmentsDetail treatmentId={2} />
       <Footer />

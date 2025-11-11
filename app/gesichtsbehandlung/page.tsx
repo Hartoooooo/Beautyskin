@@ -1,10 +1,47 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Gesichtsbehandlung - BeautySkin',
-  description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut. BeautySkin Klassik, Relax, Hautklar und mehr.',
+const siteUrl = 'https://www.beautyskin-berlin.de'
+
+export const metadata: Metadata = {
+  title: 'Gesichtsbehandlung',
+  description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut in Berlin-Friedrichshain. BeautySkin Klassik, Relax, Hautklar, Unreine Haut, Deluxe und mehr. Individuelle Beratung mit CNC-Produkten. Ab 49€.',
+  keywords: [
+    'Gesichtsbehandlung Berlin',
+    'Gesichtsbehandlung Friedrichshain',
+    'BeautySkin Klassik',
+    'BeautySkin Deluxe',
+    'Gesichtsbehandlung CNC',
+    'Professionelle Gesichtspflege Berlin',
+    'Anti-Aging Behandlung Berlin',
+    'Hautpflege Berlin',
+    'Kosmetikstudio Berlin',
+    'Gesichtsbehandlung ab 49€',
+  ],
+  openGraph: {
+    title: 'Gesichtsbehandlung | BeautySkin Berlin',
+    description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut. BeautySkin Klassik, Relax, Hautklar und mehr.',
+    url: `${siteUrl}/gesichtsbehandlung`,
+    images: [`${siteUrl}/Gesichtsbehandlungen.webp`],
+    type: 'website',
+    locale: 'de_DE',
+  },
+  alternates: {
+    canonical: `${siteUrl}/gesichtsbehandlung`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 const treatments = [
@@ -273,8 +310,47 @@ const treatments = [
 ]
 
 export default function GesichtsbehandlungPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Gesichtsbehandlung',
+    provider: {
+      '@type': 'BeautySalon',
+      name: 'BeautySkin',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'R&Y Slivio-Meier-Straße 6',
+        addressLocality: 'Berlin',
+        postalCode: '10247',
+        addressCountry: 'DE',
+      },
+      telephone: '+491704482725',
+      email: 'beautyskin.studio@icloud.com',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Berlin',
+    },
+    description: 'Professionelle Gesichtsbehandlungen für gesunde und strahlende Haut. BeautySkin Klassik, Relax, Hautklar, Unreine Haut, Deluxe und mehr.',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EUR',
+      price: '49',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '49',
+        priceCurrency: 'EUR',
+        unitText: 'ab',
+      },
+    },
+  }
+
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <TreatmentsDetail treatmentId={1} />
       <Footer />

@@ -1,10 +1,47 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Augenbrauenkorrektur - BeautySkin',
-  description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung. Perfekt geformte Augenbrauen für mehr Ausdruck.',
+const siteUrl = 'https://www.beautyskin-berlin.de'
+
+export const metadata: Metadata = {
+  title: 'Augenbrauenkorrektur',
+  description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung in Berlin-Friedrichshain. Perfekt geformte Augenbrauen für mehr Ausdruck. Zupfen, Waxing und Färben. Ab 15€.',
+  keywords: [
+    'Augenbrauenkorrektur Berlin',
+    'Augenbrauen zupfen Berlin',
+    'Augenbrauen waxing Berlin',
+    'Wimpern färben Berlin',
+    'Augenbrauen färben Berlin',
+    'Brow Shaping Berlin',
+    'Professionelle Augenbrauenpflege Berlin',
+    'Augenbrauenkorrektur Friedrichshain',
+    'Brow Correction Berlin',
+    'Augenbrauen Design Berlin',
+  ],
+  openGraph: {
+    title: 'Augenbrauenkorrektur | BeautySkin Berlin',
+    description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung. Perfekt geformte Augenbrauen für mehr Ausdruck.',
+    url: `${siteUrl}/augenbrauenkorrektur`,
+    images: [`${siteUrl}/pinzette.webp`],
+    type: 'website',
+    locale: 'de_DE',
+  },
+  alternates: {
+    canonical: `${siteUrl}/augenbrauenkorrektur`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 const treatments = [
@@ -134,8 +171,46 @@ const treatments = [
 ]
 
 export default function AugenbrauenkorrekturPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Augenbrauenkorrektur',
+    provider: {
+      '@type': 'BeautySalon',
+      name: 'BeautySkin',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'R&Y Slivio-Meier-Straße 6',
+        addressLocality: 'Berlin',
+        postalCode: '10247',
+        addressCountry: 'DE',
+      },
+      telephone: '+491704482725',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Berlin',
+    },
+    description: 'Professionelle Augenbrauenkorrektur und Wimpernfärbung. Perfekt geformte Augenbrauen für mehr Ausdruck.',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EUR',
+      price: '15',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '15',
+        priceCurrency: 'EUR',
+        unitText: 'ab',
+      },
+    },
+  }
+
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <TreatmentsDetail treatmentId={5} />
       <Footer />

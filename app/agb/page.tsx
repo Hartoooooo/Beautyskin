@@ -1,9 +1,26 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export const metadata = {
-  title: 'AGB - BeautySkin',
-  description: 'Allgemeine Geschäftsbedingungen von BeautySkin Kosmetikstudio Berlin.',
+const siteUrl = 'https://www.beautyskin-berlin.de'
+
+export const metadata: Metadata = {
+  title: 'AGB',
+  description: 'Allgemeine Geschäftsbedingungen von BeautySkin Kosmetikstudio Berlin. Informationen zu Terminanfragen, Preisen, Zahlungsbedingungen und Vertragsbedingungen.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: `${siteUrl}/agb`,
+  },
+  openGraph: {
+    title: 'AGB | BeautySkin Berlin',
+    description: 'Allgemeine Geschäftsbedingungen von BeautySkin Kosmetikstudio Berlin.',
+    url: `${siteUrl}/agb`,
+    type: 'website',
+    locale: 'de_DE',
+  },
 }
 
 export default function AGBPage() {

@@ -1,10 +1,47 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TreatmentsDetail } from '@/components/TreatmentsDetail'
 
-export const metadata = {
-  title: 'Dauerhafte Haarentfernung - BeautySkin',
-  description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm und effektiv für alle Hauttypen.',
+const siteUrl = 'https://www.beautyskin-berlin.de'
+
+export const metadata: Metadata = {
+  title: 'Dauerhafte Haarentfernung',
+  description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser in Berlin-Friedrichshain. Schmerzarm, sicher und effektiv für alle Hauttypen. Laser Haarentfernung für Gesicht, Beine, Arme, Bikinizone. Preise ab 15€. Jetzt Termin anfragen!',
+  keywords: [
+    'Laser Haarentfernung Berlin',
+    'Dauerhafte Haarentfernung Berlin',
+    'Laser Haarentfernung Friedrichshain',
+    'Ice Diodenlaser Berlin',
+    'Laser Epilation Berlin',
+    'Haarentfernung Gesicht Berlin',
+    'Laser Beine Berlin',
+    'Laser Bikinizone Berlin',
+    'Schmerzarme Haarentfernung Berlin',
+    'Professionelle Laser Haarentfernung',
+  ],
+  openGraph: {
+    title: 'Dauerhafte Haarentfernung | BeautySkin Berlin',
+    description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm und effektiv für alle Hauttypen.',
+    url: `${siteUrl}/dauerhafte-haarentfernung`,
+    images: [`${siteUrl}/Dauerhaft Hero.webp`],
+    type: 'website',
+    locale: 'de_DE',
+  },
+  alternates: {
+    canonical: `${siteUrl}/dauerhafte-haarentfernung`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 const femaleTreatments = [
@@ -45,8 +82,46 @@ const maleTreatments = [
 ]
 
 export default function DauerhafteHaarentfernungPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Dauerhafte Haarentfernung',
+    provider: {
+      '@type': 'BeautySalon',
+      name: 'BeautySkin',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'R&Y Slivio-Meier-Straße 6',
+        addressLocality: 'Berlin',
+        postalCode: '10247',
+        addressCountry: 'DE',
+      },
+      telephone: '+491704482725',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Berlin',
+    },
+    description: 'Professionelle dauerhafte Haarentfernung mit modernstem Ice Diodenlaser. Schmerzarm, sicher und effektiv für alle Hauttypen.',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EUR',
+      price: '15',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '15',
+        priceCurrency: 'EUR',
+        unitText: 'ab',
+      },
+    },
+  }
+
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <TreatmentsDetail treatmentId={4} />
       <Footer />
