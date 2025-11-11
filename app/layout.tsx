@@ -5,6 +5,7 @@ import FloatingBookingButton from '@/components/FloatingBookingButton'
 import ClientProviders from '@/components/ClientProviders'
 
 const siteUrl = 'https://www.beautyskin-berlin.de'
+const gaId = process.env.NEXT_PUBLIC_GA_ID || ''
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -142,6 +143,25 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#454545" />
+        {/* Google tag (gtag.js) */}
+        {gaId && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}');
+                `,
+              }}
+            />
+          </>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
