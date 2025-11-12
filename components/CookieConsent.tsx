@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Cookie, Settings, Check } from 'lucide-react'
 import Link from 'next/link'
 
+// Google Analytics ID aus Umgebungsvariable
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-98JK9GPT7B'
+
 interface CookiePreferences {
   necessary: boolean
   analytics: boolean
@@ -51,12 +54,11 @@ export default function CookieConsent() {
   }, [])
 
   const loadGoogleAnalytics = () => {
-    // Google Analytics laden (GA4)
-    // Ersetzen Sie 'G-XXXXXXXXXX' mit Ihrer tatsächlichen Measurement ID
-    if (typeof window !== 'undefined' && !window.gtag) {
+    // Google Analytics laden (GA4) - nur nach Cookie-Zustimmung
+    if (typeof window !== 'undefined' && !window.gtag && GA_ID) {
       const script1 = document.createElement('script')
       script1.async = true
-      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'
+      script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
       document.head.appendChild(script1)
 
       const script2 = document.createElement('script')
@@ -64,7 +66,7 @@ export default function CookieConsent() {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX', {
+        gtag('config', '${GA_ID}', {
           anonymize_ip: true,
           cookie_flags: 'SameSite=None;Secure'
         });
