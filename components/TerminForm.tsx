@@ -404,20 +404,52 @@ export default function TerminForm() {
     return formData.treatmentsByCategory[categoryId] || []
   }
 
-  // Berechne die Gesamtdauer der ausgewählten Behandlungen
-  const getTotalDuration = () => {
-    if (!selectedCategory) return 0
+  // Prüfe, ob mindestens eine Behandlung ausgewählt ist
+  const hasAnySelectedTreatments = () => {
+    return Object.values(formData.treatmentsByCategory).some(treatments => treatments.length > 0)
+  }
+
+  // Hole alle ausgewählten Behandlungen aus allen Kategorien
+  const getAllSelectedTreatments = () => {
+    const allTreatments: Array<{ name: string; categoryId: string; categoryName: string }> = []
     
+    Object.keys(formData.treatmentsByCategory).forEach(categoryId => {
+      const treatments = formData.treatmentsByCategory[categoryId]
+      const category = treatmentCategories.find(cat => cat.id === categoryId)
+      
+      treatments.forEach(treatmentName => {
+        allTreatments.push({
+          name: treatmentName,
+          categoryId: categoryId,
+          categoryName: category?.name || ''
+        })
+      })
+    })
+    
+    return allTreatments
+  }
+
+  // Berechne die Gesamtdauer aller ausgewählten Behandlungen aus allen Kategorien
+  const getTotalDuration = () => {
     let totalMinutes = 0
-    formData.treatments.forEach(treatmentName => {
-      const treatment = selectedCategory.treatments.find(t => t.name === treatmentName)
-      if (treatment) {
-        const durationMatch = treatment.duration.match(/(\d+)/)
-        if (durationMatch) {
-          totalMinutes += parseInt(durationMatch[1])
-        }
+    
+    Object.keys(formData.treatmentsByCategory).forEach(categoryId => {
+      const treatments = formData.treatmentsByCategory[categoryId]
+      const category = treatmentCategories.find(cat => cat.id === categoryId)
+      
+      if (category) {
+        treatments.forEach(treatmentName => {
+          const treatment = category.treatments.find(t => t.name === treatmentName)
+          if (treatment) {
+            const durationMatch = treatment.duration.match(/(\d+)/)
+            if (durationMatch) {
+              totalMinutes += parseInt(durationMatch[1])
+            }
+          }
+        })
       }
     })
+    
     return totalMinutes
   }
 
@@ -438,11 +470,14 @@ export default function TerminForm() {
     const totalDuration = getTotalDuration()
     const slots: string[] = []
     
-    // Bestimme Slot-Intervall: stündlich für Gesicht/Apparativ/Massagen, sonst 30 Min
-    const isHourlyCategory = formData.category === 'gesichtsbehandlung' || 
-                             formData.category === 'apparative' || 
-                             formData.category === 'massagen'
-    const interval = isHourlyCategory ? 60 : 30
+    // Bestimme Slot-Intervall basierend auf den ausgewählten Kategorien
+    // Wenn mindestens eine stündliche Kategorie dabei ist, verwende 60 Min Interval
+    const hasHourlyCategory = Object.keys(formData.treatmentsByCategory).some(categoryId => 
+      categoryId === 'gesichtsbehandlung' || 
+      categoryId === 'apparative' || 
+      categoryId === 'massagen'
+    )
+    const interval = hasHourlyCategory ? 60 : 30
     
     // Generiere Slots
     for (let hour = openTime; hour < closeTime; hour++) {
@@ -497,11 +532,34 @@ export default function TerminForm() {
     setExpandedTreatment(expandedTreatment === index ? null : index)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Hier würde normalerweise die API-Anfrage erfolgen
-    console.log('Termin-Anfrage:', formData)
-    setSubmitted(true)
+    
+    const form = e.currentTarget as HTMLFormElement
+    const formDataToSend = new FormData(form)
+    
+    try {
+      // Sende das Formular an FormSubmit
+      const response = await fetch('https://formsubmit.co/ajax/hartmanntimon@gmail.com', {
+        method: 'POST',
+        body: formDataToSend,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      
+      if (response.ok) {
+        // Erfolgreich abgesendet
+        setSubmitted(true)
+      } else {
+        // Fehler beim Absenden
+        alert('Es gab einen Fehler beim Absenden Ihrer Anfrage. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.')
+      }
+    } catch (error) {
+      // Fehler beim Absenden
+      console.error('Fehler beim Absenden des Formulars:', error)
+      alert('Es gab einen Fehler beim Absenden Ihrer Anfrage. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.')
+    }
   }
 
   const resetForm = () => {
@@ -799,9 +857,9 @@ export default function TerminForm() {
                       </button>
                       <button
                         onClick={() => setStep(3)}
-                        disabled={formData.treatments.length === 0}
+                        disabled={!hasAnySelectedTreatments()}
                         className={`flex-1 ${
-                          formData.treatments.length > 0
+                          hasAnySelectedTreatments()
                             ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white hover:shadow-lg'
                             : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                         } px-6 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2`}
@@ -826,25 +884,74 @@ export default function TerminForm() {
                       Ihre Kontaktdaten
                     </h2>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form 
+                      action="https://formsubmit.co/hartmanntimon@gmail.com" 
+                      method="POST"
+                      onSubmit={handleSubmit}
+                      className="space-y-6"
+                    >
+                      {/* FormSubmit Konfiguration */}
+                      <input 
+                        type="hidden" 
+                        name="_subject" 
+                        value={formData.firstName && formData.lastName 
+                          ? `Neue Terminanfrage von ${formData.firstName} ${formData.lastName}` 
+                          : 'Neue Terminanfrage'} 
+                      />
+                      <input type="hidden" name="_captcha" value="false" />
+                      <input type="hidden" name="_template" value="table" />
+                      
+                      {/* Behandlungsdaten als verstecktes Feld */}
+                      <input 
+                        type="hidden" 
+                        name="behandlungen" 
+                        value={getAllSelectedTreatments().map(treatment => {
+                          const category = treatmentCategories.find(cat => cat.id === treatment.categoryId)
+                          const treatmentDetail = category?.treatments.find(t => t.name === treatment.name)
+                          return `${treatment.name} (${treatment.categoryName}) - ${treatmentDetail?.duration || 'N/A'}, ${treatmentDetail?.price || 'N/A'}`
+                        }).join('; ')} 
+                      />
+                      <input 
+                        type="hidden" 
+                        name="kategorien" 
+                        value={Object.keys(formData.treatmentsByCategory).map(catId => {
+                          const cat = treatmentCategories.find(c => c.id === catId)
+                          return cat?.name || catId
+                        }).join(', ')} 
+                      />
+                      
                       {/* Selected Treatments Summary */}
                       <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-3">Gewählte Behandlungen:</h3>
-                        <div className="space-y-2">
-                          {formData.treatments.map((treatmentName, index) => {
-                            const treatmentDetail = selectedCategory?.treatments.find(t => t.name === treatmentName)
+                        <div className="space-y-4">
+                          {Object.keys(formData.treatmentsByCategory).map(categoryId => {
+                            const category = treatmentCategories.find(cat => cat.id === categoryId)
+                            const treatments = formData.treatmentsByCategory[categoryId]
+                            
+                            if (treatments.length === 0) return null
+                            
                             return (
-                              <div key={index} className="flex items-center justify-between">
-                                <div className="flex items-center space-x-2">
-                                  <Check className="h-4 w-4 text-green-600" />
-                                  <span className="text-gray-700">{treatmentName}</span>
+                              <div key={categoryId} className="border-l-4 border-gray-400 pl-4">
+                                <h4 className="text-sm font-semibold text-gray-600 mb-2">{category?.name}</h4>
+                                <div className="space-y-2">
+                                  {treatments.map((treatmentName, index) => {
+                                    const treatmentDetail = category?.treatments.find(t => t.name === treatmentName)
+                                    return (
+                                      <div key={`${categoryId}-${index}`} className="flex items-center justify-between">
+                                        <div className="flex items-center space-x-2">
+                                          <Check className="h-4 w-4 text-green-600" />
+                                          <span className="text-gray-700">{treatmentName}</span>
+                                        </div>
+                                        {treatmentDetail && (
+                                          <div className="flex items-center space-x-3 text-sm">
+                                            <span className="text-gray-600">{treatmentDetail.duration}</span>
+                                            <span className="font-semibold text-gray-900">{treatmentDetail.price}</span>
+                                          </div>
+                                        )}
+                                      </div>
+                                    )
+                                  })}
                                 </div>
-                                {treatmentDetail && (
-                                  <div className="flex items-center space-x-3 text-sm">
-                                    <span className="text-gray-600">{treatmentDetail.duration}</span>
-                                    <span className="font-semibold text-gray-900">{treatmentDetail.price}</span>
-                                  </div>
-                                )}
                               </div>
                             )
                           })}
@@ -861,6 +968,7 @@ export default function TerminForm() {
                             <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                             <input
                               type="text"
+                              name="vorname"
                               required
                               value={formData.firstName}
                               onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
@@ -878,6 +986,7 @@ export default function TerminForm() {
                             <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                             <input
                               type="text"
+                              name="nachname"
                               required
                               value={formData.lastName}
                               onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
@@ -897,6 +1006,7 @@ export default function TerminForm() {
                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                             <input
                               type="email"
+                              name="email"
                               required
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -914,6 +1024,7 @@ export default function TerminForm() {
                             <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                             <input
                               type="tel"
+                              name="telefon"
                               required
                               value={formData.phone}
                               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -932,6 +1043,7 @@ export default function TerminForm() {
                           <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                           <input
                             type="date"
+                            name="datum"
                             required
                             value={formData.date}
                             onChange={(e) => setFormData({ ...formData, date: e.target.value, time: '' })}
@@ -939,6 +1051,17 @@ export default function TerminForm() {
                             className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors"
                           />
                         </div>
+                        {/* Verstecktes Feld für formatiertes Datum */}
+                        <input 
+                          type="hidden" 
+                          name="wunschdatum" 
+                          value={formData.date ? new Date(formData.date).toLocaleDateString('de-DE', { 
+                            weekday: 'long', 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                          }) : ''} 
+                        />
                         <p className="text-xs text-gray-500 mt-2">
                           Öffnungszeiten: Mo-Fr 10:00-18:00, Sa 10:00-15:00, So geschlossen
                         </p>
@@ -999,17 +1122,20 @@ export default function TerminForm() {
                         <label className="block text-sm font-semibold text-gray-900 mb-2">
                           Nachricht (optional)
                         </label>
-                        <div className="relative">
-                          <MessageSquare className="absolute left-4 top-4 h-5 w-5 text-gray-400" />
-                          <textarea
-                            value={formData.message}
-                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            rows={4}
-                            className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors resize-none"
-                            placeholder="Haben Sie besondere Wünsche oder Fragen?"
-                          />
+                          <div className="relative">
+                            <MessageSquare className="absolute left-4 top-4 h-5 w-5 text-gray-400" />
+                            <textarea
+                              name="nachricht"
+                              value={formData.message}
+                              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                              rows={4}
+                              className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors resize-none"
+                              placeholder="Haben Sie besondere Wünsche oder Fragen?"
+                            />
+                          </div>
                         </div>
-                      </div>
+                        {/* Verstecktes Feld für Uhrzeit */}
+                        <input type="hidden" name="uhrzeit" value={formData.time || ''} />
 
                       <div className="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-6">
                         <p className="text-sm text-gray-700">
@@ -1071,21 +1197,29 @@ export default function TerminForm() {
 
               <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 max-w-2xl mx-auto mb-8">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Zusammenfassung:</h3>
-                <div className="space-y-3 text-left">
+                <div className="space-y-4 text-left">
                   <div>
-                    <p className="text-sm text-gray-600">Kategorie:</p>
-                    <p className="text-gray-900 font-medium">{selectedCategory?.name}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Behandlungen:</p>
-                    {formData.treatments.map((treatmentName, index) => {
-                      const treatmentDetail = selectedCategory?.treatments.find(t => t.name === treatmentName)
+                    <p className="text-sm text-gray-600 mb-2">Behandlungen:</p>
+                    {Object.keys(formData.treatmentsByCategory).map(categoryId => {
+                      const category = treatmentCategories.find(cat => cat.id === categoryId)
+                      const treatments = formData.treatmentsByCategory[categoryId]
+                      
+                      if (treatments.length === 0) return null
+                      
                       return (
-                        <div key={index} className="flex items-center justify-between mt-1">
-                          <p className="text-gray-900">{treatmentName}</p>
-                          {treatmentDetail && (
-                            <span className="text-sm text-gray-600">{treatmentDetail.price}</span>
-                          )}
+                        <div key={categoryId} className="mb-3">
+                          <p className="text-xs font-semibold text-gray-500 mb-1">{category?.name}</p>
+                          {treatments.map((treatmentName, index) => {
+                            const treatmentDetail = category?.treatments.find(t => t.name === treatmentName)
+                            return (
+                              <div key={`${categoryId}-${index}`} className="flex items-center justify-between mt-1 ml-2">
+                                <p className="text-gray-900">{treatmentName}</p>
+                                {treatmentDetail && (
+                                  <span className="text-sm text-gray-600">{treatmentDetail.price}</span>
+                                )}
+                              </div>
+                            )
+                          })}
                         </div>
                       )
                     })}
