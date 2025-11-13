@@ -305,11 +305,13 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
   } else if (categoryId === 2) {
     // Apparative Behandlungen
     const durationMap: { [key: string]: string } = {
-      'Aqua Facial Behandlung': '75 Min',
+      'Aqua Facial Behandlung': '60 Min',
       'Skin Oximizer': '60 Min',
-      'Micro Needling': '90 Min',
-      'Diamant Mikrodermabrasion': '70 Min',
-      'Radiofrequenzbehandlung': '80 Min'
+      'Microneedling mit Hyaluronsäure': '60 Min',
+      'Microneedling mit Exosomen / PDRN': '60 Min',
+      'Microdermabrasion': '60 Min',
+      'Diamant Mikrodermabrasion': '60 Min',
+      'Radiofrequenzbehandlung': '60 Min'
     }
     return durationMap[treatmentName] || '60 Min'
   } else if (categoryId === 3) {
@@ -409,7 +411,7 @@ const treatments = [
       {
         name: 'Kräuter-Peeling (Herbs2Peel)',
         description: 'Natürliches Regenerations-Peeling',
-        price: '89€'
+        price: '99€'
       }
     ]
   },
@@ -420,8 +422,8 @@ const treatments = [
     description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung.',
     fullDescription: 'Eine apparative Gesichtsbehandlung im Kosmetikstudio verwendet modernste Technologien, um spezielle Hautprobleme zu behandeln. Je nach Bedarf können verschiedene Geräte eingesetzt werden, um die Haut zu reinigen, zu glätten oder zu straffen.',
     icon: Sparkles,
-    duration: '45-90 Min',
-    price: 'ab 75€',
+    duration: '60 Min',
+    price: 'ab 69€',
     benefits: [
       'Moderne Geräte',
       'Intensive Behandlung',
@@ -453,27 +455,32 @@ const treatments = [
       {
         name: 'Aqua Facial Behandlung',
         description: 'Revolutionäre Wasserbehandlung für tiefe Reinigung und Hydratation',
-        price: '95€'
+        price: '79€'
       },
       {
         name: 'Skin Oximizer',
         description: 'Sauerstoffbehandlung für strahlende und gesunde Haut',
-        price: '85€'
+        price: '99€'
       },
       {
-        name: 'Micro Needling',
-        description: 'Minimale Nadelbehandlung für Hauterneuerung und Kollagenbildung',
-        price: '120€'
+        name: 'Microneedling mit Hyaluronsäure',
+        description: 'Minimale Nadelbehandlung für Hauterneuerung und Kollagenbildung mit Hyaluronsäure',
+        price: '99€'
       },
       {
-        name: 'Diamant Mikrodermabrasion',
-        description: 'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
-        price: '90€'
+        name: 'Microneedling mit Exosomen / PDRN',
+        description: 'Minimale Nadelbehandlung für Hauterneuerung und Kollagenbildung mit Exosomen oder PDRN',
+        price: '125€'
+      },
+      {
+        name: 'Microdermabrasion',
+        description: 'Die Microdermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
+        price: '69€'
       },
       {
         name: 'Radiofrequenzbehandlung',
         description: 'Wärmeenergie für Straffung und Hautverbesserung',
-        price: '110€'
+        price: '75€'
       }
     ]
   },

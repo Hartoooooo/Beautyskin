@@ -20,18 +20,18 @@ export default function AboutSection() {
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative flex"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-full">
               {/* Image */}
-              <div className="aspect-[4/5] relative">
+              <div className="relative w-full h-full">
                 <Image
                   src="/raquel.webp"
                   alt="Raquel Hardel - Gründerin & Kosmetikerin bei BeautySkin"

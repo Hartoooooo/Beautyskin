@@ -282,7 +282,7 @@ const treatments = [
     subtitle: 'Natürliches Regenerations-Peeling',
     description: 'Erleben Sie ein natürliches, professionelles Kräuter-Peeling zur Regeneration und Korrektur der Haut – individuell abgestimmt auf Ihren Hauttyp.',
     duration: '60 Min',
-    price: '89€',
+    price: '99€',
     benefits: [
       'Natürliche Regeneration',
       'Hauterneuerung',

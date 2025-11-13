@@ -149,7 +149,7 @@ const treatmentCategories = [
       },
       { 
         name: 'Kräuter-Peeling (Herbs2Peel)', 
-        price: '89€', 
+        price: '99€', 
         duration: '60 Min', 
         description: 'Erleben Sie ein natürliches, professionelles Kräuter-Peeling zur Regeneration und Korrektur der Haut – individuell abgestimmt auf Ihren Hauttyp.',
         benefits: ['Natürliche Regeneration', 'Hauterneuerung', 'Porenverfeinerung', 'Zellaktivierung', 'Gleichmäßiger Teint', 'Strahlende Frische'],
@@ -171,40 +171,48 @@ const treatmentCategories = [
     treatments: [
       { 
         name: 'Aqua Facial Behandlung', 
-        price: '95€', 
-        duration: '75 Min', 
+        price: '79€', 
+        duration: '60 Min', 
         description: 'Revolutionäre Aqua Facial Behandlung für tiefe Reinigung und intensive Hydratation der Haut.',
         benefits: ['Tiefe Reinigung', 'Intensive Hydratation', 'Porenreinigung', 'Hautstraffung', 'Glow-Effekt', 'Schmerzarm'],
         process: ['Hautanalyse', 'Vorbereitung', 'Aqua Facial Behandlung', 'Hydratation', 'Beruhigende Pflege', 'Abschlusspflege']
       },
       { 
         name: 'Skin Oximizer', 
-        price: '85€', 
+        price: '99€', 
         duration: '60 Min', 
         description: 'Moderne Sauerstoffbehandlung für strahlende und gesunde Haut mit verbesserter Durchblutung.',
         benefits: ['Sauerstoffversorgung', 'Verbesserte Durchblutung', 'Strahlender Teint', 'Hautregeneration', 'Anti-Aging', 'Energizing'],
         process: ['Hautanalyse', 'Vorbereitung', 'Sauerstoffbehandlung', 'Durchblutungsförderung', 'Regenerative Pflege', 'Schutzpflege']
       },
       { 
-        name: 'Micro Needling', 
-        price: '120€', 
-        duration: '90 Min', 
-        description: 'Professionelles Micro Needling für Hauterneuerung und Kollagenbildung mit minimalen Nadeln.',
+        name: 'Microneedling mit Hyaluronsäure', 
+        price: '99€', 
+        duration: '60 Min', 
+        description: 'Professionelles Microneedling für Hauterneuerung und Kollagenbildung mit minimalen Nadeln und Hyaluronsäure.',
         benefits: ['Hauterneuerung', 'Kollagenbildung', 'Faltenreduktion', 'Narbenminderung', 'Porenverkleinerung', 'Professionell'],
-        process: ['Hautanalyse', 'Vorbereitung', 'Micro Needling', 'Serum-Infusion', 'Beruhigende Pflege', 'Nachsorge']
+        process: ['Hautanalyse', 'Vorbereitung', 'Microneedling', 'Hyaluronsäure-Infusion', 'Beruhigende Pflege', 'Nachsorge']
       },
       { 
-        name: 'Diamant Mikrodermabrasion', 
-        price: '90€', 
-        duration: '70 Min', 
-        description: 'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
+        name: 'Microneedling mit Exosomen / PDRN', 
+        price: '125€', 
+        duration: '60 Min', 
+        description: 'Professionelles Microneedling für Hauterneuerung und Kollagenbildung mit minimalen Nadeln und Exosomen oder PDRN.',
+        benefits: ['Hauterneuerung', 'Kollagenbildung', 'Faltenreduktion', 'Narbenminderung', 'Porenverkleinerung', 'Professionell'],
+        process: ['Hautanalyse', 'Vorbereitung', 'Microneedling', 'Exosomen/PDRN-Infusion', 'Beruhigende Pflege', 'Nachsorge']
+      },
+      { 
+        name: 'Microdermabrasion', 
+        price: '69€', 
+        duration: '60 Min', 
+        description: 'Die Microdermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
         benefits: ['Glatte Haut', 'Strahlender Teint', 'Peeling-Effekt', 'Hauterneuerung', 'Professionell', 'Schmerzarm'],
-        process: ['Hautanalyse', 'Vorbereitung', 'Diamant Mikrodermabrasion', 'Reinigung', 'Beruhigende Pflege', 'Schutzpflege']
+        process: ['Hautanalyse', 'Vorbereitung', 'Microdermabrasion', 'Reinigung', 'Beruhigende Pflege', 'Schutzpflege']
       },
       { 
         name: 'Radiofrequenzbehandlung', 
-        price: '110€', 
-        duration: '80 Min', 
+        price: '75€', 
+        duration: '60 Min', 
         description: 'Moderne Radiofrequenzbehandlung für Hautstraffung und -verbesserung durch kontrollierte Wärmeenergie.',
         benefits: ['Hautstraffung', 'Kollagenbildung', 'Faltenreduktion', 'Konturierung', 'Anti-Aging', 'Langzeitwirkung'],
         process: ['Hautanalyse', 'Vorbereitung', 'Radiofrequenzbehandlung', 'Kühlung', 'Beruhigende Pflege', 'Nachsorge']
