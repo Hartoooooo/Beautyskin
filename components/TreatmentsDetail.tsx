@@ -1653,7 +1653,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-20 bg-gradient-to-r ${treatment.color}`}>
+      <section className="py-20 bg-[#e9dbd2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1776,27 +1776,23 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
             </div>
             
             <div className="relative z-10">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-2xl font-bold text-white mb-4">
               Bereit für Ihre Traumbehandlung?
             </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+            <p className="text-white mb-6">
               Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte 
               Behandlung für Ihre individuellen Bedürfnisse.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/termin" className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 inline-block">
+              <a href="/termin" className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 inline-block">
                 Kostenlose Beratung
               </a>
-              <a href="/termin" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300 inline-block">
+              <a href="/termin" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-6 rounded-lg transition-all duration-300 inline-block">
                 Termin anfragen
               </a>
             </div>
             </div>
           </motion.div>
-        </div>
-        {/* Trennlinie zum Footer */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-          <div className="border-t-2 border-gray-300"></div>
         </div>
       </section>
     </div>
