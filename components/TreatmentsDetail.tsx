@@ -124,6 +124,14 @@ const getTreatmentBenefits = (treatmentName: string) => {
       'Kopffreiheit',
       'Wohlbefinden'
     ],
+    'Brasilianische Lymphdrainage': [
+      'Entschlackung',
+      'Entwässerung',
+      'Stoffwechselanregung',
+      'Entspannung',
+      'Wohlbefinden',
+      'Straffung'
+    ],
     // Augenbrauenkorrektur
     'Augenbrauenkorrektur (Zupfen oder Waxing)': [
       'Individuelle Formgebung',
@@ -171,7 +179,7 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
       'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
       'Massage: Eine entspannende Massage von Gesicht, Hals und Dekolleté fördert die Durchblutung und sorgt für ein gelöstes, frisches Hautgefühl.',
-      'LED & Abschlusspflege: LED Skin Light unterstützt die Regeneration der Haut. Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
+      'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
     ],
     'BeautySkin Deluxe': [
       'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um alle folgenden Schritte individuell auf Ihre Hautbedürfnisse abzustimmen.',
@@ -189,7 +197,7 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
       'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
       'Massage Gesicht, Hals, Dekolleté, Arme & Hände: Eine ausgedehnte Massage umfasst Gesicht, Hals, Dekolleté sowie Arme und Hände und sorgt für tiefgehende Entspannung und ein rundum gelöstes Hautgefühl.',
-      'Maske & LED Skin Light: Eine passende Maske unterstützt die Hautregeneration und wird durch LED-Lichttherapie intensiviert.',
+      'Maske: Eine passende Maske unterstützt die Hautregeneration und intensiviert das Ergebnis.',
       'Abschlusspflege mit Augencreme & UV-Schutz: Zum Abschluss wird die Haut mit einer pflegenden Creme und UV-Schutz versiegelt, während eine spezielle Augenpflege die empfindliche Partie um die Augen gezielt versorgt.'
     ],
     'BeautySkin Hautklar': [
@@ -207,7 +215,7 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Intensive Ausreinigung: Verstopfungen und Unreinheiten werden gründlich entfernt, um die Haut tief zu klären und Unterlagerungen zu reduzieren.',
       'Wirkstoffampulle: Eine speziell ausgewählte Wirkstoffampulle wirkt talgregulierend und beruhigend auf irritierte Hautbereiche.',
       'Hochfrequenz-Stab: Zur Desinfektion der behandelten Partien wird der Hochfrequenz-Stab eingesetzt, um Entzündungen zu mindern und die Haut zu beruhigen.',
-      'LED Skin Light & Maske: LED-Lichttherapie unterstützt die Regeneration und wird mit einer passenden Maske kombiniert, um die Haut zu klären und auszugleichen.',
+      'Maske: Eine passende Maske wird kombiniert, um die Haut zu klären und auszugleichen.',
       'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine passende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu stabilisieren.',
       'Hinweis: Bei dieser Behandlung wird ausschließlich mit Microsilver-Produkten gearbeitet.'
     ],
@@ -228,7 +236,7 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Wirkstoffampulle & Maske: Nach dem Peeling wird eine regenerierende Ampulle aufgetragen, gefolgt von einer beruhigenden Maske, um die Haut zu pflegen und zu stabilisieren.',
       'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu bewahren.'
     ],
-    'Kräuter-Peeling (Herbs2Peel)': [
+    'Anti-Aging Kräuter-Peeling (Herbs2Peel)': [
       'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um die Kräutermischung optimal auf die individuellen Hautbedürfnisse abzustimmen.',
       'Reinigung & Vorbereitung: Die Haut wird gründlich gereinigt, damit die natürlichen Kräuterwirkstoffe optimal aufgenommen werden können.',
       'Kräuter-Peeling: Das Kräuterpeeling wird sanft einmassiert, wodurch die Hautregeneration aktiviert, das Hautbild verfeinert und die Zellerneuerung gefördert wird.',
@@ -252,6 +260,13 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Die Behandlung verbessert die Aufnahme von Wirkstoffen, mildert Fältchen und Narben und sorgt für ein ebenmäßiges, vitales Hautbild. Ideal, um Hauterneuerung und Straffung auf natürliche Weise anzuregen.',
       'Ideal geeignet bei: Falten & Linien, Narben & Aknenarben, Grobporiger Haut, Elastizitätsverlust, Pigmentflecken & unebenem Teint, Müder, fahler Haut',
       'Ergebnis: Die Haut wirkt straffer, glatter und jugendlicher. Micro Needling fördert die natürliche Regeneration, verbessert die Hautstruktur sichtbar und sorgt für ein dauerhaft ebenmäßiges Hautbild.'
+    ],
+    'Diamant Microdermabrasion': [
+      'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
+      'Durch die kontrollierte Abtragung wirkt die Haut frischer, gleichmäßiger und strahlender. Ideal für alle, die ihr Hautbild verbessern, kleine Unebenheiten mindern und neue Hautfrische erleben möchten.',
+      'Ideal geeignet bei: Grobporiger Haut, Pigmentflecken & Sonnenschäden, Narben & Aknenarben, Falten & Linien, Verhornter rauer Haut, Müdem fahlen Teint',
+      'Vorteile: Hauterneuerung, Porenverfeinerung, Pigmentausgleich, Glatte Haut, Schmerzarm, Wirkstoffaufnahme',
+      'Ergebnis: Die Haut wirkt sofort glatter, reiner und ebenmäßiger. Die Diamant Mikrodermabrasion ist perfekt, um den Teint aufzufrischen, die Hautstruktur zu verfeinern und einen jugendlich strahlenden Glow zu erzielen.'
     ],
     'Diamant Mikrodermabrasion': [
       'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
@@ -281,6 +296,12 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Durch sanfte, fließende Bewegungen und den Einsatz von warmem Öl werden Verspannungen gelockert und die Durchblutung gefördert. Die wohltuende Wärme der Hot Stones dringt tief in die Muskulatur ein und unterstützt die Entspannung zusätzlich.',
       'Ideal bei Verspannungen durch sitzende Tätigkeiten oder einseitige Belastungen – für mehr Beweglichkeit und innere Ruhe.',
       'Ergebnis: Ein gelöster Rücken, entspannter Nacken und ein klarer Kopf – für ein rundum leichtes und befreites Körpergefühl.'
+    ],
+    'Brasilianische Lymphdrainage': [
+      'Die Brasilianische Lymphdrainage ist eine sanfte Massagetechnik, die das Lymphsystem aktiviert und den Abtransport von Schlackenstoffen und überschüssiger Flüssigkeit fördert.',
+      'Durch gezielte, rhythmische Bewegungen wird der Lymphfluss angeregt, was zu einer Entschlackung, Entwässerung und Straffung des Gewebes führt.',
+      'Ideal geeignet bei: Wassereinlagerungen, Cellulite, Schwellungen, Stoffwechselproblemen, Müdigkeit, Spannungsgefühl',
+      'Ergebnis: Ein entschlackter Körper, verbesserte Durchblutung und ein spürbar leichteres Körpergefühl. Die Brasilianische Lymphdrainage unterstützt die natürliche Entgiftung und sorgt für mehr Vitalität.'
     ]
   }
   
@@ -299,7 +320,7 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
       'BeautySkin Unreine': '60 Min',
       'BeautySkin Reine Männersache': '60 Min',
       'AHA Fruchtsäurepeeling': '45 Min',
-      'Kräuter-Peeling (Herbs2Peel)': '60 Min'
+      'Anti-Aging Kräuter-Peeling (Herbs2Peel)': '60 Min'
     }
     return durationMap[treatmentName] || '60 Min'
   } else if (categoryId === 2) {
@@ -309,7 +330,7 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
       'Skin Oximizer': '60 Min',
       'Microneedling mit Hyaluronsäure': '60 Min',
       'Microneedling mit Exosomen / PDRN': '60 Min',
-      'Microdermabrasion': '60 Min',
+      'Diamant Microdermabrasion': '60 Min',
       'Diamant Mikrodermabrasion': '60 Min',
       'Radiofrequenzbehandlung': '60 Min'
     }
@@ -319,7 +340,8 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
     const durationMap: { [key: string]: string } = {
       'Nacken-Massage': '15 Min',
       'Entspannungsmassage mit Hot Stone': '45 Min',
-      'Kopf-Nacken-Rückenmassage': '30 Min'
+      'Kopf-Nacken-Rückenmassage': '30 Min',
+      'Brasilianische Lymphdrainage': '60 Min'
     }
     return durationMap[treatmentName] || '60 Min'
   } else if (categoryId === 5) {
@@ -371,7 +393,7 @@ const treatments = [
     ],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
-    features: ['BeautySkin Klassik', 'BeautySkin Deluxe', 'AHA Peeling', 'Kräuter-Peeling'],
+    features: ['BeautySkin Klassik', 'BeautySkin Deluxe', 'AHA Peeling', 'Anti-Aging Kräuter-Peeling'],
     treatments: [
       {
         name: 'BeautySkin Klassik',
@@ -409,9 +431,13 @@ const treatments = [
         price: '69€'
       },
       {
-        name: 'Kräuter-Peeling (Herbs2Peel)',
-        description: 'Natürliches Regenerations-Peeling',
-        price: '99€'
+        name: 'Anti-Aging Kräuter-Peeling (Herbs2Peel)',
+        description: 'natürliches professionelles Kräuterpeeling zur Regeneration und Korrektur der Haut individuel angepasst an ihren Hauttyp. Gesicht, Hals, Dekollete. Kur angebot 4 Behandlung für 450€',
+        price: 'ab 120€',
+        variants: [
+          { name: 'Normale Behandlung', price: '120€' },
+          { name: 'Kur-Angebot (4 Behandlungen)', price: '450€' }
+        ]
       }
     ]
   },
@@ -463,18 +489,17 @@ const treatments = [
         price: '99€'
       },
       {
-        name: 'Microneedling mit Hyaluronsäure',
-        description: 'Minimale Nadelbehandlung für Hauterneuerung und Kollagenbildung mit Hyaluronsäure',
-        price: '99€'
+        name: 'Micro Needling',
+        description: 'Minimale Nadelbehandlung für Hauterneuerung und Kollagenbildung',
+        price: 'ab 99€',
+        variants: [
+          { name: 'Hyaluronsäure', price: '99€' },
+          { name: 'Exosomen / PDRN', price: '125€' }
+        ]
       },
       {
-        name: 'Microneedling mit Exosomen / PDRN',
-        description: 'Minimale Nadelbehandlung für Hauterneuerung und Kollagenbildung mit Exosomen oder PDRN',
-        price: '125€'
-      },
-      {
-        name: 'Microdermabrasion',
-        description: 'Die Microdermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
+        name: 'Diamant Microdermabrasion',
+        description: 'Die Diamant Mikrodermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung.',
         price: '69€'
       },
       {
@@ -535,6 +560,15 @@ const treatments = [
         name: 'Kopf-Nacken-Rückenmassage',
         description: 'Umfassende Massage für Kopf, Nacken und Rücken',
         price: '39€'
+      },
+      {
+        name: 'Brasilianische Lymphdrainage',
+        description: 'Sanfte Massage zur Aktivierung des Lymphsystems',
+        price: 'ab 99€',
+        variants: [
+          { name: 'Körper', price: '99€' },
+          { name: 'Körper + Gesicht', price: '120€' }
+        ]
       }
     ]
   },
@@ -592,7 +626,7 @@ const treatments = [
     title: 'Augenbrauenkorrektur',
     subtitle: 'Perfekte Augenbrauen & Wimpern',
     description: 'Professionelle Augenbrauen- und Wimpernbehandlungen für einen ausdrucksstarken Blick.',
-    fullDescription: 'Perfekt geformte Augenbrauen und gepflegte Wimpern verleihen dem Gesicht Ausdruck, Definition und Frische. Ob durch Zupfen, Waxing oder Färben – jede Behandlung wird individuell auf Ihre Gesichtsform und Ihren Stil abgestimmt.',
+    fullDescription: '',
     icon: Eye,
     duration: '15-30 Min',
     price: 'ab 15€',
@@ -666,7 +700,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
   return (
     <div>
       {/* Hero Section */}
-      <section className={`bg-gradient-to-br ${treatment.bgColor} via-[#e9dbd2] ${treatment.bgColor} pt-20 pb-20`}>
+      <section className={`bg-gradient-to-br ${treatment.bgColor} via-[#e9dbd2] ${treatment.bgColor} pt-20 ${treatment.id === 2 ? 'pb-6' : 'pb-20'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {treatment.id === 4 ? (
             <motion.div
@@ -706,16 +740,18 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 <span className="gradient-text">{treatment.title}</span>
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                {treatment.fullDescription}
-              </p>
+              {treatment.fullDescription && (
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                  {treatment.fullDescription}
+                </p>
+              )}
             </motion.div>
           )}
         </div>
       </section>
 
       {/* Treatment Detail */}
-      <section className="py-20 bg-[#e9dbd2]">
+      <section className={`${treatment.id === 2 ? 'pt-8 pb-20' : 'py-20'} bg-[#e9dbd2]`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {treatment.id !== 1 && treatment.id !== 2 && treatment.id !== 3 && (
@@ -745,9 +781,11 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     </div>
 
                     {/* Description */}
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                      {treatment.fullDescription}
-                    </p>
+                    {treatment.fullDescription && (
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        {treatment.fullDescription}
+                      </p>
+                    )}
                   </div>
 
                   {/* Benefits - Bündig mit Bild unten */}
@@ -947,7 +985,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
             )}
 
             {/* Specific Treatments */}
-            <div className="mt-16">
+            <div className={treatment.id === 2 ? 'mt-8' : 'mt-16'}>
               <h3 className="text-3xl font-bold text-gray-900 text-center mb-8">
                 Verfügbare Behandlungen
               </h3>
@@ -971,10 +1009,39 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                             <div>
                               <h4 className="text-3xl font-bold text-gray-900 mb-3">
                                 {subTreatment.name}
+                                {(subTreatment as any).variants && subTreatment.name !== 'Brasilianische Lymphdrainage' && subTreatment.name !== 'Micro Needling' && subTreatment.name !== 'Anti-Aging Kräuter-Peeling (Herbs2Peel)' && (
+                                  <span className="text-lg font-normal text-gray-600 ml-2">
+                                    ({((subTreatment as any).variants as Array<{name: string, price: string}>).map(v => v.name).join(' / ')})
+                                  </span>
+                                )}
                               </h4>
-                              <p className="text-lg text-gray-600">
-                                {subTreatment.description}
-                              </p>
+                              {(() => {
+                                const desc = subTreatment.description || ''
+                                const kurMatch = desc.match(/Kur angebot.*?(\d+.*?€)/i)
+                                const mainDesc = kurMatch ? desc.substring(0, desc.indexOf('Kur angebot')).trim() : desc
+                                
+                                return (
+                                  <>
+                                    <p className="text-lg text-gray-600">
+                                      {mainDesc}
+                                    </p>
+                                    {kurMatch && (
+                                      <div className="mt-4 bg-gradient-to-r from-[#e9dbd2] to-[#d4c4b5] border-2 border-gray-400 rounded-xl p-4 shadow-lg">
+                                        <div className="flex items-center justify-between">
+                                          <div>
+                                            <p className="text-sm font-semibold text-gray-700 mb-1">Kur-Angebot</p>
+                                            <p className="text-xs text-gray-600 mb-2">4 Behandlungen</p>
+                                            <div className="flex items-center space-x-2">
+                                              <span className="text-lg line-through text-gray-500">480€</span>
+                                              <span className="text-lg font-bold text-gray-900">450€</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </>
+                                )
+                              })()}
                             </div>
 
                             {/* Benefits */}
@@ -1062,9 +1129,17 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                                   <Star className="h-5 w-5 text-gray-600" />
                                   <span className="font-semibold text-gray-900">Preis</span>
                                 </div>
-                                <p className="text-gray-600 text-lg font-semibold">
-                                  {subTreatment.price}
-                                </p>
+                                {(subTreatment as any).variants ? (
+                                  <p className="text-gray-600 text-lg font-semibold">
+                                    {subTreatment.name === 'Brasilianische Lymphdrainage' || subTreatment.name === 'Micro Needling' || subTreatment.name === 'Anti-Aging Kräuter-Peeling (Herbs2Peel)'
+                                      ? subTreatment.price 
+                                      : ((subTreatment as any).variants as Array<{name: string, price: string}>).map(v => v.price).join('/')}
+                                  </p>
+                                ) : (
+                                  <p className="text-gray-600 text-lg font-semibold">
+                                    {subTreatment.price}
+                                  </p>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -1077,6 +1152,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                                 name: subTreatment.name,
                                 price: subTreatment.price
                               }}
+                              variants={(subTreatment as any).variants}
                               className="w-full lg:w-auto"
                             />
                           </div>
@@ -1339,6 +1415,46 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                     </div>
                   </div>
                 </div>
+              ) : treatment.id === 5 ? (
+                // Special layout for Augenbrauenkorrektur - 4 treatments in one row with smaller text
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {treatment.treatments.map((subTreatment, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full`}
+                    >
+                      <div className="flex flex-col flex-grow h-full">
+                        <div className="mb-3">
+                          <h4 className="text-base font-bold text-gray-900">
+                            {subTreatment.name}
+                          </h4>
+                        </div>
+                        
+                        <div className="flex justify-between items-center mb-3">
+                          <span className="text-lg font-bold text-gray-900">
+                            {subTreatment.price}
+                          </span>
+                        </div>
+
+                        <div className="mt-auto">
+                          <AddTreatmentButton 
+                            treatment={{
+                              id: `${treatment.id}-sub-${index}`,
+                              name: subTreatment.name,
+                              price: subTreatment.price
+                            }}
+                            variants={(subTreatment as any).variants}
+                            className="w-full text-sm py-2"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               ) : (
                 // Standard layout for other treatments
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1356,9 +1472,33 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                           <h4 className="text-xl font-bold text-gray-900 mb-2">
                             {subTreatment.name}
                           </h4>
-                          <p className="text-gray-600 text-sm">
-                            {subTreatment.description}
-                          </p>
+                          {(() => {
+                            const desc = subTreatment.description || ''
+                            const kurMatch = desc.match(/Kur angebot.*?(\d+.*?€)/i)
+                            const mainDesc = kurMatch ? desc.substring(0, desc.indexOf('Kur angebot')).trim() : desc
+                            
+                            return (
+                              <>
+                                <p className="text-gray-600 text-sm">
+                                  {mainDesc}
+                                </p>
+                                {kurMatch && (
+                                  <div className="mt-3 bg-gradient-to-r from-[#e9dbd2] to-[#d4c4b5] border-2 border-gray-400 rounded-lg p-3 shadow-md">
+                                    <div className="flex items-center justify-between">
+                                      <div>
+                                        <p className="text-xs font-semibold text-gray-700">Kur-Angebot</p>
+                                        <p className="text-xs text-gray-600 mb-1">4 Behandlungen</p>
+                                        <div className="flex items-center space-x-2">
+                                          <span className="text-base line-through text-gray-500">480€</span>
+                                          <span className="text-base font-bold text-gray-900">450€</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </>
+                            )
+                          })()}
                         </div>
                         
                         <div className="flex justify-between items-center">
@@ -1373,6 +1513,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                             name: subTreatment.name,
                             price: subTreatment.price
                           }}
+                          variants={(subTreatment as any).variants}
                           className="w-full"
                         />
                       </div>

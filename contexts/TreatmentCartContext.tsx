@@ -6,6 +6,7 @@ export interface Treatment {
   id: string
   name: string
   price?: string
+  variant?: string
 }
 
 interface TreatmentCartContextType {

@@ -7,13 +7,13 @@ const siteUrl = 'https://www.beautyskin-berlin.de'
 
 export const metadata: Metadata = {
   title: 'Apparative Behandlungen',
-  description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung in Berlin-Friedrichshain. Aqua Facial, Skin Oximizer, Microneedling, Microdermabrasion und Radiofrequenzbehandlung. Ab 69€.',
+  description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung in Berlin-Friedrichshain. Aqua Facial, Skin Oximizer, Microneedling, Diamant Microdermabrasion und Radiofrequenzbehandlung. Ab 69€.',
   keywords: [
     'Apparative Behandlungen Berlin',
     'Aqua Facial Berlin',
     'Micro Needling Berlin',
     'Skin Oximizer Berlin',
-    'Microdermabrasion Berlin',
+    'Diamant Microdermabrasion Berlin',
     'Radiofrequenzbehandlung Berlin',
     'Hydrafacial Berlin',
     'Professionelle Hautbehandlung Berlin',
@@ -228,7 +228,7 @@ export default function ApparativeBehandlungenPage() {
       '@type': 'City',
       name: 'Berlin',
     },
-    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Microneedling, Microdermabrasion und Radiofrequenzbehandlung.',
+    description: 'Hochmoderne apparative Behandlungen für intensive Hautverbesserung. Aqua Facial, Skin Oximizer, Microneedling, Diamant Microdermabrasion und Radiofrequenzbehandlung.',
     offers: {
       '@type': 'Offer',
       priceCurrency: 'EUR',

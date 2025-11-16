@@ -19,6 +19,11 @@ interface FormData {
   message: string
 }
 
+interface Variant {
+  name: string
+  price: string
+}
+
 interface TreatmentDetail {
   name: string
   price: string
@@ -26,6 +31,7 @@ interface TreatmentDetail {
   description: string
   benefits: string[]
   process: string[]
+  variants?: Variant[]
 }
 
 const treatmentCategories = [
@@ -47,7 +53,7 @@ const treatmentCategories = [
           'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
           'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
           'Massage: Eine entspannende Massage von Gesicht, Hals und Dekolleté fördert die Durchblutung und sorgt für ein gelöstes, frisches Hautgefühl.',
-          'LED & Abschlusspflege: LED Skin Light unterstützt die Regeneration der Haut. Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
+          'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
         ]
       },
       { 
@@ -79,7 +85,7 @@ const treatmentCategories = [
           'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
           'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
           'Massage Gesicht, Hals, Dekolleté, Arme & Hände: Eine ausgedehnte Massage umfasst Gesicht, Hals, Dekolleté sowie Arme und Hände und sorgt für tiefgehende Entspannung und ein rundum gelöstes Hautgefühl.',
-          'Maske & LED Skin Light: Eine passende Maske unterstützt die Hautregeneration und wird durch LED-Lichttherapie intensiviert.',
+          'Maske: Eine passende Maske unterstützt die Hautregeneration und intensiviert das Ergebnis.',
           'Abschlusspflege mit Augencreme & UV-Schutz: Zum Abschluss wird die Haut mit einer pflegenden Creme und UV-Schutz versiegelt, während eine spezielle Augenpflege die empfindliche Partie um die Augen gezielt versorgt.'
         ]
       },
@@ -111,7 +117,7 @@ const treatmentCategories = [
           'Intensive Ausreinigung: Verstopfungen und Unreinheiten werden gründlich entfernt, um die Haut tief zu klären und Unterlagerungen zu reduzieren.',
           'Wirkstoffampulle: Eine speziell ausgewählte Wirkstoffampulle wirkt talgregulierend und beruhigend auf irritierte Hautbereiche.',
           'Hochfrequenz-Stab: Zur Desinfektion der behandelten Partien wird der Hochfrequenz-Stab eingesetzt, um Entzündungen zu mindern und die Haut zu beruhigen.',
-          'LED Skin Light & Maske: LED-Lichttherapie unterstützt die Regeneration und wird mit einer passenden Maske kombiniert, um die Haut zu klären und auszugleichen.',
+          'Maske: Eine passende Maske wird kombiniert, um die Haut zu klären und auszugleichen.',
           'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine passende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu stabilisieren.',
           'Hinweis: Bei dieser Behandlung wird ausschließlich mit Microsilver-Produkten gearbeitet.'
         ]
@@ -148,10 +154,10 @@ const treatmentCategories = [
         ]
       },
       { 
-        name: 'Kräuter-Peeling (Herbs2Peel)', 
-        price: '99€', 
+        name: 'Anti-Aging Kräuter-Peeling (Herbs2Peel)', 
+        price: 'ab 120€', 
         duration: '60 Min', 
-        description: 'Erleben Sie ein natürliches, professionelles Kräuter-Peeling zur Regeneration und Korrektur der Haut – individuell abgestimmt auf Ihren Hauttyp.',
+        description: 'Erleben Sie ein natürliches, professionelles Kräuter-Peeling zur Regeneration und Korrektur der Haut – individuell abgestimmt auf Ihren Hauttyp. Gesicht, Hals, Dekollete. Kur angebot 4 Behandlung für 450€',
         benefits: ['Natürliche Regeneration', 'Hauterneuerung', 'Porenverfeinerung', 'Zellaktivierung', 'Gleichmäßiger Teint', 'Strahlende Frische'],
         process: [
           'Hautanalyse: Zu Beginn wird der Hautzustand professionell analysiert, um die Kräutermischung optimal auf die individuellen Hautbedürfnisse abzustimmen.',
@@ -159,6 +165,10 @@ const treatmentCategories = [
           'Kräuter-Peeling: Das Kräuterpeeling wird sanft einmassiert, wodurch die Hautregeneration aktiviert, das Hautbild verfeinert und die Zellerneuerung gefördert wird.',
           'Maske & Wirkstoffpflege: Eine pflegende Maske beruhigt die Haut, während eine Wirkstoffpflege Feuchtigkeit spendet und das Ergebnis unterstützt.',
           'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und den Erneuerungsprozess zu stabilisieren.'
+        ],
+        variants: [
+          { name: 'Normale Behandlung', price: '120€' },
+          { name: 'Kur-Angebot (4 Behandlungen)', price: '450€' }
         ]
       }
     ]
@@ -186,28 +196,24 @@ const treatmentCategories = [
         process: ['Hautanalyse', 'Vorbereitung', 'Sauerstoffbehandlung', 'Durchblutungsförderung', 'Regenerative Pflege', 'Schutzpflege']
       },
       { 
-        name: 'Microneedling mit Hyaluronsäure', 
-        price: '99€', 
+        name: 'Micro Needling', 
+        price: 'ab 99€', 
         duration: '60 Min', 
-        description: 'Professionelles Microneedling für Hauterneuerung und Kollagenbildung mit minimalen Nadeln und Hyaluronsäure.',
+        description: 'Professionelles Microneedling für Hauterneuerung und Kollagenbildung mit minimalen Nadeln. Wählen Sie zwischen Hyaluronsäure (99€) oder Exosomen/PDRN (125€).',
         benefits: ['Hauterneuerung', 'Kollagenbildung', 'Faltenreduktion', 'Narbenminderung', 'Porenverkleinerung', 'Professionell'],
-        process: ['Hautanalyse', 'Vorbereitung', 'Microneedling', 'Hyaluronsäure-Infusion', 'Beruhigende Pflege', 'Nachsorge']
+        process: ['Hautanalyse', 'Vorbereitung', 'Microneedling', 'Wirkstoff-Infusion nach Wahl', 'Beruhigende Pflege', 'Nachsorge'],
+        variants: [
+          { name: 'Hyaluronsäure', price: '99€' },
+          { name: 'Exosomen / PDRN', price: '125€' }
+        ]
       },
       { 
-        name: 'Microneedling mit Exosomen / PDRN', 
-        price: '125€', 
-        duration: '60 Min', 
-        description: 'Professionelles Microneedling für Hauterneuerung und Kollagenbildung mit minimalen Nadeln und Exosomen oder PDRN.',
-        benefits: ['Hauterneuerung', 'Kollagenbildung', 'Faltenreduktion', 'Narbenminderung', 'Porenverkleinerung', 'Professionell'],
-        process: ['Hautanalyse', 'Vorbereitung', 'Microneedling', 'Exosomen/PDRN-Infusion', 'Beruhigende Pflege', 'Nachsorge']
-      },
-      { 
-        name: 'Microdermabrasion', 
+        name: 'Diamant Microdermabrasion', 
         price: '69€', 
         duration: '60 Min', 
-        description: 'Die Microdermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
+        description: 'Die Diamant Microdermabrasion ist eine sanfte, aber effektive Methode zur Hauterneuerung. Mit feinen Diamantaufsätzen werden abgestorbene Hautzellen abgetragen, wodurch die Haut glatter, klarer und aufnahmefähiger für Wirkstoffe wird. Diese mechanische Tiefenbehandlung regt die Zellerneuerung an und verfeinert das Hautbild sichtbar.',
         benefits: ['Glatte Haut', 'Strahlender Teint', 'Peeling-Effekt', 'Hauterneuerung', 'Professionell', 'Schmerzarm'],
-        process: ['Hautanalyse', 'Vorbereitung', 'Microdermabrasion', 'Reinigung', 'Beruhigende Pflege', 'Schutzpflege']
+        process: ['Hautanalyse', 'Vorbereitung', 'Diamant Microdermabrasion', 'Reinigung', 'Beruhigende Pflege', 'Schutzpflege']
       },
       { 
         name: 'Radiofrequenzbehandlung', 
@@ -248,6 +254,18 @@ const treatmentCategories = [
         description: 'Diese Massage löst gezielt muskuläre Spannungen im Nacken-, Schulter- und Rückenbereich durch sanfte Bewegungen und warmes Öl.',
         benefits: ['Muskelentspannung', 'Stressabbau', 'Schmerzlinderung', 'Durchblutungsförderung', 'Kopffreiheit', 'Wohlbefinden'],
         process: ['Beratung', 'Vorbereitung', 'Kopfmassage', 'Nackenmassage', 'Rückenmassage', 'Entspannungsphase']
+      },
+      { 
+        name: 'Brasilianische Lymphdrainage', 
+        price: 'ab 99€', 
+        duration: '60 Min', 
+        description: 'Sanfte Massagetechnik zur Aktivierung des Lymphsystems. Wählen Sie zwischen Körper (99€) oder Körper + Gesicht (120€).',
+        benefits: ['Entschlackung', 'Entwässerung', 'Stoffwechselanregung', 'Entspannung', 'Wohlbefinden', 'Straffung'],
+        process: ['Beratung', 'Vorbereitung', 'Lymphdrainage', 'Entspannungsphase', 'Nachpflege', 'Nachsorge-Empfehlungen'],
+        variants: [
+          { name: 'Körper', price: '99€' },
+          { name: 'Körper + Gesicht', price: '120€' }
+        ]
       }
     ]
   },
@@ -370,6 +388,7 @@ export default function TerminForm() {
   const [submitted, setSubmitted] = useState(false)
   const [expandedTreatment, setExpandedTreatment] = useState<number | null>(null)
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
+  const [selectedVariants, setSelectedVariants] = useState<{ [key: string]: string }>({})
 
   // Behandlungen aus Cart laden und direkt zu Step 3 springen
   useEffect(() => {
@@ -517,11 +536,33 @@ export default function TerminForm() {
     setStep(2)
   }
 
-  const handleTreatmentToggle = (treatmentName: string) => {
+  const handleTreatmentToggle = (treatmentName: string, variant?: string) => {
+    const treatment = selectedCategory?.treatments.find(t => t.name === treatmentName)
+    
+    // Wenn Behandlung Varianten hat und keine Variante ausgewählt wurde, nicht hinzufügen
+    // Aber nur wenn die Behandlung noch nicht ausgewählt ist
+    if (treatment?.variants && !variant && !formData.treatments.some(t => t.startsWith(treatmentName))) {
+      return
+    }
+    
+    const treatmentKey = variant ? `${treatmentName} (${variant})` : treatmentName
     const currentTreatments = formData.treatments
-    const newTreatments = currentTreatments.includes(treatmentName)
-      ? currentTreatments.filter(t => t !== treatmentName)
-      : [...currentTreatments, treatmentName]
+    const newTreatments = currentTreatments.includes(treatmentKey)
+      ? currentTreatments.filter(t => t !== treatmentKey)
+      : [...currentTreatments, treatmentKey]
+    
+    // Speichere die Variante, falls vorhanden
+    if (variant) {
+      setSelectedVariants({
+        ...selectedVariants,
+        [treatmentName]: variant
+      })
+    } else if (currentTreatments.includes(treatmentKey)) {
+      // Entferne Variante, wenn Behandlung entfernt wird
+      const newVariants = { ...selectedVariants }
+      delete newVariants[treatmentName]
+      setSelectedVariants(newVariants)
+    }
     
     // Speichere die Behandlungen für die aktuelle Kategorie
     const updatedTreatmentsByCategory = {
@@ -738,32 +779,90 @@ export default function TerminForm() {
                       {selectedCategory.treatments.map((treatment, index) => (
                         <div key={treatment.name} className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg overflow-hidden">
                           <div className="flex items-center justify-between p-6">
-                            <button
-                              onClick={() => handleTreatmentToggle(treatment.name)}
-                              className="flex-1 flex items-center justify-between text-left group"
-                            >
-                              <div className="flex items-center space-x-4">
-                                {formData.treatments.includes(treatment.name) && (
-                                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <Check className="h-5 w-5 text-white" />
+                            {treatment.variants ? (
+                              // Behandlung mit Varianten - kein direkter Klick auf den Titel
+                              <div className="flex-1">
+                                <div className="flex items-center space-x-4">
+                                  {formData.treatments.some(t => t.startsWith(treatment.name)) && (
+                                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                      <Check className="h-5 w-5 text-white" />
+                                    </div>
+                                  )}
+                                  <div className="flex-1">
+                                    <h3 className="text-lg font-semibold text-gray-900 transition-colors">
+                                      {treatment.name}
+                                      {selectedVariants[treatment.name] && (
+                                        <span className="text-sm font-normal text-gray-600 ml-2">
+                                          ({selectedVariants[treatment.name]})
+                                        </span>
+                                      )}
+                                    </h3>
+                                    <div className="flex items-center space-x-4 mt-1">
+                                      <span className="text-sm text-gray-600 flex items-center space-x-1">
+                                        <Clock className="h-4 w-4" />
+                                        <span>{treatment.duration}</span>
+                                      </span>
+                                      <span className="text-sm font-semibold text-gray-700">
+                                        {selectedVariants[treatment.name] 
+                                          ? treatment.variants?.find(v => v.name === selectedVariants[treatment.name])?.price || treatment.price
+                                          : treatment.price}
+                                      </span>
+                                    </div>
                                   </div>
-                                )}
-                                <div>
-                                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
-                                    {treatment.name}
-                                  </h3>
-                                  <div className="flex items-center space-x-4 mt-1">
-                                    <span className="text-sm text-gray-600 flex items-center space-x-1">
-                                      <Clock className="h-4 w-4" />
-                                      <span>{treatment.duration}</span>
-                                    </span>
-                                    <span className="text-sm font-semibold text-gray-700">
-                                      {treatment.price}
-                                    </span>
+                                </div>
+                                
+                                {/* Varianten-Auswahl */}
+                                <div className={`mt-4 pt-4 ${formData.treatments.some(t => t.startsWith(treatment.name)) ? 'border-t border-gray-200' : ''}`}>
+                                  <p className="text-sm font-semibold text-gray-700 mb-2">Variante wählen:</p>
+                                  <div className="flex gap-2">
+                                    {treatment.variants.map((variant) => {
+                                      const isSelected = selectedVariants[treatment.name] === variant.name
+                                      return (
+                                        <button
+                                          key={variant.name}
+                                          onClick={() => handleTreatmentToggle(treatment.name, variant.name)}
+                                          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                                            isSelected
+                                              ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white'
+                                              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                                          }`}
+                                        >
+                                          {variant.name} - {variant.price}
+                                        </button>
+                                      )
+                                    })}
                                   </div>
                                 </div>
                               </div>
-                            </button>
+                            ) : (
+                              // Behandlung ohne Varianten - direkt anklickbar
+                              <button
+                                onClick={() => handleTreatmentToggle(treatment.name)}
+                                className="flex-1 flex items-center justify-between text-left group"
+                              >
+                                <div className="flex items-center space-x-4">
+                                  {formData.treatments.includes(treatment.name) && (
+                                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                      <Check className="h-5 w-5 text-white" />
+                                    </div>
+                                  )}
+                                  <div>
+                                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
+                                      {treatment.name}
+                                    </h3>
+                                    <div className="flex items-center space-x-4 mt-1">
+                                      <span className="text-sm text-gray-600 flex items-center space-x-1">
+                                        <Clock className="h-4 w-4" />
+                                        <span>{treatment.duration}</span>
+                                      </span>
+                                      <span className="text-sm font-semibold text-gray-700">
+                                        {treatment.price}
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </button>
+                            )}
                             
                             <button
                               onClick={() => toggleExpanded(index)}
@@ -791,10 +890,34 @@ export default function TerminForm() {
                                     {/* Beschreibung */}
                                     <div className="flex items-start space-x-2">
                                       <Info className="h-5 w-5 text-gray-600 mt-0.5 flex-shrink-0" />
-                                      <div>
-                                        <p className="text-sm text-gray-700 leading-relaxed">
-                                          {treatment.description}
-                                        </p>
+                                      <div className="flex-1">
+                                        {(() => {
+                                          const desc = treatment.description || ''
+                                          const kurMatch = desc.match(/Kur angebot.*?(\d+.*?€)/i)
+                                          const mainDesc = kurMatch ? desc.substring(0, desc.indexOf('Kur angebot')).trim() : desc
+                                          
+                                          return (
+                                            <>
+                                              <p className="text-sm text-gray-700 leading-relaxed">
+                                                {mainDesc}
+                                              </p>
+                                              {kurMatch && (
+                                                <div className="mt-3 bg-gradient-to-r from-[#e9dbd2] to-[#d4c4b5] border-2 border-gray-400 rounded-lg p-3 shadow-md">
+                                                  <div className="flex items-center justify-between">
+                                                    <div>
+                                                      <p className="text-xs font-semibold text-gray-700">Kur-Angebot</p>
+                                                      <p className="text-xs text-gray-600 mb-1">4 Behandlungen</p>
+                                                      <div className="flex items-center space-x-2">
+                                                        <span className="text-base line-through text-gray-500">480€</span>
+                                                        <span className="text-base font-bold text-gray-900">450€</span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              )}
+                                            </>
+                                          )
+                                        })()}
                                       </div>
                                     </div>
 
@@ -915,8 +1038,16 @@ export default function TerminForm() {
                         name="behandlungen" 
                         value={getAllSelectedTreatments().map(treatment => {
                           const category = treatmentCategories.find(cat => cat.id === treatment.categoryId)
-                          const treatmentDetail = category?.treatments.find(t => t.name === treatment.name)
-                          return `${treatment.name} (${treatment.categoryName}) - ${treatmentDetail?.duration || 'N/A'}, ${treatmentDetail?.price || 'N/A'}`
+                          // Parse Variante aus treatment.name (Format: "Behandlung (Variante)" oder "Behandlung")
+                          const variantMatch = treatment.name.match(/^(.+?)\s*\((.+?)\)$/)
+                          const baseTreatmentName = variantMatch ? variantMatch[1] : treatment.name
+                          const variantName = variantMatch ? variantMatch[2] : null
+                          
+                          const treatmentDetail = category?.treatments.find(t => t.name === baseTreatmentName)
+                          const variantDetail = variantName ? treatmentDetail?.variants?.find(v => v.name === variantName) : undefined
+                          const price = variantDetail ? variantDetail.price : (treatmentDetail?.price || 'N/A')
+                          
+                          return `${treatment.name} (${treatment.categoryName}) - ${treatmentDetail?.duration || 'N/A'}, ${price}`
                         }).join('; ')} 
                       />
                       <input 
@@ -943,7 +1074,14 @@ export default function TerminForm() {
                                 <h4 className="text-sm font-semibold text-gray-600 mb-2">{category?.name}</h4>
                                 <div className="space-y-2">
                                   {treatments.map((treatmentName, index) => {
-                                    const treatmentDetail = category?.treatments.find(t => t.name === treatmentName)
+                                    // Parse Variante aus treatmentName (Format: "Behandlung (Variante)" oder "Behandlung")
+                                    const variantMatch = treatmentName.match(/^(.+?)\s*\((.+?)\)$/)
+                                    const baseTreatmentName = variantMatch ? variantMatch[1] : treatmentName
+                                    const variantName = variantMatch ? variantMatch[2] : null
+                                    
+                                    const treatmentDetail = category?.treatments.find(t => t.name === baseTreatmentName)
+                                    const variantDetail = variantName ? treatmentDetail?.variants?.find(v => v.name === variantName) : undefined
+                                    
                                     return (
                                       <div key={`${categoryId}-${index}`} className="flex items-center justify-between">
                                         <div className="flex items-center space-x-2">
@@ -953,7 +1091,9 @@ export default function TerminForm() {
                                         {treatmentDetail && (
                                           <div className="flex items-center space-x-3 text-sm">
                                             <span className="text-gray-600">{treatmentDetail.duration}</span>
-                                            <span className="font-semibold text-gray-900">{treatmentDetail.price}</span>
+                                            <span className="font-semibold text-gray-900">
+                                              {variantDetail ? variantDetail.price : treatmentDetail.price}
+                                            </span>
                                           </div>
                                         )}
                                       </div>
@@ -1298,4 +1438,6 @@ export default function TerminForm() {
     </>
   )
 }
+
+
 

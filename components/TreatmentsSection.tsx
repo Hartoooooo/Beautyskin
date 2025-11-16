@@ -13,7 +13,7 @@ const treatments = [
     description: 'Unsere professionellen Gesichtsbehandlungen für gesunde und strahlende Haut. Mit hochwertigen Produkten und modernen Techniken.',
     icon: Heart,
     image: '/Gesichtsbehandlungen.webp',
-    features: ['B.Skin Klassik', 'B.Skin Deluxe', 'AHA Peeling', 'Kräuter-Peeling'],
+    features: ['B.Skin Klassik', 'B.Skin Deluxe', 'AHA Peeling', 'Anti-Aging Kräuter-Peeling'],
     color: 'from-gray-600 to-gray-700',
     bgColor: 'from-gray-50 to-gray-100',
     duration: '45-60 Min',
@@ -26,7 +26,7 @@ const treatments = [
       'BeautySkin Unreine',
       'BeautySkin Reine Männersache',
       'AHA Fruchtsäurepeeling',
-      'Kräuter-Peeling (Herbs2Peel)'
+      'Anti-Aging Kräuter-Peeling (Herbs2Peel)'
     ]
   },
   {
@@ -44,9 +44,8 @@ const treatments = [
     treatments: [
       'Aqua Facial Behandlung',
       'Skin Oximizer',
-      'Microneedling mit Hyaluronsäure',
-      'Microneedling mit Exosomen / PDRN',
-      'Microdermabrasion',
+      'Micro Needling',
+      'Diamant Microdermabrasion',
       'Radiofrequenzbehandlung'
     ]
   },

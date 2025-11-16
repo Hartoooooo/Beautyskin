@@ -66,7 +66,7 @@ const treatments = [
       'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
       'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
       'Massage: Eine entspannende Massage von Gesicht, Hals und Dekolleté fördert die Durchblutung und sorgt für ein gelöstes, frisches Hautgefühl.',
-      'LED & Abschlusspflege: LED Skin Light unterstützt die Regeneration der Haut. Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
+      'Abschlusspflege: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln.'
     ],
     suitableFor: [
       'Alle Hauttypen',
@@ -132,7 +132,7 @@ const treatments = [
       'Ausreinigung: Unreinheiten und verstopfte Poren werden gründlich, aber schonend entfernt, um das Hautbild sichtbar zu klären.',
       'Wirkstoffpflege: Eine passende Wirkstoffampulle wird aufgetragen, um die Haut gezielt mit Feuchtigkeit, Beruhigung oder regenerierenden Inhaltsstoffen zu versorgen.',
       'Massage Gesicht, Hals, Dekolleté, Arme & Hände: Eine ausgedehnte Massage umfasst Gesicht, Hals, Dekolleté sowie Arme und Hände und sorgt für tiefgehende Entspannung und ein rundum gelöstes Hautgefühl.',
-      'Maske & LED Skin Light: Eine passende Maske unterstützt die Hautregeneration und wird durch LED-Lichttherapie intensiviert.',
+      'Maske: Eine passende Maske unterstützt die Hautregeneration und intensiviert das Ergebnis.',
       'Abschlusspflege mit Augencreme & UV-Schutz: Zum Abschluss wird die Haut mit einer pflegenden Creme und UV-Schutz versiegelt, während eine spezielle Augenpflege die empfindliche Partie um die Augen gezielt versorgt.'
     ],
     suitableFor: [
@@ -198,7 +198,7 @@ const treatments = [
       'Intensive Ausreinigung: Verstopfungen und Unreinheiten werden gründlich entfernt, um die Haut tief zu klären und Unterlagerungen zu reduzieren.',
       'Wirkstoffampulle: Eine speziell ausgewählte Wirkstoffampulle wirkt talgregulierend und beruhigend auf irritierte Hautbereiche.',
       'Hochfrequenz-Stab: Zur Desinfektion der behandelten Partien wird der Hochfrequenz-Stab eingesetzt, um Entzündungen zu mindern und die Haut zu beruhigen.',
-      'LED Skin Light & Maske: LED-Lichttherapie unterstützt die Regeneration und wird mit einer passenden Maske kombiniert, um die Haut zu klären und auszugleichen.',
+      'Maske: Eine passende Maske wird kombiniert, um die Haut zu klären und auszugleichen.',
       'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine passende Pflege mit UV-Schutz aufgetragen, um die Haut zu schützen und das Ergebnis zu stabilisieren.',
       'Hinweis: Bei dieser Behandlung wird ausschließlich mit Microsilver-Produkten gearbeitet.'
     ],
@@ -278,11 +278,11 @@ const treatments = [
   },
   {
     id: 8,
-    title: 'Kräuter-Peeling (Herbs2Peel)',
-    subtitle: 'Natürliches Regenerations-Peeling',
-    description: 'Erleben Sie ein natürliches, professionelles Kräuter-Peeling zur Regeneration und Korrektur der Haut – individuell abgestimmt auf Ihren Hauttyp.',
+    title: 'Anti-Aging Kräuter-Peeling (Herbs2Peel)',
+    subtitle: 'natürliches professionelles Kräuterpeeling zur Regeneration und Korrektur der Haut individuel angepasst an ihren Hauttyp',
+    description: 'Erleben Sie ein natürliches, professionelles Kräuter-Peeling zur Regeneration und Korrektur der Haut – individuell abgestimmt auf Ihren Hauttyp. Gesicht, Hals, Dekollete. Kur angebot 4 Behandlung für 450€',
     duration: '60 Min',
-    price: '99€',
+    price: '120€',
     benefits: [
       'Natürliche Regeneration',
       'Hauterneuerung',

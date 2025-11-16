@@ -22,7 +22,7 @@ const reviews = [
   {
     text: 'Super entspannende Behandlung! Ich habe mich sehr wohl gefühlt und Ysabel hat abschließend noch hilfreiche Tipps zur Nachversorgung gegeben. Ich komme auf jeden Fall wieder!',
     author: 'Lea',
-    treatment: 'Microdermabrasion',
+    treatment: 'Diamant Microdermabrasion',
     treatedBy: 'Ysabel',
     timeAgo: 'vor 15 Tagen'
   },
