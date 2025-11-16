@@ -1519,8 +1519,11 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-white"
+            className="relative bg-[#454545] rounded-3xl p-8 shadow-lg text-white mx-auto max-w-4xl"
           >
+            {/* Silberne innere Linie mit Glanz */}
+            <div className="absolute inset-2 border-2 border-[#C0C0C0] rounded-3xl pointer-events-none shadow-[inset_0_0_10px_rgba(192,192,192,0.5),0_0_5px_rgba(255,255,255,0.3)]"></div>
+            <div className="relative z-10">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Bereit für Ihre Traumbehandlung?
             </h2>
@@ -1535,6 +1538,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
               <a href="/termin" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300 inline-block">
                 Termin anfragen
               </a>
+            </div>
             </div>
           </motion.div>
         </div>

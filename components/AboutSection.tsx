@@ -29,9 +29,9 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             className="relative flex"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-full">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-full min-h-[400px] lg:min-h-0">
               {/* Image */}
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full min-h-[400px] lg:min-h-0">
                 <Image
                   src="/raquel.webp"
                   alt="Raquel Hardel - Gründerin & Kosmetikerin bei BeautySkin"
@@ -39,6 +39,16 @@ export default function AboutSection() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+              </div>
+              
+              {/* Raquel Hardel Text - Nur auf Mobile */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-6 lg:hidden">
+                <h3 className="text-2xl font-bold text-white">
+                  Raquel Hardel
+                </h3>
+                <p className="text-lg text-white/90 font-medium mt-1">
+                  Gründerin & Kosmetikerin
+                </p>
               </div>
               
               {/* Decorative Elements */}
@@ -52,15 +62,15 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 bg-[#e9dbd2] rounded-2xl shadow-xl p-6"
+              className="absolute -bottom-2 -right-2 lg:-bottom-6 lg:-right-6 bg-[#e9dbd2] rounded-lg lg:rounded-2xl shadow-xl p-2 lg:p-6"
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center">
-                  <Award className="h-6 w-6 text-white" />
+              <div className="flex items-center space-x-1.5 lg:space-x-3">
+                <div className="w-6 h-6 lg:w-12 lg:h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center">
+                  <Award className="h-3 w-3 lg:h-6 lg:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Erfahrung seit</p>
-                  <p className="text-xl font-bold text-gray-900">2018</p>
+                  <p className="text-[10px] leading-tight lg:text-sm text-gray-600">Erfahrung seit</p>
+                  <p className="text-sm lg:text-xl font-bold text-gray-900 leading-tight">2018</p>
                 </div>
               </div>
             </motion.div>
@@ -75,10 +85,10 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              <h3 className="hidden lg:block text-3xl font-bold text-gray-900 mb-4">
                 Raquel Hardel
               </h3>
-              <p className="text-lg text-primary-600 font-medium mb-6">
+              <p className="hidden lg:block text-lg text-primary-600 font-medium mb-6">
                 Gründerin & Kosmetikerin
               </p>
               

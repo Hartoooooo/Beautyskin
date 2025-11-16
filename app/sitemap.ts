@@ -14,11 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
     },
     {
-      route: '/behandlungen',
-      priority: 0.9,
-      changeFrequency: 'weekly' as const,
-    },
-    {
       route: '/termin',
       priority: 0.9,
       changeFrequency: 'weekly' as const,

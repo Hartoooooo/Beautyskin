@@ -131,12 +131,12 @@ export default function ContactSection() {
             {/* Bewertungen */}
             <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-3xl p-8">
               <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-3">
+                <div className="hidden lg:flex items-center space-x-3">
                   <Star className="h-8 w-8 text-yellow-500 fill-current" />
                   <h3 className="text-2xl font-bold text-gray-900">Bewertungen</h3>
                 </div>
-                <div className="text-right">
-                  <div className="flex items-center space-x-2">
+                <div className="w-full lg:w-auto lg:text-right">
+                  <div className="flex items-center justify-center lg:justify-end space-x-2">
                     <svg width="0" height="0">
                       <defs>
                         <linearGradient id="star-gradient">
@@ -155,9 +155,9 @@ export default function ContactSection() {
                         }}
                       />
                     ))}
-                    <span className="text-xl font-bold text-gray-900">4.9</span>
+                    <span className="hidden lg:inline text-xl font-bold text-gray-900">4.9</span>
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-gray-600 mt-1 text-center lg:text-right">
                     aus <a 
                       href="https://www.treatwell.de/ort/beauty-skin-r-y-kosmetikstudio/bewertungen/seite-3/" 
                       target="_blank" 
@@ -248,13 +248,22 @@ export default function ContactSection() {
           className="mt-16 text-center"
         >
           <div className="relative bg-gradient-to-r from-primary-500 to-primary-600 rounded-3xl p-8 text-white">
+            {/* Silberne innere Linie mit Glanz */}
+            <div className="absolute inset-2 border-2 border-[#C0C0C0] rounded-3xl pointer-events-none shadow-[inset_0_0_10px_rgba(192,192,192,0.5),0_0_5px_rgba(255,255,255,0.3)]"></div>
             {/* Left SVG - Desktop only */}
-            <div className="hidden lg:block absolute left-2 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-              <svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+            <div className="hidden lg:block absolute left-12 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60 drop-shadow-[0_0_8px_rgba(192,192,192,0.6)]">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
                 width="100%" height="100%" viewBox="0 0 491.277 491.277"
                 preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <linearGradient id="silverGradientContact" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#E8E8E8" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#C0C0C0" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#A8A8A8" stopOpacity="1" />
+                  </linearGradient>
+                </defs>
                 <g>
-                  <g>
+                  <g fill="url(#silverGradientContact)">
                     <path d="M365.357,342.949c10.828-11.556,24.953-19.777,39.383-26.006c5.012-2.16,14.438-7.693,20.137-7.285
                       c-23-1.879-47.396-3.166-69.342,5.313c-19.17,7.399-34.711,22.08-46.74,38.408c-7.945,10.791-13.664,22.64-20.029,34.378
                       c-7.805,14.394-18.084,35.635-34.885,41.457c21.262-2.372,42.03-11.665,58.613-24.996
@@ -297,12 +306,19 @@ export default function ContactSection() {
             </div>
 
             {/* Right SVG - Desktop only */}
-            <div className="hidden lg:block absolute right-2 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-              <svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+            <div className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60 drop-shadow-[0_0_8px_rgba(192,192,192,0.6)]">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
                 width="100%" height="100%" viewBox="0 0 491.277 491.277"
                 preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <linearGradient id="silverGradientContactRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#E8E8E8" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#C0C0C0" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#A8A8A8" stopOpacity="1" />
+                  </linearGradient>
+                </defs>
                 <g>
-                  <g>
+                  <g fill="url(#silverGradientContactRight)">
                     <path d="M365.357,342.949c10.828-11.556,24.953-19.777,39.383-26.006c5.012-2.16,14.438-7.693,20.137-7.285
                       c-23-1.879-47.396-3.166-69.342,5.313c-19.17,7.399-34.711,22.08-46.74,38.408c-7.945,10.791-13.664,22.64-20.029,34.378
                       c-7.805,14.394-18.084,35.635-34.885,41.457c21.262-2.372,42.03-11.665,58.613-24.996
@@ -344,7 +360,8 @@ export default function ContactSection() {
               </svg>
             </div>
 
-            <h3 className="text-3xl font-bold mb-4">
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-4">
               Bereit für Ihre Traumbehandlung?
             </h3>
             <p className="text-xl mb-8 opacity-90">
@@ -357,6 +374,7 @@ export default function ContactSection() {
               <a href="/termin" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-all duration-300 inline-block">
                 Beratung anfragen
               </a>
+            </div>
             </div>
           </div>
         </motion.div>

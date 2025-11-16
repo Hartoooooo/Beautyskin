@@ -259,13 +259,22 @@ export default function TreatmentsSection() {
           className="text-center mt-16"
         >
           <div className="relative bg-[#454545] rounded-3xl p-8 shadow-lg">
+            {/* Silberne innere Linie mit Glanz */}
+            <div className="absolute inset-2 border-2 border-[#C0C0C0] rounded-3xl pointer-events-none shadow-[inset_0_0_10px_rgba(192,192,192,0.5),0_0_5px_rgba(255,255,255,0.3)]"></div>
             {/* Left SVG - Desktop only */}
-            <div className="hidden lg:block absolute left-2 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-              <svg fill="#e9dbd2" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+            <div className="hidden lg:block absolute left-12 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60 drop-shadow-[0_0_8px_rgba(192,192,192,0.6)]">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
                 width="100%" height="100%" viewBox="0 0 491.277 491.277"
                 preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#E8E8E8" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#C0C0C0" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#A8A8A8" stopOpacity="1" />
+                  </linearGradient>
+                </defs>
                 <g>
-                  <g>
+                  <g fill="url(#silverGradient)">
                     <path d="M365.357,342.949c10.828-11.556,24.953-19.777,39.383-26.006c5.012-2.16,14.438-7.693,20.137-7.285
                       c-23-1.879-47.396-3.166-69.342,5.313c-19.17,7.399-34.711,22.08-46.74,38.408c-7.945,10.791-13.664,22.64-20.029,34.378
                       c-7.805,14.394-18.084,35.635-34.885,41.457c21.262-2.372,42.03-11.665,58.613-24.996
@@ -308,12 +317,19 @@ export default function TreatmentsSection() {
             </div>
 
             {/* Right SVG - Desktop only */}
-            <div className="hidden lg:block absolute right-2 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-              <svg fill="#e9dbd2" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+            <div className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60 drop-shadow-[0_0_8px_rgba(192,192,192,0.6)]">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
                 width="100%" height="100%" viewBox="0 0 491.277 491.277"
                 preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <linearGradient id="silverGradientRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#E8E8E8" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#C0C0C0" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#A8A8A8" stopOpacity="1" />
+                  </linearGradient>
+                </defs>
                 <g>
-                  <g>
+                  <g fill="url(#silverGradientRight)">
                     <path d="M365.357,342.949c10.828-11.556,24.953-19.777,39.383-26.006c5.012-2.16,14.438-7.693,20.137-7.285
                       c-23-1.879-47.396-3.166-69.342,5.313c-19.17,7.399-34.711,22.08-46.74,38.408c-7.945,10.791-13.664,22.64-20.029,34.378
                       c-7.805,14.394-18.084,35.635-34.885,41.457c21.262-2.372,42.03-11.665,58.613-24.996
@@ -355,16 +371,18 @@ export default function TreatmentsSection() {
               </svg>
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Alle Behandlungen entdecken
-            </h3>
-            <p className="text-white mb-6">
-              Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
-            </p>
-            <Link href="/behandlungen" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
-              <span>Alle Behandlungen ansehen</span>
-              <ArrowRight className="h-5 w-5" />
-            </Link>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Alle Behandlungen entdecken
+              </h3>
+              <p className="text-white mb-6">
+                Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
+              </p>
+              <Link href="/termin" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
+                <span>Termin anfragen</span>
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>

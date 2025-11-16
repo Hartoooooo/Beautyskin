@@ -3,12 +3,14 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Phone, MapPin, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone, MapPin, ChevronDown, Home, Calendar, Sparkles } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isBehandlungenOpen, setIsBehandlungenOpen] = useState(false)
+  const [isMobileBehandlungenOpen, setIsMobileBehandlungenOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -34,6 +36,7 @@ export default function Header() {
   ]
 
   return (
+    <>
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-[#e9dbd2]/95 backdrop-blur-md shadow-lg' : 'bg-[#e9dbd2] shadow-md'
     }`}>
@@ -116,59 +119,203 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-primary-600"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden relative z-50 p-2 rounded-lg text-gray-700 hover:bg-white/20 active:scale-95 transition-all duration-200"
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen)
+              if (isMenuOpen) {
+                setIsMobileBehandlungenOpen(false)
+              }
+            }}
+            aria-label="Menu"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#e9dbd2] rounded-lg shadow-lg">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 font-vogue"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              
-              {/* Behandlungen Section in Mobile */}
-              <div className="px-3 py-2">
-                <p className="text-sm font-semibold text-gray-900 mb-2 font-vogue">Behandlungen</p>
-                <div className="space-y-1 pl-2">
-                  {behandlungen.map((behandlung) => (
-                    <Link
-                      key={behandlung.name}
-                      href={behandlung.href}
-                      className="block py-2 text-gray-700 hover:text-primary-600 transition-colors duration-200"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <span className="text-sm font-medium font-vogue">{behandlung.name}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="px-3 py-2 text-sm text-gray-600 border-t border-gray-200 mt-2 pt-2">
-                <a href="tel:+491704482725" className="flex items-center space-x-2 hover:text-primary-600 transition-colors duration-200">
-                  <Phone className="h-4 w-4" />
-                  <span className="font-sans">+49 170 4482725</span>
-                </a>
-                <div className="flex items-center space-x-2 mt-1">
-                  <MapPin className="h-4 w-4" />
-                  <span>R&Y Slivio-Meier-Straße 6, 10247 Berlin</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </header>
+
+      {/* Mobile Navigation - Modern Slide-in Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] md:hidden"
+              onClick={() => {
+                setIsMenuOpen(false)
+                setIsMobileBehandlungenOpen(false)
+              }}
+            />
+
+            {/* Slide-in Menu Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ 
+                type: 'spring', 
+                damping: 30, 
+                stiffness: 300 
+              }}
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-2xl z-[70] md:hidden overflow-y-auto"
+            >
+              {/* Header */}
+              <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-5 flex items-center justify-between">
+                <Image
+                  src="/bs Logo+.png"
+                  alt="BeautySkin Logo"
+                  width={140}
+                  height={46}
+                  className="h-8 w-auto object-contain"
+                />
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    setIsMobileBehandlungenOpen(false)
+                  }}
+                  className="p-2 rounded-lg hover:bg-gray-100 active:scale-95 transition-all duration-200"
+                  aria-label="Close menu"
+                >
+                  <X className="h-6 w-6 text-gray-700" />
+                </button>
+              </div>
+
+              {/* Navigation Content */}
+              <div className="px-6 py-8">
+                {/* Main Navigation */}
+                <nav className="space-y-2">
+                  <Link
+                    href="/"
+                    className="flex items-center space-x-4 px-4 py-4 rounded-2xl hover:bg-[#e9dbd2]/50 active:scale-98 transition-all duration-200 group"
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setIsMobileBehandlungenOpen(false)
+                    }}
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#e9dbd2] flex items-center justify-center group-hover:bg-[#454545] transition-colors duration-200">
+                      <Home className="h-5 w-5 text-gray-700 group-hover:text-white transition-colors duration-200" />
+                    </div>
+                    <span className="text-lg font-semibold text-gray-900 font-vogue">Home</span>
+                  </Link>
+
+                  <Link
+                    href="/termin"
+                    className="flex items-center space-x-4 px-4 py-4 rounded-2xl hover:bg-[#e9dbd2]/50 active:scale-98 transition-all duration-200 group"
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setIsMobileBehandlungenOpen(false)
+                    }}
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#e9dbd2] flex items-center justify-center group-hover:bg-[#454545] transition-colors duration-200">
+                      <Calendar className="h-5 w-5 text-gray-700 group-hover:text-white transition-colors duration-200" />
+                    </div>
+                    <span className="text-lg font-semibold text-gray-900 font-vogue">Termin anfragen</span>
+                  </Link>
+
+                  {/* Behandlungen Section */}
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => setIsMobileBehandlungenOpen(!isMobileBehandlungenOpen)}
+                      className="w-full flex items-center justify-between px-4 py-4 rounded-2xl hover:bg-[#e9dbd2]/50 active:scale-98 transition-all duration-200 group"
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className="w-10 h-10 rounded-xl bg-[#e9dbd2] flex items-center justify-center group-hover:bg-[#454545] transition-colors duration-200">
+                          <Sparkles className="h-5 w-5 text-gray-700 group-hover:text-white transition-colors duration-200" />
+                        </div>
+                        <span className="text-lg font-semibold text-gray-900 font-vogue">Behandlungen</span>
+                      </div>
+                      <ChevronDown 
+                        className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${
+                          isMobileBehandlungenOpen ? 'rotate-180' : ''
+                        }`} 
+                      />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isMobileBehandlungenOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          className="overflow-hidden"
+                        >
+                          <div className="space-y-1 pt-2">
+                            {behandlungen.map((behandlung, index) => (
+                              <motion.div
+                                key={behandlung.name}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
+                                transition={{ delay: index * 0.05 }}
+                              >
+                                <Link
+                                  href={behandlung.href}
+                                  className="block px-4 py-3.5 rounded-xl hover:bg-[#e9dbd2]/30 active:scale-98 transition-all duration-200 group"
+                                  onClick={() => {
+                                    setIsMenuOpen(false)
+                                    setIsMobileBehandlungenOpen(false)
+                                  }}
+                                >
+                                  <span className="text-base font-medium text-gray-700 group-hover:text-[#454545] transition-colors duration-200 font-vogue">
+                                    {behandlung.name}
+                                  </span>
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </nav>
+
+                {/* Divider */}
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-8"></div>
+
+                {/* Contact Information */}
+                <div className="space-y-4 px-4">
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider font-vogue">Kontakt</h3>
+                  
+                  <a 
+                    href="tel:+491704482725" 
+                    className="flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#e9dbd2]/30 active:scale-98 transition-all duration-200 group"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#e9dbd2] flex items-center justify-center group-hover:bg-[#454545] transition-colors duration-200">
+                      <Phone className="h-5 w-5 text-gray-700 group-hover:text-white transition-colors duration-200" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-medium">Telefon</p>
+                      <p className="text-base font-semibold text-gray-900 font-sans">+49 170 4482725</p>
+                    </div>
+                  </a>
+
+                  <div className="flex items-start space-x-4 px-4 py-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#e9dbd2] flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-5 w-5 text-gray-700" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-medium mb-1">Adresse</p>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        R&Y Slivio-Meier-Straße 6<br />
+                        10247 Berlin
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

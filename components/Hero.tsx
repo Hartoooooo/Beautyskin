@@ -50,7 +50,34 @@ export default function Hero() {
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{animationDelay: '4s'}}></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      {/* Mobile Background Slideshow (80% viewport height) */}
+      <div className="absolute inset-x-0 top-0 h-[80vh] md:hidden overflow-hidden">
+        {heroImages.map((src, index) => (
+          <motion.div
+            key={src}
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: index === currentImageIndex ? 1 : 0,
+              zIndex: index === currentImageIndex ? 1 : 0
+            }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={src}
+              alt={`BeautySkin Kosmetikstudio - ${index === 0 ? 'Außenansicht' : `Innenansicht ${index}`}`}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={index === 0}
+            />
+          </motion.div>
+        ))}
+        {/* Dark Overlay for Mobile */}
+        <div className="absolute inset-0 bg-black/15 md:hidden z-[5]"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div
@@ -61,17 +88,26 @@ export default function Hero() {
           >
             <div className="space-y-4">
               <motion.h1 
-                className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-apple"
+                className="text-5xl lg:text-6xl font-bold text-white md:text-gray-900 leading-tight font-apple"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Ihr Kosmetikstudio für{' '}
-                <span className="gradient-text">natürliche Schönheit</span>
+                <span className="text-white md:text-transparent md:bg-clip-text md:bg-gradient-to-r md:from-[#454545] md:to-[#303030]">natürliche Schönheit</span>
               </motion.h1>
               
               <motion.p 
-                className="text-xl text-gray-600 leading-relaxed font-apple"
+                className="text-base text-white/90 leading-relaxed font-apple md:hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Entdecken Sie unsere vielfältigen professionellen Dienstleistungen und lassen Sie sich von unserem Behandlungsangebot begeistern!
+              </motion.p>
+
+              <motion.p 
+                className="hidden md:block text-xl text-gray-600 leading-relaxed font-apple"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -84,7 +120,7 @@ export default function Hero() {
 
             {/* Opening Hours */}
             <motion.div 
-              className="bg-[#e9dbd2]/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg"
+              className="relative z-30 bg-[#e9dbd2]/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -154,7 +190,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
+            className="relative hidden md:block"
           >
             <div className="relative z-10">
               <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary-100 to-primary-200 p-2 shadow-2xl">
