@@ -92,7 +92,7 @@ export default function ContactSection() {
                   <div>
                     <p className="font-semibold text-gray-900">Adresse</p>
                     <p className="text-gray-600">
-                      R&Y Slivio-Meier-Straße 6<br />
+                      Silvio-Meier-Straße 6<br />
                       10247 Berlin
                     </p>
                   </div>
@@ -121,7 +121,6 @@ export default function ContactSection() {
                     <div className="text-gray-600 space-y-1">
                       <p>Mo-Fr: 10-18 Uhr</p>
                       <p>Samstag: 10-15 Uhr</p>
-                      <p>Sonntag: Geschlossen</p>
                     </div>
                   </div>
                 </div>
@@ -226,14 +225,14 @@ export default function ContactSection() {
           >
             <div className="h-full min-h-[600px] rounded-3xl overflow-hidden shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=BeautySkin+R%26Y+Slivio-Meier-Straße+6+10247+Berlin&zoom=15"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=BeautySkin+R%26Y+Silvio-Meier-Straße+6+10247+Berlin&zoom=15"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '600px' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="BeautySkin Standort - R&Y Slivio-Meier-Straße 6, 10247 Berlin"
+                title="BeautySkin Standort - Silvio-Meier-Straße 6, 10247 Berlin"
               ></iframe>
             </div>
           </motion.div>
@@ -361,7 +360,7 @@ export default function ContactSection() {
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-4">
+            <h3 className="text-3xl font-bold mb-4">
               Bereit für Ihre Traumbehandlung?
             </h3>
             <p className="text-xl mb-8 opacity-90">

@@ -23,7 +23,7 @@ const treatments = [
       'BeautySkin Deluxe',
       'BeautySkin Relax', 
       'BeautySkin Hautklar',
-      'BeautySkin Unreine',
+      'BeautySkin Unreine Haut',
       'BeautySkin Reine Männersache',
       'AHA Fruchtsäurepeeling',
       'Anti-Aging Kräuter-Peeling (Herbs2Peel)'
@@ -371,16 +371,16 @@ export default function TreatmentsSection() {
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Alle Behandlungen entdecken
-              </h3>
-              <p className="text-white mb-6">
-                Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
-              </p>
-              <Link href="/termin" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
-                <span>Termin anfragen</span>
-                <ArrowRight className="h-5 w-5" />
-              </Link>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Alle Behandlungen entdecken
+            </h3>
+            <p className="text-white mb-6">
+              Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
+            </p>
+            <Link href="/termin" className="bg-[#e9dbd2] text-gray-900 hover:bg-[#e9dbd2]/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2">
+              <span>Termin anfragen</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
             </div>
           </div>
         </motion.div>

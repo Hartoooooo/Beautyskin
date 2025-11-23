@@ -201,7 +201,7 @@ export default function AGBPage() {
                   <div className="text-gray-700">
                     <p><strong>BeautySkin</strong><br />
                     Inhaberin: Ysabel Busch</p>
-                    <p className="mt-2">R&Y Slivio-Meier-Straße 6<br />
+                    <p className="mt-2">Silvio-Meier-Straße 6<br />
                     10247 Berlin<br />
                     Deutschland</p>
                     <p className="mt-2">

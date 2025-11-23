@@ -101,7 +101,7 @@ Alle Texte und Inhalte befinden sich in den entsprechenden Komponenten in `/comp
 ## Kontakt
 
 **BeautySkin**
-R&Y Slivio-Meier-Straße 6
+Silvio-Meier-Straße 6
 10247 Berlin
 
 Telefon: 030 - 12345678

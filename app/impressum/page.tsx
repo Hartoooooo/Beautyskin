@@ -6,7 +6,7 @@ const siteUrl = 'https://www.beautyskin-berlin.de'
 
 export const metadata: Metadata = {
   title: 'Impressum',
-  description: 'Impressum und rechtliche Informationen von BeautySkin Kosmetikstudio Berlin. Inhaberin: Ysabel Busch, R&Y Slivio-Meier-Straße 6, 10247 Berlin.',
+  description: 'Impressum und rechtliche Informationen von BeautySkin Kosmetikstudio Berlin. Inhaberin: Ysabel Busch, Silvio-Meier-Straße 6, 10247 Berlin.',
   robots: {
     index: true,
     follow: true,
@@ -38,7 +38,7 @@ export default function ImpressumPage() {
                 <div className="space-y-4 text-gray-700">
                   <p><strong>BeautySkin</strong><br />
                   Inhaberin: Ysabel Busch</p>
-                  <p>R&Y Slivio-Meier-Straße 6<br />
+                  <p>Silvio-Meier-Straße 6<br />
                   10247 Berlin<br />
                   Deutschland</p>
                 </div>
@@ -67,7 +67,7 @@ export default function ImpressumPage() {
                   <p className="text-gray-700">
                     Ysabel Busch<br />
                     BeautySkin<br />
-                    R&Y Slivio-Meier-Straße 6<br />
+                    Silvio-Meier-Straße 6<br />
                     10247 Berlin
                   </p>
                 </div>

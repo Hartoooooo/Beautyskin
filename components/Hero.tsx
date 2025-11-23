@@ -138,10 +138,6 @@ export default function Hero() {
                   <span>Samstag</span>
                   <span className="font-medium">10:00–15:00</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>Sonntag</span>
-                  <span className="font-medium">Geschlossen</span>
-                </div>
               </div>
             </motion.div>
 

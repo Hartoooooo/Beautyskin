@@ -105,7 +105,7 @@ export default function Footer() {
                   <MapPin className="h-5 w-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300">
-                      R&Y Slivio-Meier-Straße 6<br />
+                      Silvio-Meier-Straße 6<br />
                       10247 Berlin
                     </p>
                   </div>
@@ -134,9 +134,8 @@ export default function Footer() {
                 <div className="flex items-start space-x-3">
                   <Clock className="h-5 w-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div className="text-gray-300 text-sm">
-                    <p>Mo–Fr: 10:00–18:00</p>
-                    <p>Sa: 10:00–15:00</p>
-                    <p>So: Geschlossen</p>
+                    <p>Mo–Fr: 10–18 Uhr</p>
+                    <p>Sa: 10–15 Uhr</p>
                   </div>
                 </div>
               </div>

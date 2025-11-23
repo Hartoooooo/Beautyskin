@@ -199,14 +199,14 @@ export default function Header() {
                       setIsMenuOpen(false)
                       setIsMobileBehandlungenOpen(false)
                     }}
-                  >
+                >
                     <div className="w-10 h-10 rounded-xl bg-[#e9dbd2] flex items-center justify-center group-hover:bg-[#454545] transition-colors duration-200">
                       <Home className="h-5 w-5 text-gray-700 group-hover:text-white transition-colors duration-200" />
                     </div>
                     <span className="text-lg font-semibold text-gray-900 font-vogue">Home</span>
-                  </Link>
-
-                  <Link
+                </Link>
+              
+                    <Link
                     href="/termin"
                     className="flex items-center space-x-4 px-4 py-4 rounded-2xl hover:bg-[#e9dbd2]/50 active:scale-98 transition-all duration-200 group"
                     onClick={() => {
@@ -264,18 +264,18 @@ export default function Header() {
                                     setIsMenuOpen(false)
                                     setIsMobileBehandlungenOpen(false)
                                   }}
-                                >
+                    >
                                   <span className="text-base font-medium text-gray-700 group-hover:text-[#454545] transition-colors duration-200 font-vogue">
                                     {behandlung.name}
                                   </span>
-                                </Link>
+                    </Link>
                               </motion.div>
-                            ))}
-                          </div>
+                  ))}
+                </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+              </div>
                 </nav>
 
                 {/* Divider */}
@@ -296,7 +296,7 @@ export default function Header() {
                       <p className="text-xs text-gray-500 font-medium">Telefon</p>
                       <p className="text-base font-semibold text-gray-900 font-sans">+49 170 4482725</p>
                     </div>
-                  </a>
+                </a>
 
                   <div className="flex items-start space-x-4 px-4 py-3">
                     <div className="w-10 h-10 rounded-xl bg-[#e9dbd2] flex items-center justify-center flex-shrink-0">
@@ -305,13 +305,13 @@ export default function Header() {
                     <div>
                       <p className="text-xs text-gray-500 font-medium mb-1">Adresse</p>
                       <p className="text-sm text-gray-700 leading-relaxed">
-                        R&Y Slivio-Meier-Straße 6<br />
+                        Silvio-Meier-Straße 6<br />
                         10247 Berlin
                       </p>
-                    </div>
-                  </div>
                 </div>
               </div>
+            </div>
+          </div>
             </motion.div>
           </>
         )}

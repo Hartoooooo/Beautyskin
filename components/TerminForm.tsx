@@ -106,7 +106,7 @@ const treatmentCategories = [
         ]
       },
       { 
-        name: 'BeautySkin Unreine', 
+        name: 'BeautySkin Unreine Haut', 
         price: '75€', 
         duration: '60 Min', 
         description: 'Erleben Sie eine intensiv klärende Behandlung, die Unreinheiten vermindert und das Hautbild rein und ausgeglichen erscheinen lässt.',
@@ -1211,7 +1211,7 @@ export default function TerminForm() {
                           }) : ''} 
                         />
                         <p className="text-xs text-gray-500 mt-2">
-                          Öffnungszeiten: Mo-Fr 10:00-18:00, Sa 10:00-15:00, So geschlossen
+                          Öffnungszeiten: Mo-Fr 10:00-18:00, Sa 10:00-15:00
                         </p>
                       </div>
 

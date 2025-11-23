@@ -136,10 +136,10 @@ export default function AddTreatmentButton({ treatment, className = '', variants
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-50 mt-2 w-full bg-[#e9dbd2] border-2 border-gray-300 rounded-lg shadow-xl overflow-hidden"
+            className="absolute z-50 mt-2 w-full bg-gradient-to-r from-gray-600 to-gray-700 border-2 border-gray-500 rounded-lg shadow-xl overflow-hidden"
           >
-            <div className="p-3 bg-[#e9dbd2]/80 border-b border-gray-300">
-              <p className="text-sm font-semibold text-gray-700">Variante wählen:</p>
+            <div className="p-3 bg-gradient-to-r from-gray-600 to-gray-700 border-b border-gray-500">
+              <p className="text-sm font-semibold text-white">Variante wählen:</p>
             </div>
             {normalizedVariants.map((variant, index) => {
               const variantName = typeof variant === 'string' ? variant : variant.name
@@ -148,11 +148,11 @@ export default function AddTreatmentButton({ treatment, className = '', variants
                 <button
                   key={index}
                   onClick={() => handleVariantSelect(variant)}
-                  className="w-full px-4 py-3 text-left hover:bg-[#e9dbd2]/70 hover:text-gray-900 transition-colors border-b border-gray-300/50 last:border-b-0 text-gray-700 font-medium flex items-center justify-between"
+                  className="w-full px-4 py-3 text-left hover:bg-gray-500/50 hover:text-white transition-colors border-b border-gray-500/50 last:border-b-0 text-white font-medium flex items-center justify-between"
                 >
                   <span>{variantName}</span>
                   {variantPrice && (
-                    <span className="text-gray-600 font-semibold ml-2">{variantPrice}</span>
+                    <span className="text-gray-200 font-semibold ml-2">{variantPrice}</span>
                   )}
                 </button>
               )
@@ -160,7 +160,7 @@ export default function AddTreatmentButton({ treatment, className = '', variants
             {treatment.name !== 'Micro Needling' && treatment.name !== 'Brasilianische Lymphdrainage' && (
               <button
                 onClick={() => setShowVariantDropdown(false)}
-                className="w-full px-4 py-2 text-sm text-gray-600 hover:bg-[#e9dbd2]/70 hover:text-gray-900 transition-colors border-t border-gray-300/50"
+                className="w-full px-4 py-2 text-sm text-gray-200 hover:bg-gray-500/50 hover:text-white transition-colors border-t border-gray-500/50"
               >
                 Abbrechen
               </button>

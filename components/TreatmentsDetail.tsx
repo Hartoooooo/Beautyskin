@@ -34,7 +34,7 @@ const getTreatmentBenefits = (treatmentName: string) => {
       'Anti-Bakteriell',
       'Strahlende Haut'
     ],
-    'BeautySkin Unreine': [
+    'BeautySkin Unreine Haut': [
       'Intensive Reinigung',
       'Entzündungshemmend',
       'Bakterienreduktion',
@@ -209,7 +209,7 @@ const getTreatmentProcess = (treatmentName: string) => {
       'Maske: Eine passende Maske beruhigt die Haut, unterstützt die Regeneration und verfeinert das Erscheinungsbild.',
       'Abschlusspflege mit UV-Schutz: Zum Abschluss wird eine schützende Pflege mit UV-Schutz aufgetragen, um das Ergebnis zu versiegeln und vor äußeren Einflüssen zu schützen.'
     ],
-    'BeautySkin Unreine': [
+    'BeautySkin Unreine Haut': [
       'Hautanalyse: Zu Beginn wird der Hautzustand analysiert, um die Behandlung gezielt auf die Bedürfnisse unreiner Haut abzustimmen.',
       'Reinigung & Enzympeeling: Die Haut wird gereinigt und mit einem Enzympeeling vorbereitet, um überschüssige Hornschüppchen zu lösen und die Poren freizugeben.',
       'Intensive Ausreinigung: Verstopfungen und Unreinheiten werden gründlich entfernt, um die Haut tief zu klären und Unterlagerungen zu reduzieren.',
@@ -317,7 +317,7 @@ const getTreatmentDuration = (treatmentName: string, categoryId: number) => {
       'BeautySkin Deluxe': '60 Min',
       'BeautySkin Relax': '60 Min',
       'BeautySkin Hautklar': '45 Min',
-      'BeautySkin Unreine': '60 Min',
+      'BeautySkin Unreine Haut': '60 Min',
       'BeautySkin Reine Männersache': '60 Min',
       'AHA Fruchtsäurepeeling': '45 Min',
       'Anti-Aging Kräuter-Peeling (Herbs2Peel)': '60 Min'
@@ -402,7 +402,7 @@ const treatments = [
       },
       {
         name: 'BeautySkin Deluxe',
-        description: 'Premium Gesichtsbehandlung mit exklusiver Pflege - Besonders beliebt!',
+        description: 'Premium Gesichtsbehandlung mit exklusiver Pflege',
         price: '89€'
       },
       {
@@ -416,7 +416,7 @@ const treatments = [
         price: '49€'
       },
       {
-        name: 'BeautySkin Unreine',
+        name: 'BeautySkin Unreine Haut',
         description: 'Intensive Behandlung für unreine und problematische Haut',
         price: '75€'
       },
@@ -514,7 +514,7 @@ const treatments = [
     title: 'Massagen',
     subtitle: 'Entspannung und Wohlbefinden',
     description: 'Entspannende Massagen für Körper und Seele.',
-    fullDescription: 'Eine entspannende Massage ist eine wahre Wohltat für den Körper und Geist. Die Massage ist eine der ältesten Formen der Heilung und ein großartiger Weg, um schnell in einen entspannten Geisteszustand zu gelangen.',
+    fullDescription: 'Eine entspannende Massage ist eine wahre Wohltat für Körper und Geist. Die Massage ist eine der ältesten Formen der Heilung und ein großartiger Weg, um schnell in einen entspannten Geisteszustand zu gelangen.',
     icon: Heart,
     duration: '15-45 Min',
     price: 'ab 25€',
@@ -700,7 +700,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
   return (
     <div>
       {/* Hero Section */}
-      <section className={`bg-gradient-to-br ${treatment.bgColor} via-[#e9dbd2] ${treatment.bgColor} pt-20 ${treatment.id === 2 ? 'pb-6' : 'pb-20'}`}>
+      <section className={`${treatment.id === 3 ? 'bg-[#e9dbd2]' : `bg-gradient-to-br ${treatment.bgColor} via-[#e9dbd2] ${treatment.bgColor}`} pt-20 ${treatment.id === 2 ? 'pb-6' : treatment.id === 3 ? 'pb-8' : 'pb-20'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {treatment.id === 4 ? (
             <motion.div
@@ -737,13 +737,13 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 <span className="gradient-text">{treatment.title}</span>
               </h1>
               {treatment.fullDescription && (
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                  {treatment.fullDescription}
-                </p>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                {treatment.fullDescription}
+              </p>
               )}
             </motion.div>
           )}
@@ -754,7 +754,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
       <section className={`${treatment.id === 2 ? 'pt-8 pb-20' : 'py-20'} bg-[#e9dbd2]`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
-            {treatment.id !== 1 && treatment.id !== 2 && treatment.id !== 3 && (
+            {treatment.id !== 1 && treatment.id !== 2 && treatment.id !== 3 && treatment.id !== 5 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -782,9 +782,9 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
 
                     {/* Description */}
                     {treatment.fullDescription && (
-                      <p className="text-lg text-gray-600 leading-relaxed">
-                        {treatment.fullDescription}
-                      </p>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      {treatment.fullDescription}
+                    </p>
                     )}
                   </div>
 
@@ -817,11 +817,11 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                       <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center pb-8">
                         <div className="grid grid-cols-2 gap-8 text-center">
                           <div>
-                            <p className="text-white font-semibold text-lg mb-px">Behandlungsdauer</p>
+                            <p className="text-white font-semibold text-sm mb-px">Behandlungsdauer</p>
                             <p className="text-white font-bold text-lg">{treatment.duration}</p>
                           </div>
                           <div>
-                            <p className="text-white font-semibold text-lg mb-px">Preis</p>
+                            <p className="text-white font-semibold text-sm mb-px">Preis</p>
                             <p className="text-white font-bold text-lg">{treatment.price}</p>
                           </div>
                         </div>
@@ -985,7 +985,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
             )}
 
             {/* Specific Treatments */}
-            <div className={treatment.id === 2 ? 'mt-8' : 'mt-16'}>
+            <div className={treatment.id === 2 ? 'mt-8' : treatment.id === 3 ? 'mt-0' : 'mt-16'}>
               <h3 className="text-3xl font-bold text-gray-900 text-center mb-8">
                 Verfügbare Behandlungen
               </h3>
@@ -1000,8 +1000,14 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300`}
+                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative`}
                     >
+                      {/* Besonders beliebt Badge */}
+                      {(subTreatment.name === 'BeautySkin Deluxe' || subTreatment.name === 'Aqua Facial Behandlung' || subTreatment.name === 'Brasilianische Lymphdrainage') && (
+                        <div className="absolute -top-3 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg ring-2 ring-red-400/50 z-10">
+                          Von Kunden empfohlen
+                        </div>
+                      )}
                       <div className="grid lg:grid-cols-3 gap-8">
                         {/* Treatment Info */}
                         <div className="lg:col-span-2">
@@ -1021,25 +1027,9 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                                 const mainDesc = kurMatch ? desc.substring(0, desc.indexOf('Kur angebot')).trim() : desc
                                 
                                 return (
-                                  <>
-                                    <p className="text-lg text-gray-600">
-                                      {mainDesc}
-                                    </p>
-                                    {kurMatch && (
-                                      <div className="mt-4 bg-gradient-to-r from-[#e9dbd2] to-[#d4c4b5] border-2 border-gray-400 rounded-xl p-4 shadow-lg">
-                                        <div className="flex items-center justify-between">
-                                          <div>
-                                            <p className="text-sm font-semibold text-gray-700 mb-1">Kur-Angebot</p>
-                                            <p className="text-xs text-gray-600 mb-2">4 Behandlungen</p>
-                                            <div className="flex items-center space-x-2">
-                                              <span className="text-lg line-through text-gray-500">480€</span>
-                                              <span className="text-lg font-bold text-gray-900">450€</span>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    )}
-                                  </>
+                                  <p className="text-lg text-gray-600">
+                                    {mainDesc}
+                                  </p>
                                 )
                               })()}
                             </div>
@@ -1118,7 +1108,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                               <div className="lg:text-right">
                                 <div className="flex items-center lg:justify-end space-x-2 mb-2">
                                   <Clock className="h-5 w-5 text-gray-600" />
-                                  <span className="font-semibold text-gray-900">Dauer</span>
+                                  <span className="font-semibold text-sm text-gray-900">Dauer</span>
                                 </div>
                                 <p className="text-gray-600 text-lg font-semibold">
                                   {getTreatmentDuration(subTreatment.name, treatment.id)}
@@ -1127,7 +1117,7 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                               <div className="lg:text-right">
                                 <div className="flex items-center lg:justify-end space-x-2 mb-2">
                                   <Star className="h-5 w-5 text-gray-600" />
-                                  <span className="font-semibold text-gray-900">Preis</span>
+                                  <span className="font-semibold text-sm text-gray-900">Preis</span>
                                 </div>
                                 {(subTreatment as any).variants ? (
                                   <p className="text-gray-600 text-lg font-semibold">
@@ -1136,13 +1126,33 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                                       : ((subTreatment as any).variants as Array<{name: string, price: string}>).map(v => v.price).join('/')}
                                   </p>
                                 ) : (
-                                  <p className="text-gray-600 text-lg font-semibold">
-                                    {subTreatment.price}
-                                  </p>
+                                <p className="text-gray-600 text-lg font-semibold">
+                                  {subTreatment.price}
+                                </p>
                                 )}
                               </div>
                             </div>
                           </div>
+                          
+                          {/* Kur-Angebot für Anti-Aging Kräuter-Peeling */}
+                          {(() => {
+                            const desc = subTreatment.description || ''
+                            const kurMatch = desc.match(/Kur angebot.*?(\d+.*?€)/i)
+                            return kurMatch && subTreatment.name === 'Anti-Aging Kräuter-Peeling (Herbs2Peel)' ? (
+                              <div className="w-full lg:w-auto mt-4 lg:mt-6">
+                                <div className="bg-gradient-to-r from-red-50 to-red-100 border-2 border-red-400 rounded-xl p-4 shadow-lg">
+                                  <div className="flex flex-col items-center lg:items-end">
+                                    <p className="text-sm font-semibold text-red-700 mb-1">Kur-Angebot</p>
+                                    <p className="text-xs text-red-600 mb-2">4 Behandlungen</p>
+                                    <div className="flex items-center space-x-2">
+                                      <span className="text-lg line-through text-red-500">480€</span>
+                                      <span className="text-lg font-bold text-red-700">450€</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : null
+                          })()}
                           
                           {/* Button - independent, aligned with Behandlungsablauf */}
                           <div className="w-full lg:w-auto lg:mt-auto lg:pt-4">
@@ -1465,8 +1475,14 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300`}
+                      className={`bg-gradient-to-br ${treatment.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 relative`}
                     >
+                      {/* Besonders beliebt Badge */}
+                      {(subTreatment.name === 'BeautySkin Deluxe' || subTreatment.name === 'Aqua Facial Behandlung' || subTreatment.name === 'Brasilianische Lymphdrainage') && (
+                        <div className="absolute -top-2.5 right-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-bold px-3.5 py-1.5 rounded-full shadow-lg ring-2 ring-red-400/50 z-10">
+                          Von Kunden empfohlen
+                        </div>
+                      )}
                       <div className="space-y-4">
                         <div>
                           <h4 className="text-xl font-bold text-gray-900 mb-2">
@@ -1478,33 +1494,35 @@ export function TreatmentsDetail({ treatmentId }: { treatmentId: number }) {
                             const mainDesc = kurMatch ? desc.substring(0, desc.indexOf('Kur angebot')).trim() : desc
                             
                             return (
-                              <>
-                                <p className="text-gray-600 text-sm">
-                                  {mainDesc}
-                                </p>
-                                {kurMatch && (
-                                  <div className="mt-3 bg-gradient-to-r from-[#e9dbd2] to-[#d4c4b5] border-2 border-gray-400 rounded-lg p-3 shadow-md">
-                                    <div className="flex items-center justify-between">
-                                      <div>
-                                        <p className="text-xs font-semibold text-gray-700">Kur-Angebot</p>
-                                        <p className="text-xs text-gray-600 mb-1">4 Behandlungen</p>
-                                        <div className="flex items-center space-x-2">
-                                          <span className="text-base line-through text-gray-500">480€</span>
-                                          <span className="text-base font-bold text-gray-900">450€</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                )}
-                              </>
+                              <p className="text-gray-600 text-sm">
+                                {mainDesc}
+                              </p>
                             )
                           })()}
                         </div>
                         
-                        <div className="flex justify-between items-center">
-                          <span className="text-2xl font-bold text-gray-900">
-                            {subTreatment.price}
-                          </span>
+                        <div className="flex flex-col items-end space-y-3">
+                          <div className="flex justify-between items-center w-full">
+                            <span className="text-2xl font-bold text-gray-900">
+                              {subTreatment.price}
+                            </span>
+                          </div>
+                          {(() => {
+                            const desc = subTreatment.description || ''
+                            const kurMatch = desc.match(/Kur angebot.*?(\d+.*?€)/i)
+                            return kurMatch && subTreatment.name === 'Anti-Aging Kräuter-Peeling (Herbs2Peel)' ? (
+                              <div className="bg-gradient-to-r from-red-50 to-red-100 border-2 border-red-400 rounded-lg p-3 shadow-md w-full">
+                                <div className="flex flex-col items-end">
+                                  <p className="text-xs font-semibold text-red-700">Kur-Angebot</p>
+                                  <p className="text-xs text-red-600 mb-1">4 Behandlungen</p>
+                                  <div className="flex items-center space-x-2">
+                                    <span className="text-base line-through text-red-500">480€</span>
+                                    <span className="text-base font-bold text-red-700">450€</span>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : null
+                          })()}
                         </div>
 
                         <AddTreatmentButton 

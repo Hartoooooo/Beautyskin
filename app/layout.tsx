@@ -102,7 +102,7 @@ export default function RootLayout({
     email: 'beautyskin.studio@icloud.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'R&Y Slivio-Meier-Straße 6',
+      streetAddress: 'Silvio-Meier-Straße 6',
       addressLocality: 'Berlin',
       postalCode: '10247',
       addressRegion: 'Berlin',

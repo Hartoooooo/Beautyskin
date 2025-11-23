@@ -179,7 +179,7 @@ const treatments = [
   },
   {
     id: 5,
-    title: 'BeautySkin Unreine',
+    title: 'BeautySkin Unreine Haut',
     subtitle: 'Intensive Behandlung für unreine Haut',
     description: 'Erleben Sie eine intensiv klärende Behandlung, die Unreinheiten vermindert und das Hautbild rein und ausgeglichen erscheinen lässt.',
     duration: '60 Min',
@@ -319,7 +319,7 @@ export default function GesichtsbehandlungPage() {
       name: 'BeautySkin',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'R&Y Slivio-Meier-Straße 6',
+        streetAddress: 'Silvio-Meier-Straße 6',
         addressLocality: 'Berlin',
         postalCode: '10247',
         addressCountry: 'DE',
