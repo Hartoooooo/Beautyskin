@@ -589,7 +589,7 @@ export default function TerminForm() {
     
     try {
       // Sende das Formular an FormSubmit
-      const response = await fetch('https://formsubmit.co/ajax/hartmanntimon@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/beautyskin.studio@icloud.com', {
         method: 'POST',
         body: formDataToSend,
         headers: {
@@ -1016,7 +1016,7 @@ export default function TerminForm() {
                     </h2>
 
                     <form 
-                      action="https://formsubmit.co/hartmanntimon@gmail.com" 
+                      action="https://formsubmit.co/beautyskin.studio@icloud.com" 
                       method="POST"
                       onSubmit={handleSubmit}
                       className="space-y-6"
