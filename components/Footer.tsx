@@ -151,7 +151,15 @@ export default function Footer() {
                 © {currentYear} BeautySkin. Alle Rechte vorbehalten.
               </div>
               <div className="text-gray-400 text-xs mt-1">
-                Umsetzung von Neoklar<sup className="text-[0.6em]">TM</sup>
+                Umsetzung von{' '}
+                <a
+                  href="https://www.neoklar.de"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Neoklar<sup className="text-[0.6em]">TM</sup>
+                </a>
               </div>
             </div>
             <div className="text-gray-400 text-sm">
